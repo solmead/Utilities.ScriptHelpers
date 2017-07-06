@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "Compile/Scripts/SysLibs/Resources.min.js",
+    "inputFiles": [
+      "Compile/Scripts/SysLibs/Resources.js"
+    ]
+  },
+  {
+    "outputFileName": "ScriptHelper.min.js",
+    "inputFiles": [
+      "ScriptHelper.js"
+    ]
+  }
+]

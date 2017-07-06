@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_NewBackgroundProfile>True</_NewBackgroundProfile>
+    <_PublishTargetUrl>F:\Libraries\ScriptHelperLibraries\bin\Release\PublishOutput</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="app.css">
+      <publishTime>03/19/2016 16:15:13</publishTime>
+    </File>
+    <File Include="app.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="bin/ScriptHelperLibraries.dll">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="bin/ScriptHelperLibraries.pdb">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Content/fancybox/blank.gif">
+      <publishTime>12/15/2016 14:52:05</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_buttons.png">
+      <publishTime>12/15/2016 14:52:05</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_loading%402x.gif">
+      <publishTime>12/15/2016 14:52:05</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_loading.gif">
+      <publishTime>12/15/2016 14:52:05</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_overlay.png">
+      <publishTime>12/15/2016 14:52:05</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_sprite%402x.png">
+      <publishTime>12/15/2016 14:52:05</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_sprite.png">
+      <publishTime>12/15/2016 14:52:05</publishTime>
+    </File>
+    <File Include="Content/jquery.fancybox-buttons.css">
+      <publishTime>12/15/2016 14:52:05</publishTime>
+    </File>
+    <File Include="Content/jquery.fancybox-thumbs.css">
+      <publishTime>12/15/2016 14:52:04</publishTime>
+    </File>
+    <File Include="Content/jquery.fancybox.css">
+      <publishTime>12/15/2016 14:52:04</publishTime>
+    </File>
+    <File Include="Content/themes/base/accordion.css">
+      <publishTime>12/15/2016 12:06:28</publishTime>
+    </File>
+    <File Include="Content/themes/base/all.css">
+      <publishTime>12/15/2016 12:06:28</publishTime>
+    </File>
+    <File Include="Content/themes/base/autocomplete.css">
+      <publishTime>12/15/2016 12:06:27</publishTime>
+    </File>
+    <File Include="Content/themes/base/base.css">
+      <publishTime>12/15/2016 12:06:27</publishTime>
+    </File>
+    <File Include="Content/themes/base/button.css">
+      <publishTime>12/15/2016 12:06:27</publishTime>
+    </File>
+    <File Include="Content/themes/base/core.css">
+      <publishTime>12/15/2016 12:06:27</publishTime>
+    </File>
+    <File Include="Content/themes/base/datepicker.css">
+      <publishTime>12/15/2016 12:06:26</publishTime>
+    </File>
+    <File Include="Content/themes/base/dialog.css">
+      <publishTime>12/15/2016 12:06:26</publishTime>
+    </File>
+    <File Include="Content/themes/base/draggable.css">
+      <publishTime>12/15/2016 12:06:26</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>12/15/2016 12:06:26</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>12/15/2016 12:06:26</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>12/15/2016 12:06:25</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>12/15/2016 12:06:25</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>12/15/2016 12:06:25</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>12/15/2016 12:06:25</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>12/15/2016 12:06:24</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>12/15/2016 12:06:24</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_222222_256x240.png">
+      <publishTime>12/15/2016 12:06:24</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>12/15/2016 12:06:24</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_444444_256x240.png">
+      <publishTime>12/15/2016 12:06:23</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_454545_256x240.png">
+      <publishTime>12/15/2016 12:06:23</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_555555_256x240.png">
+      <publishTime>12/15/2016 12:06:23</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_777620_256x240.png">
+      <publishTime>12/15/2016 12:06:22</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_777777_256x240.png">
+      <publishTime>12/15/2016 12:06:22</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_888888_256x240.png">
+      <publishTime>12/15/2016 12:06:22</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_cc0000_256x240.png">
+      <publishTime>12/15/2016 12:06:22</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>12/15/2016 12:06:22</publishTime>
+    </File>
+    <File Include="Content/themes/base/images/ui-icons_ffffff_256x240.png">
+      <publishTime>12/15/2016 12:06:21</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.css">
+      <publishTime>12/15/2016 12:06:21</publishTime>
+    </File>
+    <File Include="Content/themes/base/jquery-ui.min.css">
+      <publishTime>12/15/2016 12:06:21</publishTime>
+    </File>
+    <File Include="Content/themes/base/menu.css">
+      <publishTime>12/15/2016 12:06:20</publishTime>
+    </File>
+    <File Include="Content/themes/base/progressbar.css">
+      <publishTime>12/15/2016 12:06:20</publishTime>
+    </File>
+    <File Include="Content/themes/base/resizable.css">
+      <publishTime>12/15/2016 12:06:19</publishTime>
+    </File>
+    <File Include="Content/themes/base/selectable.css">
+      <publishTime>12/15/2016 12:06:19</publishTime>
+    </File>
+    <File Include="Content/themes/base/selectmenu.css">
+      <publishTime>12/15/2016 12:06:19</publishTime>
+    </File>
+    <File Include="Content/themes/base/slider.css">
+      <publishTime>12/15/2016 12:06:19</publishTime>
+    </File>
+    <File Include="Content/themes/base/sortable.css">
+      <publishTime>12/15/2016 12:06:19</publishTime>
+    </File>
+    <File Include="Content/themes/base/spinner.css">
+      <publishTime>12/15/2016 12:06:18</publishTime>
+    </File>
+    <File Include="Content/themes/base/tabs.css">
+      <publishTime>12/15/2016 12:06:18</publishTime>
+    </File>
+    <File Include="Content/themes/base/theme.css">
+      <publishTime>12/15/2016 12:06:18</publishTime>
+    </File>
+    <File Include="Content/themes/base/tooltip.css">
+      <publishTime>12/15/2016 12:06:17</publishTime>
+    </File>
+    <File Include="index.html">
+      <publishTime>05/11/2017 13:39:52</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/15/2017 14:41:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.js">
+      <publishTime>12/15/2016 12:06:15</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.min.js">
+      <publishTime>12/15/2016 12:06:15</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.min.map">
+      <publishTime>12/15/2016 12:06:14</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.slim.js">
+      <publishTime>12/15/2016 12:06:14</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.slim.min.js">
+      <publishTime>12/15/2016 12:06:14</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.1.1.slim.min.map">
+      <publishTime>12/15/2016 12:06:14</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.12.1.js">
+      <publishTime>12/15/2016 12:06:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery-ui-1.12.1.min.js">
+      <publishTime>12/15/2016 12:06:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.blockUI.js">
+      <publishTime>05/15/2017 14:39:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox-buttons.js">
+      <publishTime>12/15/2016 14:52:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox-media.js">
+      <publishTime>12/15/2016 14:52:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox-thumbs.js">
+      <publishTime>12/15/2016 14:52:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox.js">
+      <publishTime>12/15/2016 14:52:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox.pack.js">
+      <publishTime>12/15/2016 14:52:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.mousewheel-3.0.6.pack.js">
+      <publishTime>12/15/2016 14:52:04</publishTime>
+    </File>
+    <File Include="Scripts/jquery.placeholder.js">
+      <publishTime>05/15/2017 14:41:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery.placeholder.min.js">
+      <publishTime>05/15/2017 14:41:09</publishTime>
+    </File>
+    <File Include="Scripts/OldScripts/BaseLibrary.js">
+      <publishTime>12/15/2016 14:05:17</publishTime>
+    </File>
+    <File Include="Scripts/OldScripts/Test.js">
+      <publishTime>04/04/2016 12:46:01</publishTime>
+    </File>
+    <File Include="Scripts/OldScripts/Translated/APILibrary.js">
+      <publishTime>03/25/2016 14:47:58</publishTime>
+    </File>
+    <File Include="Scripts/OldScripts/Translated/Dialog.js">
+      <publishTime>03/25/2016 14:47:58</publishTime>
+    </File>
+    <File Include="Scripts/OldScripts/Translated/Namespace.js">
+      <publishTime>03/25/2016 14:47:58</publishTime>
+    </File>
+    <File Include="Scripts/OldScripts/Translated/SiteUrlInfo.js">
+      <publishTime>03/25/2016 14:47:58</publishTime>
+    </File>
+    <File Include="Scripts/OldScripts/Translated/TimingScripts.js">
+      <publishTime>03/28/2016 11:29:33</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/APILibrary.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/APILibrary.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/APILibrary.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/DateTime.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/DateTime.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/DateTime.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Debug.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Debug.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Debug.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Dialog.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Dialog.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Dialog.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/EventHandler.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/EventHandler.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/EventHandler.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Extensions.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Extensions.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Extensions.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/JqueryEx.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/JqueryEx.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/JqueryEx.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/LinqToJs.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/LinqToJs.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/LinqToJs.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Lock.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Lock.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Lock.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Notifications.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Notifications.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Notifications.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Resources.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Resources.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Resources.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/SiteInfo.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/SiteInfo.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/SiteInfo.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Tasks.d.ts">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Tasks.js">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+    <File Include="Scripts/SysLibs/Tasks.js.map">
+      <publishTime>05/15/2017 15:58:43</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>05/15/2017 15:59:06</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

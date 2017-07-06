@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>ScriptHelper</tags>
+  </metadata>
+  <files>
+    <file src="Scripts\SysLibs\APILibrary.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\DateTime.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Debug.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Dialog.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\EventHandler.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Extensions.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\JqueryEx.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\LinqToJs.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Lock.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Notifications.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Resources.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\SiteInfo.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Tasks.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\OldScripts\BaseLibrary.js" target="Content\Scripts\SysLibs" />
+  </files>
+</package>

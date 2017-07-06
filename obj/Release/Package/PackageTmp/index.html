@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script>
+        
+    </script>
+</head>
+<body>
+    <h1>TypeScript HTML App</h1>
+
+<div id="content"></div>
+<script>
+
+    var bundle = null;
+    
+    Include.Loader.addBundle(new Include.Bundle([
+        new Include.CssFile("~/bundles/bootStrapCss"),
+        new Include.CssFile("~/Content/jquery-ui-1.12.1.custom/jquery-ui.css"),
+        new Include.CssFile("~/bundles/maincss"),
+        new Include.CssFile("//fonts.googleapis.com/css?family=Ubuntu:400,700,500,500italic,700italic,400italic,300italic,300")
+    ]));
+    LoadJS.Loader.addBundle(new Include.Bundle([
+        new Include.JsFile("~/bundles/modernizr")
+    ]));
+    LoadJS.Loader.addBundle(new Include.Bundle([
+        new Include.JsFile("~/bundles/basescripts")
+    ]));
+    LoadJS.Loader.addBundle(new Include.Bundle([
+        new Include.JsFile("~/Editor/ckeditor_4.3.1/ckeditor.js"),
+        new Include.JsFile("~/bundles/bootstrap"),
+        new Include.JsFile("~/scripts/jquery-ui-1.12.1.js"),
+        new Include.JsFile("~/Scripts/jquery.fileDownload.js")
+    ]));
+    LoadJS.Loader.addBundle(new Include.Bundle([
+        new Include.JsFile("~/bundles/endscripts")
+    ]));
+    LoadJS.Loader.addBundle(new Include.Bundle([
+        new Include.JsInline("System.Heartbeat = function () { var Now = new Date(); var Cnt = parseInt(Now.getTime());  var URL = \"/api/time/get\"; $.getJSON(URL + '?Cnt=' + Cnt, function (data) { //Milliseconds }); setTimeout(function () { System.Heartbeat(); }, 30000); }; $(function () { setTimeout(function () { System.Heartbeat(); }, 1000); });")
+    ]));
+
+
+
+    LoadJS.Loader.addBundle(new Include.Bundle([
+        new Include.JsFile("/test/test.js"),
+        new Include.JsFile("/test/test2.js")
+    ]));
+
+
+    bundle = new Include.Bundle();
+    bundle.addItem(new Include.JsFile("/test/test.js"));
+    bundle.addItem(new Include.JsFile("/test/test2.js"));
+    bundle.addItem(new Include.JsFile("/test/test3.js"));
+    LoadJS.Loader.addBundle(bundle);
+
+
+
+    LoadJS.Loader.process();
+</script>
+</body>
+</html>
