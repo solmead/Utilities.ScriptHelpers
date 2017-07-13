@@ -1,7 +1,7 @@
 var __doPostBack = __doPostBack;
 var WebForm_DoPostBackWithOptions = WebForm_DoPostBackWithOptions;
 var Page_ClientValidate = Page_ClientValidate;
-CKEDITOR.editorConfig = function (config) {
+CKEDITOR.editorConfig = (config) => {
     // Define changes to default configuration here. For example:
     // config.language = 'fr';
     // config.uiColor = '#AADC6E';
@@ -37,7 +37,7 @@ CKEDITOR.editorConfig = function (config) {
         ];
     config.stylesSet = 'my_custom_styles';
 };
-$(function () {
+$(() => {
     function UIInit() {
         //$.initializeUiBlocking();
         var oldPostBack = __doPostBack;
@@ -77,10 +77,10 @@ $(function () {
                 primary: "ui-icon-locked"
             }
         });
-        $("form").submit(function () {
+        $("form").submit(() => {
             Dialog.showBlockUI();
         });
-        $(".actionLink").click(function () {
+        $(".actionLink").click(() => {
             Dialog.showBlockUI();
         });
         System.SetupOptGroups($("select"));
@@ -149,7 +149,7 @@ $(function () {
             if (!a || !a.ButtonConfirm) {
                 if (!evt.isDefaultPrevented()) {
                     evt.preventDefault();
-                    Dialog.confirmDialog("Are you sure you want to do this? You can not undo this action.", Dialog.DialogTypeEnum.JQueryDialog, function (del) {
+                    Dialog.confirmDialog("Are you sure you want to do this? You can not undo this action.", Dialog.DialogTypeEnum.JQueryDialog, (del) => {
                         if (del) {
                             $(it).trigger("click", [{ ButtonConfirm: true }]);
                         }
@@ -163,7 +163,7 @@ $(function () {
             if (!a || !a.ButtonConfirm) {
                 if (!evt.isDefaultPrevented()) {
                     evt.preventDefault();
-                    Dialog.confirmDialog("Really delete this item? You can not undo this action.", Dialog.DialogTypeEnum.JQueryDialog, function (del) {
+                    Dialog.confirmDialog("Really delete this item? You can not undo this action.", Dialog.DialogTypeEnum.JQueryDialog, (del) => {
                         if (del) {
                             $(it).trigger("click", [{ ButtonConfirm: true }]);
                         }
@@ -172,17 +172,17 @@ $(function () {
                 }
             }
         });
-        $(".ajaxPostForm").onSubmitUseAjax(JqueryEx.createAjaxOptions(null, function (item, data) {
+        $(".ajaxPostForm").onSubmitUseAjax(JqueryEx.createAjaxOptions(null, (item, data) => {
             location.reload(true);
         }));
         $(".postAction").onClickPostAsForm();
-        $(".ajaxPostGrid").onClickAjaxPost(JqueryEx.createAjaxOptions(null, function (item, data) {
+        $(".ajaxPostGrid").onClickAjaxPost(JqueryEx.createAjaxOptions(null, (item, data) => {
             //CloseDialog();
         }));
-        $(".ajaxPost").onClickAjaxPost(JqueryEx.createAjaxOptions(null, function (item, data) {
+        $(".ajaxPost").onClickAjaxPost(JqueryEx.createAjaxOptions(null, (item, data) => {
             location.reload(true);
         }));
-        $(".ajaxPostDestructive").onClickAjaxPost(JqueryEx.createAjaxOptions(function () {
+        $(".ajaxPostDestructive").onClickAjaxPost(JqueryEx.createAjaxOptions(() => {
             var del = confirm("Are you sure you want to do this? You can not undo this action.");
             if (del) {
                 return false;
@@ -190,7 +190,7 @@ $(function () {
             else {
                 return true;
             }
-        }, function (item, data) {
+        }, (item, data) => {
             location.reload(true);
         }));
         $(".MakeVideoArea").click(function () {

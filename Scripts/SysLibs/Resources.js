@@ -1,13 +1,3 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var System;
 (function (System) {
     var ItemType;
@@ -17,131 +7,115 @@ var System;
         ItemType[ItemType["CssFile"] = 2] = "CssFile";
         ItemType[ItemType["CssInline"] = 3] = "CssInline";
     })(ItemType = System.ItemType || (System.ItemType = {}));
-    var Item = (function () {
-        function Item(type) {
+    class Item {
+        constructor(type) {
             this.type = type;
         }
-        return Item;
-    }());
+    }
     System.Item = Item;
-    var CssFile = (function (_super) {
-        __extends(CssFile, _super);
-        function CssFile(file) {
-            var _this = _super.call(this, ItemType.CssFile) || this;
-            _this.file = file;
-            _this.getTag = function (onReady) {
+    class CssFile extends Item {
+        constructor(file) {
+            super(ItemType.CssFile);
+            this.file = file;
+            this.getTag = (onReady) => {
                 var element = document.createElement('link');
-                element.href = _this.file;
+                element.href = this.file;
                 element.rel = 'stylesheet';
                 element.type = "text/css";
                 element.charset = 'utf-8';
-                element.onload = function () {
+                element.onload = () => {
                     onReady();
                 };
                 return element;
             };
-            return _this;
         }
-        return CssFile;
-    }(Item));
+    }
     System.CssFile = CssFile;
-    var CssInline = (function (_super) {
-        __extends(CssInline, _super);
-        function CssInline(inlineCss) {
-            var _this = _super.call(this, ItemType.CssInline) || this;
-            _this.inlineCss = inlineCss;
-            _this.getTag = function (onReady) {
+    class CssInline extends Item {
+        constructor(inlineCss) {
+            super(ItemType.CssInline);
+            this.inlineCss = inlineCss;
+            this.getTag = (onReady) => {
                 var element = document.createElement('style');
-                element.innerHTML = _this.inlineCss;
+                element.innerHTML = this.inlineCss;
                 element.type = 'text/css';
-                element.onload = function () {
+                element.onload = () => {
                     onReady();
                 };
                 return element;
             };
-            return _this;
         }
-        return CssInline;
-    }(Item));
+    }
     System.CssInline = CssInline;
-    var JsFile = (function (_super) {
-        __extends(JsFile, _super);
-        function JsFile(file) {
-            var _this = _super.call(this, ItemType.ScriptFile) || this;
-            _this.file = file;
-            _this.getTag = function (onReady) {
+    class JsFile extends Item {
+        constructor(file) {
+            super(ItemType.ScriptFile);
+            this.file = file;
+            this.getTag = (onReady) => {
                 var element = document.createElement('script');
-                element.src = _this.file;
+                element.src = this.file;
                 element.type = 'text/javascript';
                 element.async = true;
                 element.charset = 'utf-8';
-                element.onload = function () {
+                element.onload = () => {
                     onReady();
                 };
                 return element;
             };
-            return _this;
         }
-        return JsFile;
-    }(Item));
+    }
     System.JsFile = JsFile;
-    var JsInline = (function (_super) {
-        __extends(JsInline, _super);
-        function JsInline(inlineScript) {
-            var _this = _super.call(this, ItemType.ScriptInline) || this;
-            _this.inlineScript = inlineScript;
-            _this.getTag = function (onReady) {
+    class JsInline extends Item {
+        constructor(inlineScript) {
+            super(ItemType.ScriptInline);
+            this.inlineScript = inlineScript;
+            this.getTag = (onReady) => {
                 var element = document.createElement('script');
-                element.innerHTML = _this.inlineScript;
+                element.innerHTML = this.inlineScript;
                 element.type = 'text/javascript';
                 element.charset = 'utf-8';
-                element.onload = function () {
+                element.onload = () => {
                     onReady();
                 };
                 return element;
             };
-            return _this;
         }
-        return JsInline;
-    }(Item));
+    }
     System.JsInline = JsInline;
-    var Bundle = (function () {
-        function Bundle(items) {
-            var _this = this;
+    class Bundle {
+        constructor(items) {
             this.items = items;
-            this.addItem = function (item) {
-                _this.items.push(item);
+            this.addItem = (item) => {
+                this.items.push(item);
             };
             if (this.items == null) {
                 this.items = [];
             }
         }
-        return Bundle;
-    }());
+    }
     System.Bundle = Bundle;
-    var BundleLoader = (function () {
-        function BundleLoader(bundles) {
-            var _this = this;
+    class BundleLoader {
+        constructor(bundles) {
             this.bundles = bundles;
             this.dfLoadStatus = 0;
-            this.addBundle = function (bundle) {
-                _this.bundles.push(bundle);
+            this.addBundle = (bundle) => {
+                this.bundles.push(bundle);
             };
-            this.load = function (onFinished) {
-                var downloadJSAtOnload = function () {
-                    if (!_this.bundles.length) {
+            this.load = (onFinished) => {
+                var downloadJSAtOnload = () => {
+                    if (!this.bundles.length) {
                         if (onFinished) {
                             onFinished();
                         }
                         return;
                     }
-                    var dfGroup = _this.bundles.shift();
-                    _this.dfLoadStatus = 0;
+                    var dfGroup = this.bundles.shift();
+                    this.dfLoadStatus = 0;
                     for (var i = 0; i < dfGroup.items.length; i++) {
-                        _this.dfLoadStatus++;
-                        var element = dfGroup.items[i].getTag(function () {
-                            _this.dfLoadStatus--;
-                            if (_this.dfLoadStatus == 0) {
+                        this.dfLoadStatus++;
+                        var element = dfGroup.items[i].getTag(() => {
+                            this.dfLoadStatus--;
+                            if (this.dfLoadStatus == 0) {
                                 downloadJSAtOnload();
                             }
                         });
@@ -157,8 +131,7 @@ var System;
                 this.bundles = [];
             }
         }
-        return BundleLoader;
-    }());
+    }
     System.BundleLoader = BundleLoader;
     System.Resources = new BundleLoader();
 })(System || (System = {}));

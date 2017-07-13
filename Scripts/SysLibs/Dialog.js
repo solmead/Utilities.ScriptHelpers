@@ -30,7 +30,7 @@ var Dialog;
     Dialog.dialogReturn = null;
     Dialog.dialogCloseEvents = new Tasks.EventHandler();
     function resetPage() {
-        setTimeout(function () { window.location.reload(); }, 100);
+        setTimeout(() => { window.location.reload(); }, 100);
     }
     Dialog.resetPage = resetPage;
     function closeDialog() {
@@ -117,7 +117,7 @@ var Dialog;
             width: 640,
             height: 355,
             callOnClose: null,
-            onComplete: function () {
+            onComplete: () => {
                 //alert(id + "_PU");
                 $f(id + '_PU', "/WMP/flash/flowplayer-3.2.12.swf", {
                     'key': '#$695a7519d0be6236d25',
@@ -159,13 +159,13 @@ var Dialog;
             diaSettings = getJqueryUiDialogSettings(300, 200, "", {
                 resizable: false,
                 buttons: {
-                    "Ok": function () {
+                    "Ok": () => {
                         closeBasePopupDialog(null);
                         if (callback) {
                             callback(true);
                         }
                     },
-                    Cancel: function () {
+                    Cancel: () => {
                         closeBasePopupDialog(null);
                         if (callback) {
                             callback(false);

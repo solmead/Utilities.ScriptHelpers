@@ -116,7 +116,6 @@ module Tasks {
                 waitTimeMilliSeconds || 500);
         }
         
-
         t.trigger = (): void => {
             throttle();
         }

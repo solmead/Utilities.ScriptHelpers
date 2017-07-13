@@ -3,4 +3,3 @@ F:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.dll
 F:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.pdb
 F:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.dll
 F:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.pdb
-F:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.csprojResolveAssemblyReference.cache

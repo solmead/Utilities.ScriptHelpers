@@ -42,7 +42,7 @@ var ApiLibrary;
         var fUrl = SiteInfo.applicationUrl() + url + cntPiece;
         $.ajax({
             url: fUrl,
-            beforeSend: function (request) {
+            beforeSend: (request) => {
                 if (beforeSend) {
                     beforeSend(request);
                 }
@@ -61,30 +61,30 @@ var ApiLibrary;
     }
     ApiLibrary.apiCall = apiCall;
     function getCallAsync(url, seqNum) {
-        return new Promise(function (resolve, reject) {
-            getCall(url, seqNum, function (data, seq) {
+        return new Promise((resolve, reject) => {
+            getCall(url, seqNum, (data, seq) => {
                 resolve(data);
-            }, function (extStatus, errorThrown) {
+            }, (extStatus, errorThrown) => {
                 reject(Error(errorThrown));
             });
         });
     }
     ApiLibrary.getCallAsync = getCallAsync;
     function putCallAsync(url, seqNum, sendData) {
-        return new Promise(function (resolve, reject) {
-            putCall(url, seqNum, sendData, function (data, seq) {
+        return new Promise((resolve, reject) => {
+            putCall(url, seqNum, sendData, (data, seq) => {
                 resolve(data);
-            }, function (extStatus, errorThrown) {
+            }, (extStatus, errorThrown) => {
                 reject(Error(errorThrown));
             });
         });
     }
     ApiLibrary.putCallAsync = putCallAsync;
     function postCallAsync(url, seqNum, sendData) {
-        return new Promise(function (resolve, reject) {
-            postCall(url, seqNum, sendData, function (data, seq) {
+        return new Promise((resolve, reject) => {
+            postCall(url, seqNum, sendData, (data, seq) => {
                 resolve(data);
-            }, function (extStatus, errorThrown) {
+            }, (extStatus, errorThrown) => {
                 reject(Error(errorThrown));
             });
         });
@@ -97,12 +97,12 @@ var ApiLibrary;
         if (!seqNum) {
             seqNum = DateTime.getTimeCount();
         }
-        apiCall(callTypes.GET, url, null, function (data, textStatus, request) {
+        apiCall(callTypes.GET, url, null, (data, textStatus, request) => {
             var seq = parseInt(request.getResponseHeader("seq"));
             if (successCallback) {
                 successCallback(data, seq);
             }
-        }, errorCallback, function (request) {
+        }, errorCallback, (request) => {
             request.setRequestHeader("seq", "" + seqNum);
         });
     }
@@ -113,12 +113,12 @@ var ApiLibrary;
         }
         sendData = sendData || {};
         addAntiForgeryToken(sendData);
-        apiCall(callTypes.PUT, url, sendData, function (data, textStatus, request) {
+        apiCall(callTypes.PUT, url, sendData, (data, textStatus, request) => {
             var seq = parseInt(request.getResponseHeader("seq"));
             if (successCallback) {
                 successCallback(data, seq);
             }
-        }, errorCallback, function (request) {
+        }, errorCallback, (request) => {
             request.setRequestHeader("seq", "" + seqNum);
         });
     }
@@ -129,12 +129,12 @@ var ApiLibrary;
         }
         sendData = sendData || {};
         addAntiForgeryToken(sendData);
-        apiCall(callTypes.POST, url, sendData, function (data, textStatus, request) {
+        apiCall(callTypes.POST, url, sendData, (data, textStatus, request) => {
             var seq = parseInt(request.getResponseHeader("seq"));
             if (successCallback) {
                 successCallback(data, seq);
             }
-        }, errorCallback, function (request) {
+        }, errorCallback, (request) => {
             request.setRequestHeader("seq", "" + seqNum);
         });
     }

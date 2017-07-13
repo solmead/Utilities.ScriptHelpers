@@ -1,75 +1,74 @@
 //module Linq {
-var Queryable = (function () {
-    function Queryable(array) {
-        var _this = this;
+class Queryable {
+    constructor(array) {
         this.array = array;
-        this.add = function (item) {
-            _this.array.push(item);
+        this.add = (item) => {
+            this.array.push(item);
         };
-        this.remove = function (item) {
-            _this.array.remove(item);
+        this.remove = (item) => {
+            this.array.remove(item);
         };
-        this.push = function (item) {
-            _this.array.push(item);
+        this.push = (item) => {
+            this.array.push(item);
         };
-        this.toArray = function () {
-            return _this.array.slice(0);
+        this.toArray = () => {
+            return this.array.slice(0);
         };
-        this.distinct = function (compareFunction) {
+        this.distinct = (compareFunction) => {
             var lst = new Queryable();
-            _this.forEach(function (t) {
+            this.forEach((t) => {
                 if (!lst.contains(t, compareFunction)) {
                     lst.add(t);
                 }
             });
             return lst;
         };
-        this.where = function (whereClause) {
+        this.where = (whereClause) => {
             if (!whereClause) {
-                return new Queryable(_this.array.slice(0));
+                return new Queryable(this.array.slice(0));
             }
             var lst2 = [];
-            _this.array.forEach(function (item) {
+            this.array.forEach(item => {
                 if (whereClause(item)) {
                     lst2.push(item);
                 }
             });
             return new Queryable(lst2);
         };
-        this.any = function (whereClause) {
+        this.any = (whereClause) => {
             if (!whereClause) {
-                return _this.array.length > 0;
+                return this.array.length > 0;
             }
-            return _this.where(whereClause).any();
+            return this.where(whereClause).any();
         };
-        this.forEach = function (func) {
-            var list = _this.array;
+        this.forEach = (func) => {
+            var list = this.array;
             if (func == null) {
                 return false;
             }
-            $.each(list, function (i, item) {
+            $.each(list, (i, item) => {
                 func(item);
             });
             return true;
         };
-        this.sum = function (func) {
+        this.sum = (func) => {
             if (!func) {
-                func = function (obj) {
+                func = (obj) => {
                     return obj;
                 };
             }
             var cnt = 0;
-            _this.forEach(function (item) { cnt = cnt + func(item); });
+            this.forEach(item => { cnt = cnt + func(item); });
             return cnt;
         };
-        this.max = function (func) {
+        this.max = (func) => {
             if (!func) {
-                func = function (obj) {
+                func = (obj) => {
                     return obj;
                 };
             }
-            var mx = func(_this.first());
-            _this.forEach(function (item) {
+            var mx = func(this.first());
+            this.forEach(item => {
                 var v = func(item);
                 if (mx < v) {
                     mx = v;
@@ -77,14 +76,14 @@ var Queryable = (function () {
             });
             return mx;
         };
-        this.min = function (func) {
+        this.min = (func) => {
             if (!func) {
-                func = function (obj) {
+                func = (obj) => {
                     return obj;
                 };
             }
-            var mx = func(_this.first());
-            _this.forEach(function (item) {
+            var mx = func(this.first());
+            this.forEach(item => {
                 var v = func(item);
                 if (mx > v) {
                     mx = v;
@@ -92,15 +91,14 @@ var Queryable = (function () {
             });
             return mx;
         };
-        this.select = function (selectItem) {
+        this.select = (selectItem) => {
             if (selectItem == null) {
-                return new Queryable(_this.array.slice(0));
+                return new Queryable(this.array.slice(0));
             }
-            return new Queryable(_this.array.map(selectItem));
+            return new Queryable(this.array.map(selectItem));
         };
-        this.orderBy = function (orderBy, isDescending) {
-            if (isDescending === void 0) { isDescending = false; }
-            return _this.orderByFunction(function (ob1, ob2) {
+        this.orderBy = (orderBy, isDescending = false) => {
+            return this.orderByFunction((ob1, ob2) => {
                 var v1 = orderBy(ob1);
                 var v2 = orderBy(ob2);
                 if (v1 > v2) {
@@ -112,120 +110,119 @@ var Queryable = (function () {
                 return 0;
             }, isDescending);
         };
-        this.orderByFunction = function (orderBy, isDescending) {
-            if (isDescending === void 0) { isDescending = false; }
+        this.orderByFunction = (orderBy, isDescending = false) => {
             isDescending = !!isDescending;
             if (orderBy == null) {
-                return new Queryable(_this.array.slice(0));
+                return new Queryable(this.array.slice(0));
             }
-            var clone = _this.array.slice(0);
+            var clone = this.array.slice(0);
             clone.sort(orderBy);
             if (isDescending) {
                 clone = clone.reverse();
             }
             return (new Queryable(clone));
         };
-        this.reverse = function () {
-            return new Queryable(_this.array.reverse());
+        this.reverse = () => {
+            return new Queryable(this.array.reverse());
         };
-        this.skip = function (count) {
-            if (_this.length < count) {
+        this.skip = (count) => {
+            if (this.length < count) {
                 return new Queryable([]);
             }
-            _this.array.splice(0, count);
-            return new Queryable(_this.array.slice(0));
+            this.array.splice(0, count);
+            return new Queryable(this.array.slice(0));
         };
-        this.take = function (count) {
-            if (_this.length == 0) {
+        this.take = (count) => {
+            if (this.length == 0) {
                 return new Queryable([]);
             }
-            if (count > _this.length) {
-                count = _this.length;
+            if (count > this.length) {
+                count = this.length;
             }
-            _this.array.splice(count - 1, _this.length - count);
-            return new Queryable(_this.array.slice(0));
+            this.array.splice(count - 1, this.length - count);
+            return new Queryable(this.array.slice(0));
         };
-        this.first = function () {
-            if (_this.length == 0) {
+        this.first = () => {
+            if (this.length == 0) {
                 return null;
             }
-            return _this.array[0];
+            return this.array[0];
         };
-        this.last = function () {
-            if (_this.length == 0) {
+        this.last = () => {
+            if (this.length == 0) {
                 return null;
             }
-            return _this.array[_this.length - 1];
+            return this.array[this.length - 1];
         };
-        this.findItem = function (selectItem) {
-            return _this.where(selectItem).first();
+        this.findItem = (selectItem) => {
+            return this.where(selectItem).first();
         };
-        this.find = function (selectItem) {
-            return _this.where(selectItem).first();
+        this.find = (selectItem) => {
+            return this.where(selectItem).first();
         };
-        this.contains = function (item, compareFunction) {
+        this.contains = (item, compareFunction) => {
             if (!compareFunction) {
-                compareFunction = _this.equals;
+                compareFunction = this.equals;
             }
-            return _this.where(function (item2) { return compareFunction(item, item2); }).any();
+            return this.where((item2) => compareFunction(item, item2)).any();
         };
-        this.union = function (arr) {
+        this.union = (arr) => {
             if (arr instanceof Queryable) {
-                return new Queryable(_this.array.concat(arr.toArray()));
+                return new Queryable(this.array.concat(arr.toArray()));
             }
             else {
-                return new Queryable(_this.array.concat(arr));
+                return new Queryable(this.array.concat(arr));
             }
         };
-        this.intersect = function (arr, compareFunction) {
+        this.intersect = (arr, compareFunction) => {
             if (!compareFunction) {
-                compareFunction = _this.equals;
+                compareFunction = this.equals;
             }
             var q = null;
             if (arr instanceof Queryable) {
                 q = arr;
             }
             else {
-                q = new Queryable(_this.array.concat(arr));
+                q = new Queryable(this.array.concat(arr));
             }
             var lst2 = [];
-            _this.forEach(function (item) {
+            this.forEach((item) => {
                 if (q.contains(item, compareFunction)) {
                     lst2.push(item);
                 }
             });
             return new Queryable(lst2);
         };
-        this.difference = function (arr, compareFunction) {
+        this.difference = (arr, compareFunction) => {
             if (!compareFunction) {
-                compareFunction = _this.equals;
+                compareFunction = this.equals;
             }
             var q = null;
             if (arr instanceof Queryable) {
                 q = arr;
             }
             else {
-                q = new Queryable(_this.array.concat(arr));
+                q = new Queryable(this.array.concat(arr));
             }
             var lst2 = [];
-            _this.forEach(function (item) {
+            this.forEach((item) => {
                 if (!q.contains(item, compareFunction)) {
                     lst2.push(item);
                 }
             });
             return new Queryable(lst2);
         };
-        this.copy = function () {
-            return new Queryable(_this.array.slice(0));
+        this.copy = () => {
+            return new Queryable(this.array.slice(0));
         };
-        this.asQueryable = function () {
-            return new Queryable(_this.array.slice(0));
+        this.asQueryable = () => {
+            return new Queryable(this.array.slice(0));
         };
         if (this.array == null) {
             this.array = new Array();
         }
     }
-    Queryable.prototype.equals = function (x, y) {
+    equals(x, y) {
         if (x === y)
             return true;
         // if both x and y are null or undefined and exactly the same
@@ -259,23 +256,14 @@ var Queryable = (function () {
             // allows x[ p ] to be set to undefined
         }
         return true;
-    };
-    Object.defineProperty(Queryable.prototype, "length", {
-        get: function () {
-            return this.array.length;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Queryable.prototype, "count", {
-        get: function () {
-            return this.array.length;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return Queryable;
-}());
+    }
+    get length() {
+        return this.array.length;
+    }
+    get count() {
+        return this.array.length;
+    }
+}
 //}
 Array.prototype.asQueryable = function () {
     return new Queryable(this);

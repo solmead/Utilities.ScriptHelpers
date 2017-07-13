@@ -1,13 +1,12 @@
 var SiteInfo;
 (function (SiteInfo_1) {
-    var SiteInfo = (function () {
-        function SiteInfo() {
-            var _this = this;
+    class SiteInfo {
+        constructor() {
             this.sitepath = "/";
             this.virtualUrl = "";
             this.applicationUrl = "";
             this.isCleanHtml = false;
-            this.getParameterByName = function (name) {
+            this.getParameterByName = (name) => {
                 name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
                 var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
                 var results = regex.exec(location.search);
@@ -17,9 +16,9 @@ var SiteInfo;
             var lastScript = scripts[scripts.length - 1];
             var scriptName = lastScript.src;
             var subDirs = new Queryable(["/SCRIPTS/", "/BUNDLES/"]);
-            var indexs = subDirs.select(function (d) {
-                return _this.sitepath.toUpperCase().indexOf(d);
-            }).where(function (i) { return i > 0; });
+            var indexs = subDirs.select((d) => {
+                return this.sitepath.toUpperCase().indexOf(d);
+            }).where((i) => i > 0);
             if (indexs.any()) {
                 var minIdx = indexs.min();
                 this.sitepath = scriptName.substring(0, minIdx) + "/";
@@ -30,8 +29,7 @@ var SiteInfo;
             var t = window.location.pathname + window.location.search;
             this.isCleanHtml = (t.indexOf("Format=CleanHtml") > -1);
         }
-        return SiteInfo;
-    }());
+    }
     SiteInfo_1.SiteInfo = SiteInfo;
     SiteInfo_1.siteInfo = new SiteInfo();
     function virtualUrl() {

@@ -1,20 +1,18 @@
 var Tasks;
 (function (Tasks) {
-    var EventHandler = (function () {
-        function EventHandler() {
-            var _this = this;
+    class EventHandler {
+        constructor() {
             this.onTrigger = [];
-            this.trigger = function (data) {
-                _this.onTrigger.asQueryable().forEach(function (fn) {
+            this.trigger = (data) => {
+                this.onTrigger.asQueryable().forEach((fn) => {
                     fn(data);
                 });
             };
-            this.addListener = function (callback) {
-                _this.onTrigger.push(callback);
+            this.addListener = (callback) => {
+                this.onTrigger.push(callback);
             };
         }
-        return EventHandler;
-    }());
+    }
     Tasks.EventHandler = EventHandler;
 })(Tasks || (Tasks = {}));
 //# sourceMappingURL=EventHandler.js.map

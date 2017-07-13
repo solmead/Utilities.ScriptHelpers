@@ -1,55 +1,45 @@
 var Debug;
 (function (Debug) {
-    var Message = (function () {
-        function Message(_date, _message) {
+    class Message {
+        constructor(_date, _message) {
             this._date = _date;
             this._message = _message;
         }
-        Object.defineProperty(Message.prototype, "date", {
-            get: function () {
-                return this._date;
-            },
-            set: function (value) {
-                this._date = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(Message.prototype, "message", {
-            get: function () {
-                return this._message;
-            },
-            set: function (value) {
-                this._message = value;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        return Message;
-    }());
+        get date() {
+            return this._date;
+        }
+        set date(value) {
+            this._date = value;
+        }
+        get message() {
+            return this._message;
+        }
+        set message(value) {
+            this._message = value;
+        }
+    }
     Debug.Message = Message;
-    var Messages = (function () {
-        function Messages(location) {
-            var _this = this;
+    class Messages {
+        constructor(location) {
             this.location = location;
             this.messages = new Array();
-            this.showMessages = function () {
+            this.showMessages = () => {
                 if (DateTime.serverTime.serverTimeLoaded) {
                     if (DateTime.serverTime.serverStartTime != null) {
                         DateTime.serverTime.startTime = new Date(DateTime.serverTime.serverStartTime.getTime() - DateTime.serverTime.offset);
                     }
-                    var area = $(_this.displayLocation);
+                    var area = $(this.displayLocation);
                     if (area.length == 0) {
                         $("body").append("<ol class='MessageArea' style='display:none;></ol>");
-                        area = $(_this.displayLocation);
+                        area = $(this.displayLocation);
                     }
-                    _this.messages.forEach(function (item) {
+                    this.messages.forEach((item) => {
                         var dt = item.date;
                         var secondsFromStart = (dt.getTime() - DateTime.serverTime.startTime.getTime()) / 1000;
                         dt.setTime(dt.getTime() + DateTime.serverTime.offset);
                         $(area).append("<li><span class='timePart'>" + DateTime.formatTime(dt) + "</span> - <span class='messagePart'>" + item.message + "</span> - <span class='timeElapsedPart'>Time Elapsed From Start: " + DateTime.formatTimeSpan(secondsFromStart) + "</span></li>");
                     });
-                    _this.messages = new Array();
+                    this.messages = new Array();
                     try {
                         var item = $(area).find("li:last-child");
                         var t = (item.position().top + item.height()) - $(area).height() + $(area).scrollTop();
@@ -59,20 +49,19 @@ var Debug;
                     }
                 }
             };
-            this.addMessage = function (msg) {
+            this.addMessage = (msg) => {
                 if (!(msg instanceof Message)) {
                     var now = new Date();
                     msg = new Message(now, msg);
                 }
-                _this.messages.push(msg);
-                _this.showMessages();
+                this.messages.push(msg);
+                this.showMessages();
             };
-            Tasks.whenReady().then(function () {
-                _this.displayLocation = $(_this.location);
+            Tasks.whenReady().then(() => {
+                this.displayLocation = $(this.location);
             });
         }
-        return Messages;
-    }());
+    }
     Debug.Messages = Messages;
     Debug.messages = new Messages(".MessageArea");
     function debugWrite(msg) {
