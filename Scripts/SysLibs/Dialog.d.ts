@@ -3,10 +3,10 @@ interface FlowPlayer {
 }
 declare var $f: FlowPlayer;
 interface Window {
-    closeBasePopupDialog: (data: any) => void;
+    closeBasePopupDialog: (data?: any) => void;
     showHtmlInDialog(html: string | JQuery, settings: Dialog.IDialogSettings, parent?: Window): JQuery;
 }
-declare function closeBasePopupDialog(data: any): void;
+declare function closeBasePopupDialog(data?: any): void;
 declare function showHtmlInDialog(html: string | JQuery, settings: Dialog.IDialogSettings, parent?: Window): JQuery;
 declare module Dialog {
     var lastDialogNumber: number;

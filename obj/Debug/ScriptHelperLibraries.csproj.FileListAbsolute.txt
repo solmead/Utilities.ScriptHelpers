@@ -1,5 +1,12 @@
-F:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.dll.config
 F:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.dll
 F:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.pdb
 F:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.dll
 F:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.pdb
+F:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.csproj.CoreCompileInputs.cache
+F:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.csprojResolveAssemblyReference.cache
+X:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.dll
+X:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.pdb
+X:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.csproj.CoreCompileInputs.cache
+X:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.dll
+X:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.pdb
+X:\Libraries\ScriptHelperLibraries\obj\Debug\ScriptHelperLibraries.csprojResolveAssemblyReference.cache

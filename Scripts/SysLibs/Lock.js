@@ -1,29 +1,31 @@
 var Lock;
 (function (Lock) {
-    class Locker {
-        constructor(maxLockTime) {
+    var Locker = (function () {
+        function Locker(maxLockTime) {
+            var _this = this;
             this.maxLockTime = maxLockTime;
             this.locked = false;
             this.lastCalled = null;
-            this.isLocked = () => {
+            this.isLocked = function () {
                 var seconds = 0;
-                if (this.lastCalled) {
-                    seconds = ((new Date()).getTime() - this.lastCalled.getTime()) / 1000;
+                if (_this.lastCalled) {
+                    seconds = ((new Date()).getTime() - _this.lastCalled.getTime()) / 1000;
                 }
-                return this.locked && seconds < this.maxLockTime;
+                return _this.locked && seconds < _this.maxLockTime;
             };
-            this.lock = () => {
-                this.locked = true;
-                this.lastCalled = new Date();
+            this.lock = function () {
+                _this.locked = true;
+                _this.lastCalled = new Date();
             };
-            this.unLock = () => {
-                this.locked = false;
+            this.unLock = function () {
+                _this.locked = false;
             };
             if (!this.maxLockTime) {
                 this.maxLockTime = 30.0;
             }
         }
-    }
+        return Locker;
+    }());
     Lock.Locker = Locker;
 })(Lock || (Lock = {}));
 //# sourceMappingURL=Lock.js.map

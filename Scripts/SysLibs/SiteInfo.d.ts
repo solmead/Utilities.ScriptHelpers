@@ -13,6 +13,7 @@ declare module SiteInfo {
     function isCleanHtml(): boolean;
     function refreshPage(): void;
     function getParameterByName(name: string): string;
+    function getVirtualURL(url: string): string;
     function getFullURL(url: string): string;
     function redirect(url: string): void;
 }

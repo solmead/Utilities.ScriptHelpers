@@ -17,7 +17,7 @@ module SiteInfo {
             var subDirs = new Queryable<string>(["/SCRIPTS/", "/BUNDLES/"]);
 
             var indexs = subDirs.select((d) => {
-                return this.sitepath.toUpperCase().indexOf(d);
+                return scriptName.toUpperCase().indexOf(d);
             }).where((i)=>i>0);
 
             if (indexs.any()) {
@@ -68,6 +68,10 @@ module SiteInfo {
         return siteInfo.getParameterByName(name);
     };
 
+
+    export function getVirtualURL(url: string): string {
+        return applicationUrl() + virtualUrl() + url;
+    }
 
     export function getFullURL(url: string): string {
         var cntPiece = "Cnt=" + DateTime.getTimeCount();

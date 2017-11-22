@@ -30,7 +30,7 @@ var Dialog;
     Dialog.dialogReturn = null;
     Dialog.dialogCloseEvents = new Tasks.EventHandler();
     function resetPage() {
-        setTimeout(() => { window.location.reload(); }, 100);
+        setTimeout(function () { window.location.reload(); }, 100);
     }
     Dialog.resetPage = resetPage;
     function closeDialog() {
@@ -117,7 +117,7 @@ var Dialog;
             width: 640,
             height: 355,
             callOnClose: null,
-            onComplete: () => {
+            onComplete: function () {
                 //alert(id + "_PU");
                 $f(id + '_PU', "/WMP/flash/flowplayer-3.2.12.swf", {
                     'key': '#$695a7519d0be6236d25',
@@ -150,7 +150,7 @@ var Dialog;
     Dialog.showInDialog = showInDialog;
     ;
     function confirmDialog(msg, dialogType, callback) {
-        var mg = '<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>' + msg + '</p>';
+        var mg = '<p style="padding: 20px;"><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>' + msg + '</p>';
         var diaSettings = null;
         if (dialogType == DialogTypeEnum.FancyBox) {
             diaSettings = getFancyBoxDialogSettings(300, 200, "");
@@ -159,13 +159,13 @@ var Dialog;
             diaSettings = getJqueryUiDialogSettings(300, 200, "", {
                 resizable: false,
                 buttons: {
-                    "Ok": () => {
+                    "Ok": function () {
                         closeBasePopupDialog(null);
                         if (callback) {
                             callback(true);
                         }
                     },
-                    Cancel: () => {
+                    Cancel: function () {
                         closeBasePopupDialog(null);
                         if (callback) {
                             callback(false);
@@ -179,13 +179,14 @@ var Dialog;
     Dialog.confirmDialog = confirmDialog;
     function showHtmlInFancyDialog(html, settings, myParent) {
         var dialogNum = Dialog.lastDialogNumber;
-        var item = $(html);
+        //var item = $(html);
         var Settings = {
             autoSize: false,
             'padding': 0,
             height: 500,
             width: 700,
             afterClose: function () {
+                $("#globalPopUpDialog_" + dialogNum).remove();
                 if (settings.callOnClose && settings.callOnClose != "") {
                     var fn = myParent[settings.callOnClose];
                     if (typeof fn === 'function') {
@@ -211,8 +212,12 @@ var Dialog;
                 Settings.height = settings.height;
             }
         }
-        $.fancybox(item, Settings);
-        return item;
+        $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
+        var pUp = $("#globalPopUpDialog_" + dialogNum);
+        pUp.append($(html));
+        Settings.href = "#globalPopUpDialog_" + dialogNum;
+        $.fancybox(Settings);
+        return pUp;
     }
     function showHtmlInJQDialog(html, settings, myParent) {
         var dialogNum = Dialog.lastDialogNumber;

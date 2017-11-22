@@ -14,17 +14,44 @@ var JqueryEx;
         };
         var settings = $.extend({}, defaults, options);
         if (!settings.beforeCall) {
-            settings.beforeCall = (item) => {
+            settings.beforeCall = function (item) {
                 return false;
             };
         }
         if (!settings.afterResponse) {
-            settings.afterResponse = (item, data) => {
+            settings.afterResponse = function (item, data) {
                 return;
             };
         }
         return settings;
     }
+    $.extend({
+        replaceTag: function (currentElem, newTagObj, keepProps) {
+            var $currentElem = $(currentElem);
+            var i, $newTag = $(newTagObj).clone();
+            if (keepProps) {
+                //var newTag = $newTag[0];
+                //newTag.className = currentElem.className;
+                //$.extend(newTag.classList, currentElem.classList);
+                $.each(currentElem.attributes, function (index, it) {
+                    $newTag.attr(it.name, it.value);
+                });
+                //$.extend(newTag.attributes, currentElem.attributes);
+            } //}}}
+            $currentElem.wrapAll($newTag);
+            $currentElem.contents().unwrap();
+            // return node; (Error spotted by Frank van Luijn)
+            return this; // Suggested by ColeLawrence
+        }
+    });
+    $.fn.extend({
+        replaceTag: function (newTagObj, keepProps) {
+            // "return" suggested by ColeLawrence
+            return this.each(function () {
+                jQuery.replaceTag(this, newTagObj, keepProps);
+            });
+        }
+    });
     jQuery.fn.extend({
         disable: function (state) {
             var items = this;
@@ -47,7 +74,7 @@ var JqueryEx;
         }
         var clickUrl = ApiLibrary.addFormatToUrl($(form).attr("action"));
         var formData = $(this).serialize();
-        ApiLibrary.postCall(clickUrl, null, formData, (data) => {
+        ApiLibrary.postCall(clickUrl, null, formData, function (data) {
             settings.afterResponse(clickedItem, data);
         });
     };
@@ -63,7 +90,7 @@ var JqueryEx;
             $(form).find("input[type='submit'],button[type='submit']").button('disable');
             var clickUrl = ApiLibrary.addFormatToUrl($(form).attr("action"));
             var formData = $(this).serialize();
-            ApiLibrary.postCall(clickUrl, null, formData, (data) => {
+            ApiLibrary.postCall(clickUrl, null, formData, function (data) {
                 settings.afterResponse(clickedItem, data);
                 $(form).find("input[type='submit'],button[type='submit']").button('enable');
             });
@@ -80,7 +107,7 @@ var JqueryEx;
                     return;
                 }
                 var clickUrl = ApiLibrary.addFormatToUrl($(item).attr("href"));
-                ApiLibrary.getCall(clickUrl, null, (data) => {
+                ApiLibrary.getCall(clickUrl, null, function (data) {
                     settings.afterResponse(clickedItem, data);
                 });
             }
@@ -90,6 +117,7 @@ var JqueryEx;
         var settings = checkOptions(options);
         var item = this;
         $(item).click(function (evt) {
+            var _this = this;
             if (!evt.isDefaultPrevented()) {
                 evt.preventDefault();
                 var clickedItem = this;
@@ -97,8 +125,8 @@ var JqueryEx;
                     return;
                 }
                 var clickUrl = ApiLibrary.addFormatToUrl($(item).attr("href"));
-                ApiLibrary.postCall(clickUrl, null, null, (data) => {
-                    settings.afterResponse(this, data);
+                ApiLibrary.postCall(clickUrl, null, null, function (data) {
+                    settings.afterResponse(_this, data);
                 });
             }
         });

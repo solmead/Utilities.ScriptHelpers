@@ -1,93 +1,106 @@
 var Tasks;
 (function (Tasks) {
-    class Task extends Promise {
-        constructor(func) {
-            super((resolve) => {
-                this.resolveFunc = resolve;
-            });
+    var Task = (function () {
+        function Task(func) {
+            //super((resolve, reject) => {
+            //        resolveFunc = resolve;
+            //});
+            var _this = this;
             this.func = func;
-            this.resolveFunc = (value) => {
+            this.promise = null;
+            this.then = function (onFulfilled) {
+                return _this.promise.then(onFulfilled);
             };
-            this.start = () => {
-                this.func((val) => {
-                    this.resolveFunc(val);
+            this.start = function () {
+                _this.func(function (val) {
+                    _this.resolveFunc(val);
                 });
             };
+            this.promise = new Promise(function (resolve) {
+                _this.resolveFunc = resolve;
+            });
             if (!this.func) {
-                this.func = (rFunc) => {
+                this.func = function (rFunc) {
                     return rFunc();
                 };
             }
-            else if (func.length == 0) {
+            else if (func.length === 0) {
                 var bfunc = this.func;
-                this.func = (rFunc) => {
+                this.func = function (rFunc) {
                     bfunc();
                     rFunc();
                 };
             }
         }
-    }
+        return Task;
+    }());
     Tasks.Task = Task;
-    class RecurringTask {
-        constructor(callback, timeout, maxLockTime) {
+    var RecurringTask = (function () {
+        function RecurringTask(callback, timeout, maxLockTime) {
+            var _this = this;
             this.callback = callback;
             this.timeout = timeout;
             this.maxLockTime = maxLockTime;
             this._isRunning = false;
             this.locker = new Lock.Locker();
-            this.timedCall = () => {
-                if (!this.isLocked() && this.callback) {
-                    this.callback();
+            this.timedCall = function () {
+                if (!_this.isLocked() && _this.callback) {
+                    _this.callback();
                 }
-                if (this.isRunning) {
-                    setTimeout(() => { this.timedCall(); }, this.timeout);
+                if (_this.isRunning) {
+                    setTimeout(function () { _this.timedCall(); }, _this.timeout);
                 }
             };
             //private set isRunning(value: boolean) {
             //    this._isRunning = value;
             //}
-            this.setTimeOut = (time) => {
-                this.timeout = time;
+            this.setTimeOut = function (time) {
+                _this.timeout = time;
             };
-            this.lock = () => {
-                this.locker.lock();
+            this.lock = function () {
+                _this.locker.lock();
             };
-            this.unLock = () => {
-                this.locker.unLock();
+            this.unLock = function () {
+                _this.locker.unLock();
             };
-            this.isLocked = () => {
-                return this.locker.isLocked();
+            this.isLocked = function () {
+                return _this.locker.isLocked();
             };
-            this.start = () => {
-                if (!this.isRunning) {
-                    this._isRunning = true;
-                    this.timedCall();
+            this.start = function () {
+                if (!_this.isRunning) {
+                    _this._isRunning = true;
+                    _this.timedCall();
                 }
             };
-            this.stop = () => {
-                this._isRunning = false;
+            this.stop = function () {
+                _this._isRunning = false;
             };
         }
-        get isRunning() {
-            return this._isRunning;
-        }
-    }
+        Object.defineProperty(RecurringTask.prototype, "isRunning", {
+            get: function () {
+                return this._isRunning;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return RecurringTask;
+    }());
     Tasks.RecurringTask = RecurringTask;
     function runAfterWait(waitTimeMilliSeconds) {
-        var t = new Task((cback) => {
+        var t = new Task(function (cback) {
             cback();
         });
         var timer = null;
-        var throttle = () => {
+        var throttle = function () {
             clearTimeout(timer);
-            timer = window.setTimeout(() => {
+            timer = window.setTimeout(function () {
                 t.start();
             }, waitTimeMilliSeconds || 500);
         };
-        t.trigger = () => {
+        t.trigger = function () {
             throttle();
         };
-        t.call = () => {
+        t.call = function () {
             clearTimeout(timer);
             t.start();
         };
@@ -95,13 +108,13 @@ var Tasks;
     }
     Tasks.runAfterWait = runAfterWait;
     function debounced() {
-        var t = new Task((cback) => {
+        var t = new Task(function (cback) {
             cback();
         });
-        t.trigger = () => {
+        t.trigger = function () {
             t.start();
         };
-        t.call = () => {
+        t.call = function () {
             t.start();
         };
         return t;
@@ -120,14 +133,14 @@ var Tasks;
     //    return t;
     //}
     function delay(msec) {
-        return new Promise((resolve) => {
+        return new Promise(function (resolve) {
             setTimeout(resolve, msec);
         });
     }
     Tasks.delay = delay;
     function whenReady() {
-        return new Promise((resolve) => {
-            $(() => {
+        return new Promise(function (resolve) {
+            $(function () {
                 resolve();
             });
         });
@@ -135,12 +148,12 @@ var Tasks;
     Tasks.whenReady = whenReady;
     function whenTrue(trueFunc) {
         if (!trueFunc || trueFunc()) {
-            return new Promise((resolve) => {
+            return new Promise(function (resolve) {
                 resolve();
             });
         }
-        return new Promise((resolve) => {
-            var obj = new RecurringTask(() => {
+        return new Promise(function (resolve) {
+            var obj = new RecurringTask(function () {
                 obj.lock();
                 if (trueFunc()) {
                     resolve();

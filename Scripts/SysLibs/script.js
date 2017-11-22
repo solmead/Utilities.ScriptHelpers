@@ -1,7 +1,7 @@
 var __doPostBack = __doPostBack;
 var WebForm_DoPostBackWithOptions = WebForm_DoPostBackWithOptions;
 var Page_ClientValidate = Page_ClientValidate;
-CKEDITOR.editorConfig = (config) => {
+CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
     // config.language = 'fr';
     // config.uiColor = '#AADC6E';
@@ -37,222 +37,238 @@ CKEDITOR.editorConfig = (config) => {
         ];
     config.stylesSet = 'my_custom_styles';
 };
-$(() => {
+var posting = false;
+System.Init = function (area) {
+    $(area).find(".disabled").each(function () {
+        $(this).disable(true);
+    });
+    $(area).find(".chosen_select").chosen({
+        disable_search: true
+    });
+    $(area).find('input[placeholder], textarea[placeholder]').placeholder();
+    $(area).find(".datepicker").datepicker();
+    $(area).find("#ui-datepicker-div").addClass("promoteZ");
+    $(area).find(".button, .Button").button();
+    $(area).find(".DataValue input[type='checkbox'], .datagrid input[type='checkbox']").button({
+        icons: {
+            primary: "ui-icon-locked"
+        }
+    });
+    $(area).find("form").submit(function (evt) {
+        if (!posting && !evt.isDefaultPrevented()) {
+            Dialog.showBlockUI();
+        }
+    });
+    $(area).find(".actionLink").click(function () {
+        Dialog.showBlockUI();
+    });
+    $(area).find(".downloadLink").click(function () {
+        setTimeout(function () {
+            Dialog.hideBlockUI();
+        }, 10000);
+    });
+    $(area).find(".UseFancyBox .gallery-listing-imagelink").fancybox({});
+    $(area).find(".emptyLinkAnchor").click(function (evt) {
+        evt.preventDefault();
+    });
+    $(area).find(".MakeVideoArea").click(function () {
+        $(this).addClass("NoAfter");
+    });
+    $(area).find(".MakeVideoArea").each(function (index, item) {
+        $(item).attr('id', 'player-' + index);
+        var id = $(item).attr("id");
+        var videoPath = $(item).attr("href");
+        $f(id, "/WMP/flash/flowplayer-3.2.12.swf", {
+            clip: {
+                url: videoPath,
+                autoPlay: true,
+                autoBuffering: true
+            }
+        });
+        //}, 100);
+    });
+    $(area).find(".VideoAreaPopup, .VideoLink").each(function (index, item) {
+        $(item).attr('id', 'player-' + index);
+        var id = $(item).attr("id");
+    });
+    //EditorAreaCSS="/LessHandler.axd?Name=fck"
+    //UseBROnCarriageReturn="true"
+    $(area).find("textarea.CKEditor").each(function (i) {
+        var it = $(this);
+        CKEDITOR.replace(it.attr("id"), {
+            //skin: 'office2003',
+            toolbar: 'ISOCDefault',
+            customConfig: '/JsHandler.axd?Name=config',
+            contentsCss: '/LessHandler.axd?Name=fckcontent',
+            height: it.innerHeight(),
+            width: it.innerWidth()
+        });
+    });
+    //FormatTags="p;h1;h2;h3;h4;h5;h6;pre;address;div"'
+    $(area).find("textarea.CKEditorBanner").each(function (i) {
+        var it = $(this);
+        CKEDITOR.replace(it.attr("id"), {
+            //skin: 'office2003',
+            toolbar: 'ISOCDefault',
+            customConfig: '/JsHandler.axd?Name=config_banner',
+            contentsCss: '/LessHandler.axd?Name=fck_banner',
+            height: it.innerHeight(),
+            width: it.innerWidth()
+        });
+    });
+    $(area).find("textarea.CKEditorSimple").each(function (i) {
+        var it = $(this);
+        CKEDITOR.replace(it.attr("id"), {
+            //skin: 'office2003',
+            toolbar: 'Basic',
+            customConfig: '/JsHandler.axd?Name=config',
+            contentsCss: '/LessHandler.axd?Name=fckcontent',
+            height: it.innerHeight(),
+            width: it.innerWidth()
+        });
+    });
+    $(area).find(".button_confirm").click(function (evt, a) {
+        var it = this;
+        var bConfirm = $(it).attr("buttonconfirm");
+        if (!bConfirm) {
+            if (!evt.isDefaultPrevented()) {
+                evt.preventDefault();
+                Dialog.confirmDialog("Are you sure you want to do this? You can not undo this action.", Dialog.DialogTypeEnum.JQueryDialog, function (del) {
+                    if (del) {
+                        $(it).attr("buttonconfirm", "True");
+                        $(it).simulate("click", [{ ButtonConfirm: true }]);
+                    }
+                });
+                return true;
+            }
+        }
+    });
+    $(area).find(".button_destructive, .btn_destructive").click(function (evt, a) {
+        var it = this;
+        var bConfirm = $(it).attr("buttonconfirm");
+        if (!bConfirm) {
+            if (!evt.isDefaultPrevented()) {
+                evt.preventDefault();
+                Dialog.confirmDialog("Really delete this item? You can not undo this action.", Dialog.DialogTypeEnum.JQueryDialog, function (del) {
+                    if (del) {
+                        $(it).attr("buttonconfirm", "True");
+                        $(it).simulate("click", [{ ButtonConfirm: true }]);
+                    }
+                });
+                //return true;
+            }
+        }
+    });
+    $(area).find(".ajaxPostForm").onSubmitUseAjax(JqueryEx.createAjaxOptions(null, function (item, data) {
+        location.reload(true);
+    }));
+    $(area).find(".postAction").onClickPostAsForm();
+    $(area).find(".ajaxPostGrid").onClickAjaxPost(JqueryEx.createAjaxOptions(null, function (item, data) {
+        //CloseDialog();
+    }));
+    $(area).find(".ajaxPost").onClickAjaxPost(JqueryEx.createAjaxOptions(null, function (item, data) {
+        location.reload(true);
+    }));
+    $(area).find(".ajaxPostDestructive").onClickAjaxPost(JqueryEx.createAjaxOptions(function () {
+        var del = confirm("Are you sure you want to do this? You can not undo this action.");
+        if (del) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }, function (item, data) {
+        location.reload(true);
+    }));
+    $(area).find(".MakeVideoArea").click(function () {
+        $(this).addClass("NoAfter");
+    });
+    $(area).find(".MakeVideoArea").each(function (index, item) {
+        $(item).attr('id', 'player-' + index);
+        var id = $(item).attr("id");
+        var videoPath = $(item).attr("href");
+        $f(id, SiteInfo.siteInfo.applicationUrl + "flash/flowplayer-3.2.12.swf", {
+            clip: {
+                url: videoPath,
+                autoPlay: true,
+                autoBuffering: true
+            }
+        });
+        //}, 100);
+    });
+    $(area).find(".VideoAreaPopup, .VideoLink").each(function (index, item) {
+        $(item).attr('id', 'player-' + index);
+        var id = $(item).attr("id");
+    });
+    $(area).find(".VideoAreaPopup, .VideoLink").click(function (evt) {
+        var item = this;
+        if (evt != null) {
+            evt.preventDefault();
+        }
+        var videoPath = $(item).attr("href");
+        Dialog.showVideoInDialog(videoPath);
+    });
+    //autoBuffering: true,
+    $(area).find(".UseJQueryDialog").click(function (evt) {
+        evt.preventDefault();
+        var me = $(this);
+        var Area = $(this).attr("href");
+        var Title = $(this).attr("title");
+        if (!Title) {
+            Title = $(this).attr("data-title");
+        }
+        var Width = parseInt($(this).attr("Width"));
+        if (!Width) {
+            Width = parseInt($(this).attr("data-Width"));
+        }
+        var Height = parseInt($(this).attr("Height"));
+        if (!Height) {
+            Height = parseInt($(this).attr("data-Height"));
+        }
+        var CallOnClose = $(this).attr("CallOnClose");
+        if (!CallOnClose) {
+            CallOnClose = $(this).attr("data-CallOnClose");
+        }
+        Dialog.showInDialog(Area, Dialog.getJqueryUiDialogSettings(Width, Height, Title, null, CallOnClose));
+    });
+    $(area).find(".UseFancyBox").click(function (evt) {
+        evt.preventDefault();
+        var me = $(this);
+        var width = parseInt($(me).attr("Width"));
+        var height = parseInt($(me).attr("Height"));
+        var noScroll = $(me).attr("noScroll") == "true";
+        var resizable = $(me).attr("resizable") == "true";
+        Dialog.showInDialog($(me).attr("href"), Dialog.getFancyBoxDialogSettings(width, height, $(me).attr("Title"), noScroll, resizable, $(me).attr("CallOnClose")));
+    });
+};
+$(function () {
     function UIInit() {
         //$.initializeUiBlocking();
         var oldPostBack = __doPostBack;
         __doPostBack = function () {
             var __this = this;
+            posting = true;
             //if (Page_ClientValidate()) {
             Dialog.showBlockUI();
             //}
             //setTimeout(function () {
             oldPostBack.apply(__this, arguments);
             //    }, 1);
+            posting = false;
         };
         var oldWebForm_DoPostBackWithOptions = WebForm_DoPostBackWithOptions;
         WebForm_DoPostBackWithOptions = function () {
             var __this = this;
+            posting = true;
             if (Page_ClientValidate()) {
                 Dialog.showBlockUI();
             }
             //setTimeout(function () {
             oldWebForm_DoPostBackWithOptions.apply(__this, arguments);
             //}, 1);
+            posting = false;
         };
-        $(".disabled").each(function () {
-            $(this).disable(true);
-            //$(this).prop("disabled", true);
-            //$(this).attr("disabled", "disabled");
-        });
-        $(".chosen_select").chosen({
-            disable_search: true
-        });
-        $('input[placeholder], textarea[placeholder]').placeholder();
-        $(".datepicker").datepicker();
-        $("#ui-datepicker-div").addClass("promoteZ");
-        $(".button, .Button, .button_destructive, .TopHeaderRight a, .TopHeaderLeft a").button();
-        $(".DataValue input[type='checkbox'], .datagrid input[type='checkbox']").button({
-            icons: {
-                primary: "ui-icon-locked"
-            }
-        });
-        $("form").submit(() => {
-            Dialog.showBlockUI();
-        });
-        $(".actionLink").click(() => {
-            Dialog.showBlockUI();
-        });
-        System.SetupOptGroups($("select"));
-        $(".UseFancyBox .gallery-listing-imagelink").fancybox({});
-        System.MakeComboBox($(".combobox"), false, false);
-        System.MakeComboBox($(".combobox_autosize"), true, false);
-        System.MakeComboBox($(".combobox_Emailform"), true, false, null, true);
-        $(".MakeVideoArea").click(function () {
-            $(this).addClass("NoAfter");
-        });
-        $(".MakeVideoArea").each(function (index, item) {
-            $(item).attr('id', 'player-' + index);
-            var id = $(item).attr("id");
-            var videoPath = $(item).attr("href");
-            $f(id, "/WMP/flash/flowplayer-3.2.12.swf", {
-                clip: {
-                    url: videoPath,
-                    autoPlay: true,
-                    autoBuffering: true
-                }
-            });
-            //}, 100);
-        });
-        $(".VideoAreaPopup, .VideoLink").each(function (index, item) {
-            $(item).attr('id', 'player-' + index);
-            var id = $(item).attr("id");
-        });
-        //EditorAreaCSS="/LessHandler.axd?Name=fck"
-        //UseBROnCarriageReturn="true"
-        $("textarea.CKEditor").each(function (i) {
-            var it = $(this);
-            CKEDITOR.replace(it.attr("id"), {
-                //skin: 'office2003',
-                toolbar: 'ISOCDefault',
-                customConfig: '/JsHandler.axd?Name=config',
-                contentsCss: '/LessHandler.axd?Name=fckcontent',
-                height: it.innerHeight(),
-                width: it.innerWidth()
-            });
-        });
-        //FormatTags="p;h1;h2;h3;h4;h5;h6;pre;address;div"'
-        $("textarea.CKEditorBanner").each(function (i) {
-            var it = $(this);
-            CKEDITOR.replace(it.attr("id"), {
-                //skin: 'office2003',
-                toolbar: 'ISOCDefault',
-                customConfig: '/JsHandler.axd?Name=config_banner',
-                contentsCss: '/LessHandler.axd?Name=fck_banner',
-                height: it.innerHeight(),
-                width: it.innerWidth()
-            });
-        });
-        $("textarea.CKEditorSimple").each(function (i) {
-            var it = $(this);
-            CKEDITOR.replace(it.attr("id"), {
-                //skin: 'office2003',
-                toolbar: 'Basic',
-                customConfig: '/JsHandler.axd?Name=config',
-                contentsCss: '/LessHandler.axd?Name=fckcontent',
-                height: it.innerHeight(),
-                width: it.innerWidth()
-            });
-        });
-        $(".button_confirm").click(function (evt, a) {
-            var it = this;
-            if (!a || !a.ButtonConfirm) {
-                if (!evt.isDefaultPrevented()) {
-                    evt.preventDefault();
-                    Dialog.confirmDialog("Are you sure you want to do this? You can not undo this action.", Dialog.DialogTypeEnum.JQueryDialog, (del) => {
-                        if (del) {
-                            $(it).trigger("click", [{ ButtonConfirm: true }]);
-                        }
-                    });
-                    return true;
-                }
-            }
-        });
-        $(".button_destructive, .btn_destructive").click(function (evt, a) {
-            var it = this;
-            if (!a || !a.ButtonConfirm) {
-                if (!evt.isDefaultPrevented()) {
-                    evt.preventDefault();
-                    Dialog.confirmDialog("Really delete this item? You can not undo this action.", Dialog.DialogTypeEnum.JQueryDialog, (del) => {
-                        if (del) {
-                            $(it).trigger("click", [{ ButtonConfirm: true }]);
-                        }
-                    });
-                    //return true;
-                }
-            }
-        });
-        $(".ajaxPostForm").onSubmitUseAjax(JqueryEx.createAjaxOptions(null, (item, data) => {
-            location.reload(true);
-        }));
-        $(".postAction").onClickPostAsForm();
-        $(".ajaxPostGrid").onClickAjaxPost(JqueryEx.createAjaxOptions(null, (item, data) => {
-            //CloseDialog();
-        }));
-        $(".ajaxPost").onClickAjaxPost(JqueryEx.createAjaxOptions(null, (item, data) => {
-            location.reload(true);
-        }));
-        $(".ajaxPostDestructive").onClickAjaxPost(JqueryEx.createAjaxOptions(() => {
-            var del = confirm("Are you sure you want to do this? You can not undo this action.");
-            if (del) {
-                return false;
-            }
-            else {
-                return true;
-            }
-        }, (item, data) => {
-            location.reload(true);
-        }));
-        $(".MakeVideoArea").click(function () {
-            $(this).addClass("NoAfter");
-        });
-        $(".MakeVideoArea").each(function (index, item) {
-            $(item).attr('id', 'player-' + index);
-            var id = $(item).attr("id");
-            var videoPath = $(item).attr("href");
-            $f(id, SiteInfo.siteInfo.applicationUrl + "flash/flowplayer-3.2.12.swf", {
-                clip: {
-                    url: videoPath,
-                    autoPlay: true,
-                    autoBuffering: true
-                }
-            });
-            //}, 100);
-        });
-        $(".VideoAreaPopup, .VideoLink").each(function (index, item) {
-            $(item).attr('id', 'player-' + index);
-            var id = $(item).attr("id");
-        });
-        $(".VideoAreaPopup, .VideoLink").click(function (evt) {
-            var item = this;
-            if (evt != null) {
-                evt.preventDefault();
-            }
-            var videoPath = $(item).attr("href");
-            Dialog.showVideoInDialog(videoPath);
-        });
-        //autoBuffering: true,
-        $(".UseJQueryDialog").click(function (evt) {
-            evt.preventDefault();
-            var me = $(this);
-            var Area = $(this).attr("href");
-            var Title = $(this).attr("title");
-            if (!Title) {
-                Title = $(this).attr("data-title");
-            }
-            var Width = parseInt($(this).attr("Width"));
-            if (!Width) {
-                Width = parseInt($(this).attr("data-Width"));
-            }
-            var Height = parseInt($(this).attr("Height"));
-            if (!Height) {
-                Height = parseInt($(this).attr("data-Height"));
-            }
-            var CallOnClose = $(this).attr("CallOnClose");
-            if (!CallOnClose) {
-                CallOnClose = $(this).attr("data-CallOnClose");
-            }
-            Dialog.showInDialog(Area, Dialog.getJqueryUiDialogSettings(Width, Height, Title, null, CallOnClose));
-        });
-        $(".UseFancyBox").click(function (evt) {
-            evt.preventDefault();
-            var me = $(this);
-            var width = parseInt($(me).attr("Width"));
-            var height = parseInt($(me).attr("Height"));
-            var noScroll = $(me).attr("noScroll") == "true";
-            var resizable = $(me).attr("resizable") == "true";
-            Dialog.showInDialog($(me).attr("href"), Dialog.getFancyBoxDialogSettings(width, height, $(me).attr("Title"), noScroll, resizable, $(me).attr("CallOnClose")));
-        });
+        System.Init($("body"));
     }
     //setTimeout(function () {
     UIInit();

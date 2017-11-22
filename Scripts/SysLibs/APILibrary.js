@@ -6,20 +6,21 @@ var ApiLibrary;
         callTypes[callTypes["PUT"] = 1] = "PUT";
         callTypes[callTypes["POST"] = 2] = "POST";
     })(callTypes = ApiLibrary.callTypes || (ApiLibrary.callTypes = {}));
-    function addFormatToUrl(url) {
-        if (url.indexOf("Format=") >= 0) {
-            url = url.replace("Format=PartialHTML", "Format=JSON");
-            url = url.replace("Format=CleanHTML", "Format=JSON");
+    function addDataToUrl(url, name, value) {
+        if (url.indexOf(name + "=") >= 0) {
+            url = url.replace(name + "=", name + "Old=");
+        }
+        if (url.indexOf("?") >= 0) {
+            url = url + '&' + name + '=' + value;
         }
         else {
-            if (url.indexOf("?") >= 0) {
-                url = url + '&Format=JSON';
-            }
-            else {
-                url = url + '?Format=JSON';
-            }
+            url = url + '?' + name + '=' + value;
         }
         return url;
+    }
+    ApiLibrary.addDataToUrl = addDataToUrl;
+    function addFormatToUrl(url) {
+        return addDataToUrl(url, "Format", "JSON");
     }
     ApiLibrary.addFormatToUrl = addFormatToUrl;
     function addAntiForgeryToken(data) {
@@ -35,14 +36,19 @@ var ApiLibrary;
         else {
             cntPiece = "?" + cntPiece;
         }
-        url = url.replace(SiteInfo.virtualUrl(), "");
-        if (url.lastIndexOf("/", 0) === 0) {
-            url = url.substring(1);
+        var fUrl = url + cntPiece;
+        if (url.indexOf("://") <= 0) {
+            if (url.indexOf(SiteInfo.virtualUrl()) == 0) {
+                url = url.replace(SiteInfo.virtualUrl(), "");
+            }
+            if (url.lastIndexOf("/", 0) === 0) {
+                url = url.substring(1);
+            }
+            fUrl = SiteInfo.getVirtualURL(url) + cntPiece;
         }
-        var fUrl = SiteInfo.applicationUrl() + url + cntPiece;
         $.ajax({
             url: fUrl,
-            beforeSend: (request) => {
+            beforeSend: function (request) {
                 if (beforeSend) {
                     beforeSend(request);
                 }
@@ -61,30 +67,30 @@ var ApiLibrary;
     }
     ApiLibrary.apiCall = apiCall;
     function getCallAsync(url, seqNum) {
-        return new Promise((resolve, reject) => {
-            getCall(url, seqNum, (data, seq) => {
+        return new Promise(function (resolve, reject) {
+            getCall(url, seqNum, function (data, seq) {
                 resolve(data);
-            }, (extStatus, errorThrown) => {
+            }, function (extStatus, errorThrown) {
                 reject(Error(errorThrown));
             });
         });
     }
     ApiLibrary.getCallAsync = getCallAsync;
     function putCallAsync(url, seqNum, sendData) {
-        return new Promise((resolve, reject) => {
-            putCall(url, seqNum, sendData, (data, seq) => {
+        return new Promise(function (resolve, reject) {
+            putCall(url, seqNum, sendData, function (data, seq) {
                 resolve(data);
-            }, (extStatus, errorThrown) => {
+            }, function (extStatus, errorThrown) {
                 reject(Error(errorThrown));
             });
         });
     }
     ApiLibrary.putCallAsync = putCallAsync;
     function postCallAsync(url, seqNum, sendData) {
-        return new Promise((resolve, reject) => {
-            postCall(url, seqNum, sendData, (data, seq) => {
+        return new Promise(function (resolve, reject) {
+            postCall(url, seqNum, sendData, function (data, seq) {
                 resolve(data);
-            }, (extStatus, errorThrown) => {
+            }, function (extStatus, errorThrown) {
                 reject(Error(errorThrown));
             });
         });
@@ -97,12 +103,12 @@ var ApiLibrary;
         if (!seqNum) {
             seqNum = DateTime.getTimeCount();
         }
-        apiCall(callTypes.GET, url, null, (data, textStatus, request) => {
+        apiCall(callTypes.GET, url, null, function (data, textStatus, request) {
             var seq = parseInt(request.getResponseHeader("seq"));
             if (successCallback) {
                 successCallback(data, seq);
             }
-        }, errorCallback, (request) => {
+        }, errorCallback, function (request) {
             request.setRequestHeader("seq", "" + seqNum);
         });
     }
@@ -113,12 +119,12 @@ var ApiLibrary;
         }
         sendData = sendData || {};
         addAntiForgeryToken(sendData);
-        apiCall(callTypes.PUT, url, sendData, (data, textStatus, request) => {
+        apiCall(callTypes.PUT, url, sendData, function (data, textStatus, request) {
             var seq = parseInt(request.getResponseHeader("seq"));
             if (successCallback) {
                 successCallback(data, seq);
             }
-        }, errorCallback, (request) => {
+        }, errorCallback, function (request) {
             request.setRequestHeader("seq", "" + seqNum);
         });
     }
@@ -129,12 +135,12 @@ var ApiLibrary;
         }
         sendData = sendData || {};
         addAntiForgeryToken(sendData);
-        apiCall(callTypes.POST, url, sendData, (data, textStatus, request) => {
+        apiCall(callTypes.POST, url, sendData, function (data, textStatus, request) {
             var seq = parseInt(request.getResponseHeader("seq"));
             if (successCallback) {
                 successCallback(data, seq);
             }
-        }, errorCallback, (request) => {
+        }, errorCallback, function (request) {
             request.setRequestHeader("seq", "" + seqNum);
         });
     }

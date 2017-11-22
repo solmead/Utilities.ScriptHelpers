@@ -6,7 +6,7 @@ interface FlowPlayer {
 declare var $f: FlowPlayer;
 
 interface Window {
-    closeBasePopupDialog: (data: any) => void;
+    closeBasePopupDialog: (data?: any) => void;
     showHtmlInDialog(html: string | JQuery, settings: Dialog.IDialogSettings, parent?: Window):JQuery;
 }
 //interface JQueryStatic {
@@ -16,7 +16,7 @@ interface Window {
 
 
 
-function closeBasePopupDialog(data:any) {
+function closeBasePopupDialog(data?:any) {
     if (self != top) {
         top.closeBasePopupDialog(data);
         return;
@@ -35,6 +35,7 @@ function closeBasePopupDialog(data:any) {
 
     }
 }
+
 
 function showHtmlInDialog(html: string | JQuery, settings: Dialog.IDialogSettings, parent?: Window): JQuery {
     return Dialog.showHtmlInDialog(html, settings, parent);
@@ -213,7 +214,7 @@ module Dialog {
 
 
     export function confirmDialog(msg: string, dialogType?: DialogTypeEnum, callback?: (success: boolean) => void) {
-        var mg = '<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>' + msg + '</p>';
+        var mg = '<p style="padding: 20px;"><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>' + msg + '</p>';
 
         var diaSettings: IDialogSettings = null;
         if (dialogType == DialogTypeEnum.FancyBox) {
@@ -246,7 +247,7 @@ module Dialog {
     function showHtmlInFancyDialog(html: string | JQuery, settings?: IFbDialogSettings, myParent?: Window): JQuery {
         var dialogNum = lastDialogNumber;
 
-        var item = $(html);
+        //var item = $(html);
 
 
         var Settings:FancyboxOptions = {
@@ -255,6 +256,7 @@ module Dialog {
             height: 500,
             width: 700,
             afterClose: function () {
+                $("#globalPopUpDialog_" + dialogNum).remove();
                 if (settings.callOnClose && settings.callOnClose != "") {
                     var fn = myParent[settings.callOnClose];
                     if (typeof fn === 'function') {
@@ -280,8 +282,16 @@ module Dialog {
                 Settings.height = settings.height;
             }
         }
-        $.fancybox(item, Settings);
-        return item;
+        $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
+
+        var pUp = $("#globalPopUpDialog_" + dialogNum);
+
+        pUp.append($(html));
+        
+        Settings.href = "#globalPopUpDialog_" + dialogNum;
+
+        $.fancybox(Settings);
+        return pUp;
     }
 
     function showHtmlInJQDialog(html: string | JQuery, settings?: IJQuiDialogSettings, myParent?: Window): JQuery {
