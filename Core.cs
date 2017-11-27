@@ -11,7 +11,7 @@ namespace Utilities.ScriptLibraries
         public static Bundle GetBundle()
         {
             var lst = GetIncludeList();
-            return new ScriptBundle("~/bundles/scriptlibs").Include(lst.ToArray());
+            return new ScriptBundle("~/bundles/syslibs").Include(lst.ToArray());
         }
         public static List<string> GetIncludeList()
         {
