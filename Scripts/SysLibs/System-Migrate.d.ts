@@ -22,6 +22,7 @@ interface Array<T> {
 declare function ResetPage(): void;
 declare function CloseDialog(): void;
 declare module System {
+    function Init(area: JQuery): void;
     function AddAntiForgeryToken(data: any): any;
     function ApiCall(type: any, url: any, sendData: any, successCallback: any, errorCallback: any, beforeSend: any): void;
     function getCall(url: any, seqNum: any, successCallback: any, errorCallback: any): void;

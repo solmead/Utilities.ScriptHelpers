@@ -94,7 +94,7 @@ var Dialog;
     function showHtmlInDialog(html, options, parent) {
         var myParent = parent;
         if (self != top) {
-            return top.showHtmlInDialog(html, settings, self);
+            return top.showHtmlInDialog(html, options, self);
         }
         if (!myParent) {
             myParent = top;

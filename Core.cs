@@ -15,7 +15,8 @@ namespace Utilities.ScriptLibraries
         }
         public static List<string> GetIncludeList()
         {
-            return new List<string>(new string[] { "~/Scripts/SysLibs/es6-promise.auto.js",
+            return new List<string>(new string[] {
+                "~/Scripts/SysLibs/es6-promise.auto.js",
                   "~/Scripts/SysLibs/JqueryEx.js",
                   "~/Scripts/SysLibs/Extensions.js",
                   "~/Scripts/SysLibs/EventHandler.js",
@@ -26,12 +27,12 @@ namespace Utilities.ScriptLibraries
                   "~/Scripts/SysLibs/Tasks.js",
                   "~/Scripts/SysLibs/Debug.js",
                   "~/Scripts/SysLibs/DateTime.js",
-                  "~/Scripts/SysLibs/BaseLibrary.js",
                   "~/Scripts/SysLibs/Dialog.js",
-                  "~/Scripts/SysLibs/HtmlHelper.js",
+                  "~/Scripts/SysLibs/HtmlHelpers.js",
                   "~/Scripts/SysLibs/DynamicGrid.js",
-                  "~/Scripts/SysLibs/System-Migrate.js",
-                  "~/Scripts/SysLibs/Notifications.js"});
+                  "~/Scripts/SysLibs/Notifications.js",
+                  "~/Scripts/SysLibs/Core.js",
+                  "~/Scripts/SysLibs/System-Migrate.js"});
         }
     }
 }

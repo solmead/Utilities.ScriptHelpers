@@ -9,7 +9,7 @@ module Html {
 
     export class TemplateInfo {
         protected previousTemplate: TemplateInfo;
-        public element: JQuery = $();
+        public element: JQuery = $("<template></template>");
 
         constructor(public htmlFieldPrefix: string = "") {
             this.previousTemplate = currentTemplate;
@@ -46,6 +46,7 @@ module Html {
 
         constructor(public htmlFieldPrefix: string) {
             super(htmlFieldPrefix);
+            this.element = this.previousTemplate.element;
             this.begin();
         }
         
@@ -62,9 +63,9 @@ module Html {
     export function htmlEnd(element?: JQuery):JQuery {
         var item = itemEnd();
         if (element) {
-            element.append(item.element);
+            element.append(item.element.children());
         }
-        return item.element;
+        return item.element.children();
     }
 
     export function elementBegin(element: string, attributes?: any): HtmlElement {
@@ -135,8 +136,9 @@ module Html {
             
         }
 
-
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.html(text);
         currentTemplate.element.append(elem);
         return elem;
@@ -144,7 +146,9 @@ module Html {
 
     export function display(text: string, attributes: object): JQuery {
         var elem = $("<span/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.html(text);
         currentTemplate.element.append(elem);
         return elem;
@@ -162,11 +166,13 @@ module Html {
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
 
         var elem = $("<input type='hidden'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -183,11 +189,13 @@ module Html {
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
 
         var elem = $("<select/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -206,11 +214,13 @@ module Html {
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
 
         var elem = $("<select/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -233,11 +243,13 @@ module Html {
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
 
         var elem = $("<input type='checkbox'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("value", "true");
@@ -260,11 +272,13 @@ module Html {
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
 
         var elem = $("<input type='radio'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("value", value);
@@ -288,11 +302,13 @@ module Html {
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
 
         var elem = $("<textarea/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -311,11 +327,13 @@ module Html {
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
 
         var elem = $("<input type='text'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -333,11 +351,13 @@ module Html {
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
 
         var elem = $("<input type='file'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);

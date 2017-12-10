@@ -89,9 +89,7 @@ var DateTime;
                     }
                 });
             }); };
-            setTimeout(function () {
-                _this.init();
-            }, 1);
+            this.init();
         }
         return ServerTime;
     }());

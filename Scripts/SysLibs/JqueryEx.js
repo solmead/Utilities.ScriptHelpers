@@ -72,7 +72,7 @@ var JqueryEx;
         if (settings.beforeCall(clickedItem)) {
             return;
         }
-        var clickUrl = ApiLibrary.addFormatToUrl($(form).attr("action"));
+        var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("action"));
         var formData = $(this).serialize();
         ApiLibrary.postCall(clickUrl, null, formData, function (data) {
             settings.afterResponse(clickedItem, data);
@@ -88,7 +88,7 @@ var JqueryEx;
                 return;
             }
             $(form).find("input[type='submit'],button[type='submit']").button('disable');
-            var clickUrl = ApiLibrary.addFormatToUrl($(form).attr("action"));
+            var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("action"));
             var formData = $(this).serialize();
             ApiLibrary.postCall(clickUrl, null, formData, function (data) {
                 settings.afterResponse(clickedItem, data);
@@ -106,7 +106,7 @@ var JqueryEx;
                 if (settings.beforeCall(clickedItem)) {
                     return;
                 }
-                var clickUrl = ApiLibrary.addFormatToUrl($(item).attr("href"));
+                var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("href"));
                 ApiLibrary.getCall(clickUrl, null, function (data) {
                     settings.afterResponse(clickedItem, data);
                 });
@@ -124,7 +124,7 @@ var JqueryEx;
                 if (settings.beforeCall(clickedItem)) {
                     return;
                 }
-                var clickUrl = ApiLibrary.addFormatToUrl($(item).attr("href"));
+                var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("href"));
                 ApiLibrary.postCall(clickUrl, null, null, function (data) {
                     settings.afterResponse(_this, data);
                 });
@@ -141,9 +141,10 @@ var JqueryEx;
                 if (settings.beforeCall(clickedItem)) {
                     return;
                 }
-                var clickUrl = ApiLibrary.addFormatToUrl($(item).attr("href"));
+                var clickUrl = $(clickedItem).attr("href");
+                //ApiLibrary.addFormatToUrl($(clickedItem).attr("href"));
                 var doc = "<form action='" + clickUrl + "' method='post'></form>";
-                var form = $(document.body).append(doc);
+                var form = $(doc).appendTo(document.body);
                 $(form).submit();
             }
         });

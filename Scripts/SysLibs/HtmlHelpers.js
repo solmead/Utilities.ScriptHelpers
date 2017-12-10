@@ -24,7 +24,7 @@ var Html;
             if (htmlFieldPrefix === void 0) { htmlFieldPrefix = ""; }
             var _this = this;
             this.htmlFieldPrefix = htmlFieldPrefix;
-            this.element = $();
+            this.element = $("<template></template>");
             this.begin = function () {
                 Html.currentTemplate = _this;
             };
@@ -63,6 +63,7 @@ var Html;
         function HtmlFieldPrefixScope(htmlFieldPrefix) {
             var _this = _super.call(this, htmlFieldPrefix) || this;
             _this.htmlFieldPrefix = htmlFieldPrefix;
+            _this.element = _this.previousTemplate.element;
             _this.begin();
             return _this;
         }
@@ -79,9 +80,9 @@ var Html;
     function htmlEnd(element) {
         var item = itemEnd();
         if (element) {
-            element.append(item.element);
+            element.append(item.element.children());
         }
-        return item.element;
+        return item.element.children();
     }
     Html.htmlEnd = htmlEnd;
     function elementBegin(element, attributes) {
@@ -161,7 +162,9 @@ var Html;
                 attributes = attributes || forOrAttributes;
             }
         }
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.html(text);
         Html.currentTemplate.element.append(elem);
         return elem;
@@ -169,7 +172,9 @@ var Html;
     Html.label = label;
     function display(text, attributes) {
         var elem = $("<span/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.html(text);
         Html.currentTemplate.element.append(elem);
         return elem;
@@ -184,10 +189,12 @@ var Html;
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
         var elem = $("<input type='hidden'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -201,10 +208,12 @@ var Html;
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
         var elem = $("<select/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -221,10 +230,12 @@ var Html;
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
         var elem = $("<select/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -242,10 +253,12 @@ var Html;
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
         var elem = $("<input type='checkbox'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("value", "true");
@@ -264,10 +277,12 @@ var Html;
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
         var elem = $("<input type='radio'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("value", value);
@@ -286,10 +301,12 @@ var Html;
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
         var elem = $("<textarea/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -304,10 +321,12 @@ var Html;
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
         var elem = $("<input type='text'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);
@@ -322,10 +341,12 @@ var Html;
         if (preName != "") {
             preName = preName + ".";
         }
-        var fieldName = preName + "." + name;
+        var fieldName = preName + name;
         var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
         var elem = $("<input type='file'/>");
-        elem.attr(attributes);
+        if (attributes) {
+            elem.attr(attributes);
+        }
         elem.attr("id", idName);
         elem.attr("name", fieldName);
         elem.attr("tag", name);

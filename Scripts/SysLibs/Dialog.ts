@@ -146,7 +146,7 @@ module Dialog {
     export function showHtmlInDialog(html: string | JQuery, options?: IDialogSettings, parent?: Window): JQuery {
         var myParent = parent;
         if (self != top) {
-            return top.showHtmlInDialog(html, settings, self);
+            return top.showHtmlInDialog(html, options, self);
         }
         if (!myParent) {
             myParent = top;

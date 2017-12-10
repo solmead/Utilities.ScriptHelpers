@@ -67,6 +67,7 @@ var Debug;
         function Messages(displayLocation) {
             var _this = this;
             this.displayLocation = displayLocation;
+            this.isReady = false;
             this.messages = new Array();
             this.init = function () { return __awaiter(_this, void 0, void 0, function () {
                 var area;
@@ -74,6 +75,9 @@ var Debug;
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, Tasks.whenReady()];
                         case 1:
+                            _a.sent();
+                            return [4 /*yield*/, Tasks.delay(1)];
+                        case 2:
                             _a.sent();
                             area = $(this.displayLocation);
                             if (area.length == 0) {
@@ -83,8 +87,9 @@ var Debug;
                             return [4 /*yield*/, Tasks.whenTrue(function () {
                                     return DateTime.serverTime.serverTimeLoaded;
                                 })];
-                        case 2:
+                        case 3:
                             _a.sent();
+                            this.isReady = true;
                             this.refreshMessages();
                             return [2 /*return*/];
                     }
@@ -111,7 +116,7 @@ var Debug;
                 }
             };
             this.showMessages = function () {
-                if (DateTime.serverTime.serverTimeLoaded) {
+                if (_this.isReady) {
                     _this.refreshMessages();
                 }
             };

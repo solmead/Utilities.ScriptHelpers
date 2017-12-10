@@ -20,13 +20,9 @@ module DateTime {
         public serverDateTime:Date = null;
         public offset:number = 0;
         public serverTimeLoaded:boolean = false;
-
-
-
+        
         constructor(private timeApiUrl: string) {
-            setTimeout(() => {
-                this.init();
-            }, 1);
+            this.init();
         }
 
         public init = async () => {

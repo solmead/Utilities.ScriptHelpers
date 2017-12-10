@@ -34,6 +34,9 @@
     <None Include="Scripts\SysLibs\APILibrary.js.map">
       <DependentUpon>APILibrary.ts</DependentUpon>
     </None>
+    <None Include="Scripts\SysLibs\Core.js.map">
+      <DependentUpon>Core.ts</DependentUpon>
+    </None>
     <None Include="Scripts\SysLibs\DateTime.js">
       <DependentUpon>DateTime.ts</DependentUpon>
     </None>
@@ -94,12 +97,6 @@
     <None Include="Scripts\SysLibs\Notifications.js.map">
       <DependentUpon>Notifications.ts</DependentUpon>
     </None>
-    <None Include="Scripts\SysLibs\script.js">
-      <DependentUpon>script.ts</DependentUpon>
-    </None>
-    <None Include="Scripts\SysLibs\script.js.map">
-      <DependentUpon>script.ts</DependentUpon>
-    </None>
     <None Include="Scripts\SysLibs\SiteInfo.js">
       <DependentUpon>SiteInfo.ts</DependentUpon>
     </None>
@@ -137,6 +134,9 @@
     <TypeScriptCompile Include="Scripts\SysLibs\APILibrary.ts" />
     <None Include="Scripts\SysLibs\DateTime.d.ts">
       <DependentUpon>DateTime.ts</DependentUpon>
+    </None>
+    <None Include="Scripts\SysLibs\Core.d.ts">
+      <DependentUpon>Core.ts</DependentUpon>
     </None>
     <TypeScriptCompile Include="Scripts\SysLibs\DateTime.ts" />
     <None Include="Scripts\SysLibs\Debug.d.ts">
@@ -182,7 +182,7 @@
     <None Include="Scripts\SysLibs\SiteInfo.d.ts">
       <DependentUpon>SiteInfo.ts</DependentUpon>
     </None>
-    <TypeScriptCompile Include="Scripts\SysLibs\script.ts" />
+    <TypeScriptCompile Include="Scripts\SysLibs\Core.ts" />
     <TypeScriptCompile Include="Scripts\SysLibs\SiteInfo.ts" />
     <None Include="Scripts\SysLibs\Tasks.d.ts">
       <DependentUpon>Tasks.ts</DependentUpon>
@@ -192,9 +192,6 @@
     </None>
     <TypeScriptCompile Include="Scripts\SysLibs\System-Migrate.ts" />
     <TypeScriptCompile Include="Scripts\SysLibs\Tasks.ts" />
-    <None Include="Scripts\SysLibs\script.d.ts">
-      <DependentUpon>script.ts</DependentUpon>
-    </None>
     <TypeScriptCompile Include="Scripts\typings\chosen\index.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\ckeditor\index.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\es6-promise\es6-promise.d.ts" />
@@ -211,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Scripts\SysLibs\Core.js">
+      <DependentUpon>Core.ts</DependentUpon>
+    </None>
     <None Include="Scripts\jquery.simulate.js" />
     <None Include="Scripts\SysLibs\es6-promise.auto.js" />
   </ItemGroup>

@@ -38,8 +38,8 @@
     <file src="Scripts\SysLibs\Lock.js" target="Content\Scripts\SysLibs" />
     <file src="Scripts\SysLibs\Notifications.d.ts" target="Content\Scripts\SysLibs" />
     <file src="Scripts\SysLibs\Notifications.js" target="Content\Scripts\SysLibs" />
-    <file src="Scripts\SysLibs\script.d.ts" target="Content\Scripts\SysLibs" />
-    <file src="Scripts\SysLibs\script.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Core.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Core.js" target="Content\Scripts\SysLibs" />
     <file src="Scripts\SysLibs\SiteInfo.d.ts" target="Content\Scripts\SysLibs" />
     <file src="Scripts\SysLibs\SiteInfo.js" target="Content\Scripts\SysLibs" />
     <file src="Scripts\SysLibs\System-Migrate.d.ts" target="Content\Scripts\SysLibs" />

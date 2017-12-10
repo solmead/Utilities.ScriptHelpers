@@ -8,6 +8,7 @@ declare module Debug {
     }
     class Messages {
         private displayLocation;
+        private isReady;
         messages: Array<Message>;
         constructor(displayLocation: JQuery | string);
         private init;

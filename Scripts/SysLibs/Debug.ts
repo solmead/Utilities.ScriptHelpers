@@ -26,6 +26,7 @@ module Debug {
 
 
     export class Messages {
+        private isReady = false;
 
         public messages: Array<Message> = new Array<Message>();
 
@@ -35,15 +36,19 @@ module Debug {
 
         private init = async () => {
             await Tasks.whenReady();
-
+            await Tasks.delay(1);
+            
             var area = $(this.displayLocation);
             if (area.length == 0) {
                 $("body").append("<ol class='MessageArea' style='display:none;'></ol>");
                 this.displayLocation = $(".MessageArea");
             }
+
             await Tasks.whenTrue(() => {
                 return DateTime.serverTime.serverTimeLoaded;
             });
+
+            this.isReady = true;
             this.refreshMessages();
 
         }
@@ -71,7 +76,7 @@ module Debug {
         }
 
         public showMessages = () => {
-            if (DateTime.serverTime.serverTimeLoaded) {
+            if (this.isReady) {
                 this.refreshMessages();
             }
         }

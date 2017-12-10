@@ -70,6 +70,10 @@ Array.prototype.Difference = function (arr, compareFunction) {
 };
 var System;
 (function (System) {
+    function Init(area) {
+        SysLibs.Init(area);
+    }
+    System.Init = Init;
     //APILibrary
     function AddAntiForgeryToken(data) {
         return ApiLibrary.addAntiForgeryToken(data);
@@ -283,29 +287,32 @@ var System;
                 dGrid.removeRow(row);
             },
             CreateDisplay: function (text, cssclass) {
+                cssclass = '' + (cssclass != undefined ? cssclass : "");
                 Html.htmlBegin();
                 Html.display(text, { class: cssclass });
-                var item = Html.htmlEnd();
+                var item = Html.htmlEnd().clone().wrap('<p>').parent();
                 return item.html();
             },
             CreateHidden: function (preName, index, itemName, value, cssclass) {
+                cssclass = '' + (cssclass != undefined ? cssclass : "");
                 Html.htmlBegin();
                 Html.prefixBegin(preName);
                 Html.indexBegin(index, false);
                 Html.hidden(itemName, value, { class: cssclass });
                 Html.indexEnd();
                 Html.prefixEnd();
-                var item = Html.htmlEnd();
+                var item = Html.htmlEnd().clone().wrap('<p>').parent();
                 return item.html();
             },
             CreateDropDown: function (preName, index, itemName, values, cssclass) {
+                cssclass = '' + (cssclass != undefined ? cssclass : "");
                 Html.htmlBegin();
                 Html.prefixBegin(preName);
                 Html.indexBegin(index, false);
                 Html.dropDownList(itemName, values, { class: cssclass });
                 Html.indexEnd();
                 Html.prefixEnd();
-                var item = Html.htmlEnd();
+                var item = Html.htmlEnd().clone().wrap('<p>').parent();
                 return item.html();
             },
             CreateCheckBox: function (preName, index, itemName, checked) {
@@ -315,55 +322,62 @@ var System;
                 Html.checkBox(itemName, checked, { class: "" });
                 Html.indexEnd();
                 Html.prefixEnd();
-                var item = Html.htmlEnd();
+                var item = Html.htmlEnd().clone().wrap('<p>').parent();
                 return item.html();
             },
             CreateTextArea: function (preName, index, itemName, value, extra, classes) {
+                classes = '' + (classes != undefined ? classes : "");
+                extra = '' + (extra != undefined ? extra : "");
                 Html.htmlBegin();
                 Html.prefixBegin(preName);
                 Html.indexBegin(index, false);
                 var tb = Html.textArea(itemName, value, { class: classes });
                 Html.indexEnd();
                 Html.prefixEnd();
-                var item = Html.htmlEnd();
+                var item = Html.htmlEnd().clone().wrap('<p>').parent();
                 var html = item.html();
                 var arr = html.split(" id=");
                 html = arr[0] + " " + extra + " id=" + arr[1];
                 return html;
             },
             CreateTextBox: function (preName, index, itemName, value, extra, classes) {
+                classes = '' + (classes != undefined ? classes : "");
+                extra = '' + (extra != undefined ? extra : "");
                 Html.htmlBegin();
                 Html.prefixBegin(preName);
                 Html.indexBegin(index, false);
                 var tb = Html.textBox(itemName, value, { class: classes });
                 Html.indexEnd();
                 Html.prefixEnd();
-                var item = Html.htmlEnd();
+                var item = Html.htmlEnd().clone().wrap('<p>').parent();
                 var html = item.html();
                 var arr = html.split(" id=");
                 html = arr[0] + " " + extra + " id=" + arr[1];
                 return html;
             },
             CreateFile: function (preName, index, itemName, value, extra, classes) {
+                classes = '' + (classes != undefined ? classes : "");
+                extra = '' + (extra != undefined ? extra : "");
                 Html.htmlBegin();
                 Html.prefixBegin(preName);
                 Html.indexBegin(index, false);
                 var tb = Html.file(itemName, { class: classes });
                 Html.indexEnd();
                 Html.prefixEnd();
-                var item = Html.htmlEnd();
+                var item = Html.htmlEnd().clone().wrap('<p>').parent();
                 var html = item.html();
                 var arr = html.split(" id=");
                 html = arr[0] + " " + extra + " id=" + arr[1];
                 return html;
             },
             CreateIndex: function (preName, index, classes) {
+                classes = '' + (classes != undefined ? classes : "");
                 Html.htmlBegin();
                 Html.prefixBegin(preName);
                 Html.indexBegin(index);
                 Html.indexEnd();
                 Html.prefixEnd();
-                var item = Html.htmlEnd();
+                var item = Html.htmlEnd().clone().wrap('<p>').parent();
                 return item.html();
             }
         };
