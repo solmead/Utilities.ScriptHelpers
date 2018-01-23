@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var DateTime;
 (function (DateTime) {
-    var ServerTime = (function () {
+    var ServerTime = /** @class */ (function () {
         function ServerTime(timeApiUrl) {
             var _this = this;
             this.timeApiUrl = timeApiUrl;

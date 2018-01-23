@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var Test;
 (function (Test) {
-    var Greeter = (function () {
+    var Greeter = /** @class */ (function () {
         function Greeter(element) {
             this.element = element;
             this.element.innerHTML += "The time is: ";

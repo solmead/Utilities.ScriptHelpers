@@ -1,6 +1,6 @@
 var Lock;
 (function (Lock) {
-    var Locker = (function () {
+    var Locker = /** @class */ (function () {
         function Locker(maxLockTime) {
             var _this = this;
             this.maxLockTime = maxLockTime;

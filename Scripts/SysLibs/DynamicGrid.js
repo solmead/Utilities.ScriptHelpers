@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var Grid;
 (function (Grid) {
-    var AddButtonSettings = (function () {
+    var AddButtonSettings = /** @class */ (function () {
         function AddButtonSettings(addButtonInFoot, attachAddPrePend, elementToAttachAdd, btnClass) {
             if (addButtonInFoot === void 0) { addButtonInFoot = true; }
             if (attachAddPrePend === void 0) { attachAddPrePend = false; }
@@ -49,7 +49,7 @@ var Grid;
         return AddButtonSettings;
     }());
     Grid.AddButtonSettings = AddButtonSettings;
-    var DynamicGrid = (function () {
+    var DynamicGrid = /** @class */ (function () {
         function DynamicGrid(tableRef, name, prePendButtons, addButtonSettings) {
             if (prePendButtons === void 0) { prePendButtons = true; }
             if (addButtonSettings === void 0) { addButtonSettings = new AddButtonSettings(); }

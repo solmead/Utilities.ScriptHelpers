@@ -39,6 +39,7 @@ var Page_ClientValidate = Page_ClientValidate;
 var posting = false;
 var SysLibs;
 (function (SysLibs) {
+    SysLibs.onInit = new Tasks.EventHandler();
     function Init(area) {
         $(area).find(".disabled").each(function () {
             $(this).disable(true);
@@ -121,7 +122,7 @@ var SysLibs;
                 var it = $(this);
                 CKEDITOR.replace(it.attr("id"), {
                     //skin: 'office2003',
-                    toolbar: 'ISOCDefault',
+                    toolbar: 'SysLibsDefault',
                     customConfig: '/JsHandler.axd?Name=config_banner',
                     contentsCss: '/LessHandler.axd?Name=fck_banner',
                     height: it.innerHeight(),
@@ -178,9 +179,6 @@ var SysLibs;
             location.reload(true);
         }));
         $(area).find(".postAction").onClickPostAsForm();
-        $(area).find(".ajaxPostGrid").onClickAjaxPost(JqueryEx.createAjaxOptions(null, function (item, data) {
-            //CloseDialog();
-        }));
         $(area).find(".ajaxPost").onClickAjaxPost(JqueryEx.createAjaxOptions(null, function (item, data) {
             location.reload(true);
         }));
@@ -261,6 +259,7 @@ var SysLibs;
                 Dialog.showInDialog($(me).attr("href"), Dialog.getFancyBoxDialogSettings(width, height, $(me).attr("Title"), noScroll, resizable, $(me).attr("CallOnClose")));
             });
         }
+        SysLibs.onInit.trigger(area);
     }
     SysLibs.Init = Init;
     function UIInit() {
@@ -270,6 +269,9 @@ var SysLibs;
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, Tasks.whenReady()];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, Tasks.delay(10)];
+                    case 2:
                         _a.sent();
                         oldPostBack = __doPostBack;
                         __doPostBack = function () {

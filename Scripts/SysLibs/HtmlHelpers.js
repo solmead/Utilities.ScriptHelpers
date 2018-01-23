@@ -10,7 +10,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Html;
 (function (Html) {
-    var SelectListItem = (function () {
+    var SelectListItem = /** @class */ (function () {
         function SelectListItem(text, value, isSelected) {
             this.text = text;
             this.value = value;
@@ -19,7 +19,7 @@ var Html;
         return SelectListItem;
     }());
     Html.SelectListItem = SelectListItem;
-    var TemplateInfo = (function () {
+    var TemplateInfo = /** @class */ (function () {
         function TemplateInfo(htmlFieldPrefix) {
             if (htmlFieldPrefix === void 0) { htmlFieldPrefix = ""; }
             var _this = this;
@@ -43,12 +43,15 @@ var Html;
         return TemplateInfo;
     }());
     Html.TemplateInfo = TemplateInfo;
-    var HtmlElement = (function (_super) {
+    var HtmlElement = /** @class */ (function (_super) {
         __extends(HtmlElement, _super);
         function HtmlElement(elem, attributes) {
             var _this = _super.call(this) || this;
             _this.elem = elem;
             _this.attributes = attributes;
+            if ((typeof elem == 'string' || elem instanceof String) && _this.elem.indexOf("<") < 0) {
+                _this.elem = "<" + _this.elem + "/>";
+            }
             _this.element = $(_this.elem);
             _this.element.attr(attributes);
             _this.previousTemplate.element.append(_this.element);
@@ -58,7 +61,7 @@ var Html;
         return HtmlElement;
     }(TemplateInfo));
     Html.HtmlElement = HtmlElement;
-    var HtmlFieldPrefixScope = (function (_super) {
+    var HtmlFieldPrefixScope = /** @class */ (function (_super) {
         __extends(HtmlFieldPrefixScope, _super);
         function HtmlFieldPrefixScope(htmlFieldPrefix) {
             var _this = _super.call(this, htmlFieldPrefix) || this;

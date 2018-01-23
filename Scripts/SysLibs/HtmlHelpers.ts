@@ -34,6 +34,9 @@ module Html {
 
         constructor(private elem: string | JQuery, private attributes?:any) {
             super();
+            if ((typeof elem == 'string' || elem instanceof String) &&  (<string>this.elem).indexOf("<") < 0) {
+                this.elem = "<" + this.elem + "/>";
+            }
             this.element = $(this.elem);
             this.element.attr(attributes);
             this.previousTemplate.element.append(this.element);

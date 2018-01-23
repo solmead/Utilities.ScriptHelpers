@@ -1,6 +1,4 @@
-﻿
-
-var __doPostBack = __doPostBack;
+﻿var __doPostBack = __doPostBack;
 var WebForm_DoPostBackWithOptions = WebForm_DoPostBackWithOptions;
 var Page_ClientValidate = Page_ClientValidate;
 
@@ -8,7 +6,7 @@ var posting = false;
 
 namespace SysLibs {
     
-
+    export var onInit = new Tasks.EventHandler();
 
     export function Init(area: JQuery) {
 
@@ -109,7 +107,7 @@ namespace SysLibs {
                 var it = $(this);
                 CKEDITOR.replace(it.attr("id"), {
                     //skin: 'office2003',
-                    toolbar: 'ISOCDefault',
+                    toolbar: 'SysLibsDefault',
                     customConfig: '/JsHandler.axd?Name=config_banner',
                     contentsCss: '/LessHandler.axd?Name=fck_banner',
                     height: it.innerHeight(),
@@ -177,9 +175,6 @@ namespace SysLibs {
         $(area).find(".postAction").onClickPostAsForm();
 
 
-        $(area).find(".ajaxPostGrid").onClickAjaxPost(JqueryEx.createAjaxOptions(null, (item: JQuery, data: any) => {
-            //CloseDialog();
-        }));
 
 
         $(area).find(".ajaxPost").onClickAjaxPost(JqueryEx.createAjaxOptions(null, (item: JQuery, data: any) => {
@@ -261,7 +256,7 @@ namespace SysLibs {
                 }
 
                 Dialog.showInDialog(Area,
-                    Dialog.getJqueryUiDialogSettings(Width, Height, Title, null, CallOnClose));
+                    Dialog.getJqueryUiDialogSettings(Width, Height, Title, <JQueryUI.DialogOptions>null, CallOnClose));
 
 
             });
@@ -286,13 +281,15 @@ namespace SysLibs {
             });
         }
 
-
+        onInit.trigger(area);
 
     }
 
     async function UIInit() {
 
         await Tasks.whenReady();
+
+        await Tasks.delay(10);
 
         var oldPostBack = __doPostBack;
         __doPostBack = function () {

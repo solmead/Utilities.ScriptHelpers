@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var Debug;
 (function (Debug) {
-    var Message = (function () {
+    var Message = /** @class */ (function () {
         function Message(_date, _message) {
             this._date = _date;
             this._message = _message;
@@ -63,7 +63,7 @@ var Debug;
         return Message;
     }());
     Debug.Message = Message;
-    var Messages = (function () {
+    var Messages = /** @class */ (function () {
         function Messages(displayLocation) {
             var _this = this;
             this.displayLocation = displayLocation;

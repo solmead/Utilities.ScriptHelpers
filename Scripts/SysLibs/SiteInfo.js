@@ -1,6 +1,6 @@
 var SiteInfo;
 (function (SiteInfo_1) {
-    var SiteInfo = (function () {
+    var SiteInfo = /** @class */ (function () {
         function SiteInfo() {
             this.sitepath = "/";
             this.virtualUrl = "";

@@ -106,38 +106,38 @@ module System {
     export function AddAntiForgeryToken(data: any) {
         return ApiLibrary.addAntiForgeryToken(data);
     }
-    export function ApiCall(type, url, sendData, successCallback, errorCallback, beforeSend) {
+    export function ApiCall(type, url, sendData?: any, successCallback?: any, errorCallback?: any, beforeSend?:any) {
         ApiLibrary.apiCall(type, url, sendData, successCallback, errorCallback, beforeSend);
     }
-    export function getCall(url, seqNum, successCallback, errorCallback) {
+    export function getCall(url, seqNum?: any, successCallback?: any, errorCallback?: any) {
         ApiLibrary.getCall(url, seqNum, successCallback, errorCallback);
     }
-    export function putCall(url, seqNum, sendData, successCallback, errorCallback) {
+    export function putCall(url, seqNum?: any, sendData?: any, successCallback?: any, errorCallback?: any) {
         ApiLibrary.putCall(url, seqNum, sendData, successCallback, errorCallback);
     }
-    export function postCall(url, seqNum, sendData, successCallback, errorCallback) {
+    export function postCall(url, seqNum?: any, sendData?: any, successCallback?: any, errorCallback?: any) {
         ApiLibrary.postCall(url, seqNum, sendData, successCallback, errorCallback);
     }
-    export function AutoSaveForm(form, beforeSave, afterResponse) {
+    export function AutoSaveForm(form, beforeSave?: any, afterResponse?: any) {
         //not implemented
     }
-    export function AjaxPostForm(form, afterResponse) {
+    export function AjaxPostForm(form, afterResponse?: any) {
         $(form).submitUsingAjax(JqueryEx.createAjaxOptions(null, afterResponse));
     }
-    export function AddAjaxFormSubmit(form, beforeSubmit, afterResponse) {
+    export function AddAjaxFormSubmit(form, beforeSubmit?: any, afterResponse?: any) {
         $(form).onSubmitUseAjax(JqueryEx.createAjaxOptions(beforeSubmit, afterResponse))
     }
-    export function AddAjaxClickGet(item, beforeSubmit, afterResponse) {
+    export function AddAjaxClickGet(item, beforeSubmit?: any, afterResponse?: any) {
         $(item).onClickAjaxGet(JqueryEx.createAjaxOptions(beforeSubmit, afterResponse))
     }
-    export function AjaxPost(item, afterResponse) {
+    export function AjaxPost(item, afterResponse?: any) {
         var clickUrl = $(item).attr("href");
         postCall(clickUrl, null, null, afterResponse, null);
     }
-    export function AddClickPostForm(item, beforeSubmit) {
+    export function AddClickPostForm(item, beforeSubmit?: any) {
         $(item).onClickPostAsForm(JqueryEx.createAjaxOptions(beforeSubmit, null));
     }
-    export function AddAjaxClickPost(item, beforeSubmit, afterResponse) {
+    export function AddAjaxClickPost(item, beforeSubmit?: any, afterResponse?: any) {
         $(item).onClickAjaxPost(JqueryEx.createAjaxOptions(beforeSubmit, afterResponse));
     }
     //BaseLibrary
@@ -177,22 +177,28 @@ module System {
     //config
         //  nothing needed
     //Dialog
-    export function Confirm(msg, callback) {
+    export function ShowBlockUI(msg?: string) {
+        Dialog.showBlockUI(msg);
+    }
+    export function HideBlockUI() {
+        Dialog.hideBlockUI();
+    }
+    export function Confirm(msg, callback?:any) {
         Dialog.confirmDialog(msg, null, callback);
     }
-    export function ShowHTMLInDialog(html, options, parent) {
+    export function ShowHTMLInDialog(html, options?: any, parent?: any) {
         Dialog.showHtmlInDialog(html, options, parent);
     }
-    export function ShowInDialog(url, options, parent) {
+    export function ShowInDialog(url, options?: any, parent?: any) {
         Dialog.showInDialog(url, options);
     }
-    export function ShowVideoInFancyBox(url, options, parent) {
+    export function ShowVideoInFancyBox(url, options?: any, parent?: any) {
         Dialog.showVideoInDialog(url, Dialog.getFancyBoxDialogSettings());
     }
-    export function ShowHTMLInFancyBox(html, options, parent) {
+    export function ShowHTMLInFancyBox(html, options?: any, parent?: any) {
         Dialog.showHtmlInDialog(html, Dialog.getFancyBoxDialogSettings());
     }
-    export function ShowInFancyBox(url, options, parent) {
+    export function ShowInFancyBox(url, options?: any, parent?: any) {
         Dialog.showVideoInDialog(url, Dialog.getFancyBoxDialogSettings());
     }
     //JavaScript

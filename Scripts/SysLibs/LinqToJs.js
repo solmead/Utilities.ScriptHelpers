@@ -1,5 +1,5 @@
 //module Linq {
-var Queryable = (function () {
+var Queryable = /** @class */ (function () {
     function Queryable(array) {
         var _this = this;
         this.array = array;

@@ -44,6 +44,9 @@ var ApiLibrary;
             if (url.lastIndexOf("/", 0) === 0) {
                 url = url.substring(1);
             }
+            if (url.indexOf(SiteInfo.virtualUrl()) == 0) {
+                url = url.replace(SiteInfo.virtualUrl(), "");
+            }
             fUrl = SiteInfo.getVirtualURL(url) + cntPiece;
         }
         $.ajax({

@@ -169,6 +169,14 @@ var System;
     //config
     //  nothing needed
     //Dialog
+    function ShowBlockUI(msg) {
+        Dialog.showBlockUI(msg);
+    }
+    System.ShowBlockUI = ShowBlockUI;
+    function HideBlockUI() {
+        Dialog.hideBlockUI();
+    }
+    System.HideBlockUI = HideBlockUI;
     function Confirm(msg, callback) {
         Dialog.confirmDialog(msg, null, callback);
     }

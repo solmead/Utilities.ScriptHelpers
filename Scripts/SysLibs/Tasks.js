@@ -1,6 +1,6 @@
 var Tasks;
 (function (Tasks) {
-    var Task = (function () {
+    var Task = /** @class */ (function () {
         function Task(func) {
             //super((resolve, reject) => {
             //        resolveFunc = resolve;
@@ -35,7 +35,7 @@ var Tasks;
         return Task;
     }());
     Tasks.Task = Task;
-    var RecurringTask = (function () {
+    var RecurringTask = /** @class */ (function () {
         function RecurringTask(callback, timeout, maxLockTime) {
             var _this = this;
             this.callback = callback;
