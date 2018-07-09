@@ -38,7 +38,9 @@ module Html {
                 this.elem = "<" + this.elem + "/>";
             }
             this.element = $(this.elem);
-            this.element.attr(attributes);
+            if (attributes) {
+                this.element.attr(attributes);
+            }
             this.previousTemplate.element.append(this.element);
             this.begin();
 
@@ -72,30 +74,35 @@ module Html {
     }
 
     export function elementBegin(element: string, attributes?: any): HtmlElement {
+        
         return new HtmlElement(element, attributes);
     }
     export function elementEnd(): TemplateInfo {
         return itemEnd();
     }
     export function divBegin(attributes?: any): HtmlElement {
+        
         return new HtmlElement("div", attributes);
     }
     export function divEnd(): TemplateInfo {
         return itemEnd();
     }
     export function tableBegin(attributes?: any): HtmlElement {
+        
         return new HtmlElement("table", attributes);
     }
     export function tableEnd(): TemplateInfo {
         return itemEnd();
     }
     export function rowBegin(attributes?: any): HtmlElement {
+        
         return new HtmlElement("tr", attributes);
     }
     export function rowEnd(): TemplateInfo {
         return itemEnd();
     }
     export function cellBegin(attributes?: any): HtmlElement {
+        
         return new HtmlElement("td", attributes);
     }
     export function cellEnd(): TemplateInfo {
@@ -127,7 +134,7 @@ module Html {
     export function label(text: string, forElement: string, attributes: object): JQuery;
     export function label(text: string, forOrAttributes: string | object): JQuery;
     export function label(text: string): JQuery;
-    export function label(text: string, forOrAttributes?: string | object, attributes?: object): JQuery   {
+    export function label(text: string, forOrAttributes?: string | object, attributes?: object): JQuery {
         
         var elem = $("<label/>");
         if (forOrAttributes != null) {
@@ -345,7 +352,32 @@ module Html {
         currentTemplate.element.append(elem);
         return elem;
     }
-    
+
+
+    export function numberBox(name: string, value: string, attributes: object): JQuery;
+    export function numberBox(name: string, value: string): JQuery;
+    export function numberBox(name: string): JQuery;
+    export function numberBox(name: string, value?: string, attributes?: object): JQuery {
+        var preName = currentTemplate.currentPrefix();
+        if (preName != "") {
+            preName = preName + ".";
+        }
+        var fieldName = preName + name;
+        var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
+
+        var elem = $("<input type='number'/>");
+        if (attributes) {
+            elem.attr(attributes);
+        }
+        elem.attr("id", idName);
+        elem.attr("name", fieldName);
+        elem.attr("tag", name);
+        elem.addClass("text-box single-line");
+        elem.val(value);
+        currentTemplate.element.append(elem);
+        return elem;
+    }
+
 
     export function file(name: string, attributes: object): JQuery;
     export function file(name: string): JQuery;

@@ -198,7 +198,7 @@ module Dialog {
 
 
 
-    export function showInDialog(url: string, options?: IDialogSettings) {
+    export function showInDialog(url: string, title: string, options?: IDialogSettings) {
         if (url == "") {
             return;
         }
@@ -208,7 +208,7 @@ module Dialog {
             url = url + "?Format=CleanHTML";
         }
 
-        showHtmlInDialog($("<iframe style='border:0px; width:100%; height: 99%; overflow: auto;'  seamless='seamless' class='dialog' />").attr("src", url), options);
+        showHtmlInDialog($("<iframe style='border:0px; width:100%; height: 99%; overflow: auto;'  seamless='seamless' class='dialog' title='" + title  + "' />").attr("src", url), options);
 
     };
 
@@ -282,6 +282,13 @@ module Dialog {
                 Settings.height = settings.height;
             }
         }
+
+        var maxWidth = $(top).width();
+        if (Settings.width > maxWidth) {
+            Settings.width = maxWidth;
+        }
+
+
         $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
 
         var pUp = $("#globalPopUpDialog_" + dialogNum);
@@ -328,6 +335,13 @@ module Dialog {
         }
 
         DialogSettings = $.extend(true, {}, settings.settings, DialogSettings);
+
+
+
+        var maxWidth = $(top).width();
+        if (DialogSettings.width > maxWidth) {
+            DialogSettings.width = maxWidth;
+        }
 
         $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
 

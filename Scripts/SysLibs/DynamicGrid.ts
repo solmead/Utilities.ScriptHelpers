@@ -98,7 +98,9 @@ module Grid
             return this.table.find("tbody tr");
         }
         public hideAdd = (msg: string): void => {
-            this.table.find("tfoot tr th:first-child").append("<div class='alert alert-danger'>" + msg + "</div>")
+            if (!(msg == "" || msg == null)) {
+                this.table.find("tfoot tr th:first-child").append("<div class='alert alert-danger'>" + msg + "</div>")
+            }
             this.table.find("tfoot .addButton").hide();
         }
         public showAdd = () => {

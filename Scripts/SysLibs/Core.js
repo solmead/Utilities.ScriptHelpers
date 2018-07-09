@@ -226,6 +226,10 @@ var SysLibs;
             });
             //autoBuffering: true,
             $(area).find(".UseJQueryDialog").click(function (evt) {
+                var maxWidth = $(top).width();
+                if (maxWidth <= 768) {
+                    return true;
+                }
                 evt.preventDefault();
                 var me = $(this);
                 var Area = $(this).attr("href");
@@ -245,18 +249,36 @@ var SysLibs;
                 if (!CallOnClose) {
                     CallOnClose = $(this).attr("data-CallOnClose");
                 }
-                Dialog.showInDialog(Area, Dialog.getJqueryUiDialogSettings(Width, Height, Title, null, CallOnClose));
+                Dialog.showInDialog(Area, Title, Dialog.getJqueryUiDialogSettings(Width, Height, Title, null, CallOnClose));
             });
         }
         if ($.fancybox) {
             $(area).find(".UseFancyBox").click(function (evt) {
+                var maxWidth = $(top).width();
+                if (maxWidth <= 768) {
+                    return true;
+                }
                 evt.preventDefault();
                 var me = $(this);
-                var width = parseInt($(me).attr("Width"));
-                var height = parseInt($(me).attr("Height"));
+                var Title = $(this).attr("title");
+                if (!Title) {
+                    Title = $(this).attr("data-title");
+                }
+                var CallOnClose = $(this).attr("CallOnClose");
+                if (!CallOnClose) {
+                    CallOnClose = $(this).attr("data-CallOnClose");
+                }
+                var Width = parseInt($(this).attr("Width"));
+                if (!Width) {
+                    Width = parseInt($(this).attr("data-Width"));
+                }
+                var Height = parseInt($(this).attr("Height"));
+                if (!Height) {
+                    Height = parseInt($(this).attr("data-Height"));
+                }
                 var noScroll = $(me).attr("noScroll") == "true";
                 var resizable = $(me).attr("resizable") == "true";
-                Dialog.showInDialog($(me).attr("href"), Dialog.getFancyBoxDialogSettings(width, height, $(me).attr("Title"), noScroll, resizable, $(me).attr("CallOnClose")));
+                Dialog.showInDialog($(me).attr("href"), Title, Dialog.getFancyBoxDialogSettings(Width, Height, Title, noScroll, resizable, CallOnClose));
             });
         }
         SysLibs.onInit.trigger(area);

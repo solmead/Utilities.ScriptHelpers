@@ -65,6 +65,9 @@ declare module Html {
     function textBox(name: string, value: string, attributes: object): JQuery;
     function textBox(name: string, value: string): JQuery;
     function textBox(name: string): JQuery;
+    function numberBox(name: string, value: string, attributes: object): JQuery;
+    function numberBox(name: string, value: string): JQuery;
+    function numberBox(name: string): JQuery;
     function file(name: string, attributes: object): JQuery;
     function file(name: string): JQuery;
 }

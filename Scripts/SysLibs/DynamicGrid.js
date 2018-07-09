@@ -137,7 +137,9 @@ var Grid;
                 return _this.table.find("tbody tr");
             };
             this.hideAdd = function (msg) {
-                _this.table.find("tfoot tr th:first-child").append("<div class='alert alert-danger'>" + msg + "</div>");
+                if (!(msg == "" || msg == null)) {
+                    _this.table.find("tfoot tr th:first-child").append("<div class='alert alert-danger'>" + msg + "</div>");
+                }
                 _this.table.find("tfoot .addButton").hide();
             };
             this.showAdd = function () {

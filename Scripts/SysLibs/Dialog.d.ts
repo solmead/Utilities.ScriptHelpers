@@ -41,6 +41,6 @@ declare module Dialog {
     function getDefaultDialogSettings(dialogType?: DialogTypeEnum): IDialogSettings;
     function showHtmlInDialog(html: string | JQuery, options?: IDialogSettings, parent?: Window): JQuery;
     function showVideoInDialog(url: string, options?: IDialogSettings): void;
-    function showInDialog(url: string, options?: IDialogSettings): void;
+    function showInDialog(url: string, title: string, options?: IDialogSettings): void;
     function confirmDialog(msg: string, dialogType?: DialogTypeEnum, callback?: (success: boolean) => void): void;
 }

@@ -135,7 +135,7 @@ var Dialog;
     }
     Dialog.showVideoInDialog = showVideoInDialog;
     ;
-    function showInDialog(url, options) {
+    function showInDialog(url, title, options) {
         if (url == "") {
             return;
         }
@@ -145,7 +145,7 @@ var Dialog;
         else {
             url = url + "?Format=CleanHTML";
         }
-        showHtmlInDialog($("<iframe style='border:0px; width:100%; height: 99%; overflow: auto;'  seamless='seamless' class='dialog' />").attr("src", url), options);
+        showHtmlInDialog($("<iframe style='border:0px; width:100%; height: 99%; overflow: auto;'  seamless='seamless' class='dialog' title='" + title + "' />").attr("src", url), options);
     }
     Dialog.showInDialog = showInDialog;
     ;
@@ -212,6 +212,10 @@ var Dialog;
                 Settings.height = settings.height;
             }
         }
+        var maxWidth = $(top).width();
+        if (Settings.width > maxWidth) {
+            Settings.width = maxWidth;
+        }
         $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
         var pUp = $("#globalPopUpDialog_" + dialogNum);
         pUp.append($(html));
@@ -251,6 +255,10 @@ var Dialog;
             }
         }
         DialogSettings = $.extend(true, {}, settings.settings, DialogSettings);
+        var maxWidth = $(top).width();
+        if (DialogSettings.width > maxWidth) {
+            DialogSettings.width = maxWidth;
+        }
         $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
         var pUp = $("#globalPopUpDialog_" + dialogNum);
         pUp.append($(html));

@@ -234,6 +234,13 @@ namespace SysLibs {
             });
             //autoBuffering: true,
             $(area).find(".UseJQueryDialog").click(function (evt) {
+
+                var maxWidth = $(top).width();
+                if (maxWidth <= 768) {
+                    return true;
+                }
+
+
                 evt.preventDefault();
                 var me = $(this);
 
@@ -255,7 +262,7 @@ namespace SysLibs {
                     CallOnClose = $(this).attr("data-CallOnClose");
                 }
 
-                Dialog.showInDialog(Area,
+                Dialog.showInDialog(Area, Title,
                     Dialog.getJqueryUiDialogSettings(Width, Height, Title, <JQueryUI.DialogOptions>null, CallOnClose));
 
 
@@ -266,18 +273,38 @@ namespace SysLibs {
 
         if ($.fancybox) {
             $(area).find(".UseFancyBox").click(function (evt) {
+
+                var maxWidth = $(top).width();
+                if (maxWidth <= 768) {
+                    return true;
+                }
+
                 evt.preventDefault();
                 var me = $(this);
 
+                var Title = $(this).attr("title");
+                if (!Title) {
+                    Title = $(this).attr("data-title");
+                }
+                var CallOnClose = $(this).attr("CallOnClose");
+                if (!CallOnClose) {
+                    CallOnClose = $(this).attr("data-CallOnClose");
+                }
 
-                var width: number = parseInt($(me).attr("Width"));
-                var height: number = parseInt($(me).attr("Height"));
+                var Width = parseInt($(this).attr("Width"));
+                if (!Width) {
+                    Width = parseInt($(this).attr("data-Width"));
+                }
+                var Height = parseInt($(this).attr("Height"));
+                if (!Height) {
+                    Height = parseInt($(this).attr("data-Height"));
+                }
                 var noScroll: boolean = $(me).attr("noScroll") == "true";
                 var resizable: boolean = $(me).attr("resizable") == "true";
 
 
-                Dialog.showInDialog($(me).attr("href"),
-                    Dialog.getFancyBoxDialogSettings(width, height, $(me).attr("Title"), noScroll, resizable, $(me).attr("CallOnClose")));
+                Dialog.showInDialog($(me).attr("href"), Title,
+                    Dialog.getFancyBoxDialogSettings(Width, Height, Title, noScroll, resizable, CallOnClose));
             });
         }
 

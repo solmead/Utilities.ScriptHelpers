@@ -53,7 +53,9 @@ var Html;
                 _this.elem = "<" + _this.elem + "/>";
             }
             _this.element = $(_this.elem);
-            _this.element.attr(attributes);
+            if (attributes) {
+                _this.element.attr(attributes);
+            }
             _this.previousTemplate.element.append(_this.element);
             _this.begin();
             return _this;
@@ -339,6 +341,26 @@ var Html;
         return elem;
     }
     Html.textBox = textBox;
+    function numberBox(name, value, attributes) {
+        var preName = Html.currentTemplate.currentPrefix();
+        if (preName != "") {
+            preName = preName + ".";
+        }
+        var fieldName = preName + name;
+        var idName = fieldName.replaceAll(".", "_").replaceAll("[", "_").replaceAll("]", "_");
+        var elem = $("<input type='number'/>");
+        if (attributes) {
+            elem.attr(attributes);
+        }
+        elem.attr("id", idName);
+        elem.attr("name", fieldName);
+        elem.attr("tag", name);
+        elem.addClass("text-box single-line");
+        elem.val(value);
+        Html.currentTemplate.element.append(elem);
+        return elem;
+    }
+    Html.numberBox = numberBox;
     function file(name, attributes) {
         var preName = Html.currentTemplate.currentPrefix();
         if (preName != "") {
