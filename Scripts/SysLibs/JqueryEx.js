@@ -25,6 +25,33 @@ var JqueryEx;
         }
         return settings;
     }
+    $.extend({
+        replaceTag: function (currentElem, newTagObj, keepProps) {
+            var $currentElem = $(currentElem);
+            var i, $newTag = $(newTagObj).clone();
+            if (keepProps) {
+                //var newTag = $newTag[0];
+                //newTag.className = currentElem.className;
+                //$.extend(newTag.classList, currentElem.classList);
+                $.each(currentElem.attributes, function (index, it) {
+                    $newTag.attr(it.name, it.value);
+                });
+                //$.extend(newTag.attributes, currentElem.attributes);
+            } //}}}
+            $currentElem.wrapAll($newTag);
+            $currentElem.contents().unwrap();
+            // return node; (Error spotted by Frank van Luijn)
+            return this; // Suggested by ColeLawrence
+        }
+    });
+    $.fn.extend({
+        replaceTag: function (newTagObj, keepProps) {
+            // "return" suggested by ColeLawrence
+            return this.each(function () {
+                jQuery.replaceTag(this, newTagObj, keepProps);
+            });
+        }
+    });
     jQuery.fn.extend({
         disable: function (state) {
             var items = this;
@@ -45,7 +72,7 @@ var JqueryEx;
         if (settings.beforeCall(clickedItem)) {
             return;
         }
-        var clickUrl = ApiLibrary.addFormatToUrl($(form).attr("action"));
+        var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("action"));
         var formData = $(this).serialize();
         ApiLibrary.postCall(clickUrl, null, formData, function (data) {
             settings.afterResponse(clickedItem, data);
@@ -61,7 +88,7 @@ var JqueryEx;
                 return;
             }
             $(form).find("input[type='submit'],button[type='submit']").button('disable');
-            var clickUrl = ApiLibrary.addFormatToUrl($(form).attr("action"));
+            var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("action"));
             var formData = $(this).serialize();
             ApiLibrary.postCall(clickUrl, null, formData, function (data) {
                 settings.afterResponse(clickedItem, data);
@@ -79,7 +106,7 @@ var JqueryEx;
                 if (settings.beforeCall(clickedItem)) {
                     return;
                 }
-                var clickUrl = ApiLibrary.addFormatToUrl($(item).attr("href"));
+                var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("href"));
                 ApiLibrary.getCall(clickUrl, null, function (data) {
                     settings.afterResponse(clickedItem, data);
                 });
@@ -97,7 +124,7 @@ var JqueryEx;
                 if (settings.beforeCall(clickedItem)) {
                     return;
                 }
-                var clickUrl = ApiLibrary.addFormatToUrl($(item).attr("href"));
+                var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("href"));
                 ApiLibrary.postCall(clickUrl, null, null, function (data) {
                     settings.afterResponse(_this, data);
                 });
@@ -114,9 +141,10 @@ var JqueryEx;
                 if (settings.beforeCall(clickedItem)) {
                     return;
                 }
-                var clickUrl = ApiLibrary.addFormatToUrl($(item).attr("href"));
+                var clickUrl = $(clickedItem).attr("href");
+                //ApiLibrary.addFormatToUrl($(clickedItem).attr("href"));
                 var doc = "<form action='" + clickUrl + "' method='post'></form>";
-                var form = $(document.body).append(doc);
+                var form = $(doc).appendTo(document.body);
                 $(form).submit();
             }
         });

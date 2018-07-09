@@ -1,6 +1,6 @@
 var Tasks;
 (function (Tasks) {
-    var EventHandler = (function () {
+    var EventHandler = /** @class */ (function () {
         function EventHandler() {
             var _this = this;
             this.onTrigger = [];

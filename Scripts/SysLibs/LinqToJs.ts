@@ -4,6 +4,18 @@ interface Array<T> {
     remove(item: T): void;
 }
 
+
+interface IEnumerable<T> extends Array<T> {
+
+}
+
+interface IList<T> extends Array<T> {
+
+}
+interface List<T> extends Array<T> {
+
+}
+
 //module Linq {
     class Queryable<T> {
 

@@ -94,7 +94,7 @@ var Dialog;
     function showHtmlInDialog(html, options, parent) {
         var myParent = parent;
         if (self != top) {
-            return top.showHtmlInDialog(html, settings, self);
+            return top.showHtmlInDialog(html, options, self);
         }
         if (!myParent) {
             myParent = top;
@@ -135,7 +135,7 @@ var Dialog;
     }
     Dialog.showVideoInDialog = showVideoInDialog;
     ;
-    function showInDialog(url, options) {
+    function showInDialog(url, title, options) {
         if (url == "") {
             return;
         }
@@ -145,12 +145,12 @@ var Dialog;
         else {
             url = url + "?Format=CleanHTML";
         }
-        showHtmlInDialog($("<iframe style='border:0px; width:100%; height: 99%; overflow: auto;'  seamless='seamless' class='dialog' />").attr("src", url), options);
+        showHtmlInDialog($("<iframe style='border:0px; width:100%; height: 99%; overflow: auto;'  seamless='seamless' class='dialog' title='" + title + "' />").attr("src", url), options);
     }
     Dialog.showInDialog = showInDialog;
     ;
     function confirmDialog(msg, dialogType, callback) {
-        var mg = '<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>' + msg + '</p>';
+        var mg = '<p style="padding: 20px;"><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>' + msg + '</p>';
         var diaSettings = null;
         if (dialogType == DialogTypeEnum.FancyBox) {
             diaSettings = getFancyBoxDialogSettings(300, 200, "");
@@ -179,13 +179,14 @@ var Dialog;
     Dialog.confirmDialog = confirmDialog;
     function showHtmlInFancyDialog(html, settings, myParent) {
         var dialogNum = Dialog.lastDialogNumber;
-        var item = $(html);
+        //var item = $(html);
         var Settings = {
             autoSize: false,
             'padding': 0,
             height: 500,
             width: 700,
             afterClose: function () {
+                $("#globalPopUpDialog_" + dialogNum).remove();
                 if (settings.callOnClose && settings.callOnClose != "") {
                     var fn = myParent[settings.callOnClose];
                     if (typeof fn === 'function') {
@@ -211,8 +212,16 @@ var Dialog;
                 Settings.height = settings.height;
             }
         }
-        $.fancybox(item, Settings);
-        return item;
+        var maxWidth = $(top).width();
+        if (Settings.width > maxWidth) {
+            Settings.width = maxWidth;
+        }
+        $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
+        var pUp = $("#globalPopUpDialog_" + dialogNum);
+        pUp.append($(html));
+        Settings.href = "#globalPopUpDialog_" + dialogNum;
+        $.fancybox(Settings);
+        return pUp;
     }
     function showHtmlInJQDialog(html, settings, myParent) {
         var dialogNum = Dialog.lastDialogNumber;
@@ -246,10 +255,18 @@ var Dialog;
             }
         }
         DialogSettings = $.extend(true, {}, settings.settings, DialogSettings);
+        var maxWidth = $(top).width();
+        if (DialogSettings.width > maxWidth) {
+            DialogSettings.width = maxWidth;
+        }
         $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
         var pUp = $("#globalPopUpDialog_" + dialogNum);
-        pUp.append($(html));
+        var ht = $(html);
+        var url = ht.attr('src');
+        ht.attr('src', 'about:blank');
+        pUp.append(ht);
         pUp.dialog(DialogSettings);
+        pUp.find('iframe').attr('src', url);
         return pUp;
     }
 })(Dialog || (Dialog = {}));

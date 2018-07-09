@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>ScriptHelper</tags>
+  </metadata>
+  <files>
+    <file src="Scripts\SysLibs\APILibrary.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\APILibrary.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\DateTime.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\DateTime.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Debug.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Debug.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Dialog.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Dialog.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\DynamicGrid.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\DynamicGrid.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\es6-promise.auto.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\EventHandler.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\EventHandler.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Extensions.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Extensions.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\HtmlHelpers.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\HtmlHelpers.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\JqueryEx.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\JqueryEx.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\LinqToJs.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\LinqToJs.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Lock.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Lock.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Notifications.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Notifications.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Core.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Core.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\SiteInfo.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\SiteInfo.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\System-Migrate.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\System-Migrate.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Tasks.d.ts" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\SysLibs\Tasks.js" target="Content\Scripts\SysLibs" />
+    <file src="Scripts\jquery.simulate.js" target="Content\Scripts" />
+  </files>
+</package>

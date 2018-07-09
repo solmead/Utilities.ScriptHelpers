@@ -1,8 +1,7 @@
 var SiteInfo;
 (function (SiteInfo_1) {
-    var SiteInfo = (function () {
+    var SiteInfo = /** @class */ (function () {
         function SiteInfo() {
-            var _this = this;
             this.sitepath = "/";
             this.virtualUrl = "";
             this.applicationUrl = "";
@@ -18,7 +17,7 @@ var SiteInfo;
             var scriptName = lastScript.src;
             var subDirs = new Queryable(["/SCRIPTS/", "/BUNDLES/"]);
             var indexs = subDirs.select(function (d) {
-                return _this.sitepath.toUpperCase().indexOf(d);
+                return scriptName.toUpperCase().indexOf(d);
             }).where(function (i) { return i > 0; });
             if (indexs.any()) {
                 var minIdx = indexs.min();
@@ -56,6 +55,10 @@ var SiteInfo;
     }
     SiteInfo_1.getParameterByName = getParameterByName;
     ;
+    function getVirtualURL(url) {
+        return applicationUrl() + virtualUrl() + url;
+    }
+    SiteInfo_1.getVirtualURL = getVirtualURL;
     function getFullURL(url) {
         var cntPiece = "Cnt=" + DateTime.getTimeCount();
         if (url.indexOf("?") != -1) {

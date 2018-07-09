@@ -6,24 +6,29 @@ module Tasks {
     export interface IException {
         message: string
     }
+    
 
-    export class Task<TT> extends Promise<TT> {
-        private resolveFunc = (value?: TT | PromiseLike<TT> ):void =>{
+    export class Task<TT> {
+
+        public promise:Promise<TT> = null;
+
+        private resolveFunc: (value?: TT | PromiseLike<TT> )=>void;
         
-        }
-        
-        constructor(private func: (cback?: (val?:TT)=>void) => void) {
-            super((resolve) => {
+        constructor(private func: (cback?: (val?: TT) => void) => void) {
+            //super((resolve, reject) => {
+            //        resolveFunc = resolve;
+            //});
+
+            this.promise = new Promise<TT>((resolve) => {
                 this.resolveFunc = resolve;
             });
-
 
             if (!this.func) {
                 this.func = (rFunc: (val?: TT) => void):void => {
                     return rFunc();
                 };
             }
-            else if (func.length == 0) {
+            else if (func.length === 0) {
                 var bfunc = this.func;
                 this.func = (rFunc: (val?: TT) => void) => {
                     bfunc();
@@ -31,6 +36,10 @@ module Tasks {
                 };
             }
 
+        }
+
+        public then = (onFulfilled: (value?: TT) => TT | PromiseLike<TT>): Promise<TT> => {
+            return this.promise.then(onFulfilled);
         }
 
         public start = ():void => {
@@ -49,7 +58,7 @@ module Tasks {
     
     export class RecurringTask {
 
-        public _isRunning: boolean = false;
+        private _isRunning: boolean = false;
 
         private locker = new Lock.Locker();
         private timedCall = (): void => {
@@ -116,7 +125,6 @@ module Tasks {
                 waitTimeMilliSeconds || 500);
         }
         
-
         t.trigger = (): void => {
             throttle();
         }

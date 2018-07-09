@@ -8,18 +8,22 @@ module ApiLibrary {
         POST
     }
 
-    export function addFormatToUrl(url: string): string {
-        if (url.indexOf("Format=") >= 0) {
-            url = url.replace("Format=PartialHTML", "Format=JSON");
-            url = url.replace("Format=CleanHTML", "Format=JSON");
-        } else {
-            if (url.indexOf("?") >= 0) {
-                url = url + '&Format=JSON';
-            } else {
-                url = url + '?Format=JSON';
-            }
+
+    export function addDataToUrl(url: string, name: string, value: string): string {
+        if (url.indexOf(name + "=") >= 0) {
+            url = url.replace(name + "=", name + "Old=");
         }
+
+        if (url.indexOf("?") >= 0) {
+            url = url + '&' + name + '=' + value;
+        } else {
+            url = url + '?' + name + '=' + value;
+        }
+
         return url;
+    }
+    export function addFormatToUrl(url: string): string {
+        return addDataToUrl(url, "Format", "JSON");
     }
 
     export function addAntiForgeryToken(data: any) {
@@ -39,11 +43,19 @@ module ApiLibrary {
         } else {
             cntPiece = "?" + cntPiece;
         }
-        url = url.replace(SiteInfo.virtualUrl(), "");
-        if (url.lastIndexOf("/", 0) === 0) {
-            url = url.substring(1);
+        var fUrl = url + cntPiece;
+        if (url.indexOf("://") <= 0) {
+            if (url.indexOf(SiteInfo.virtualUrl()) == 0) {
+                url = url.replace(SiteInfo.virtualUrl(), "");
+            }
+            if (url.lastIndexOf("/", 0) === 0) {
+                url = url.substring(1);
+            }
+            if (url.indexOf(SiteInfo.virtualUrl()) == 0) {
+                url = url.replace(SiteInfo.virtualUrl(), "");
+            }
+            fUrl = SiteInfo.getVirtualURL(url) + cntPiece;
         }
-        var fUrl = SiteInfo.applicationUrl() + url + cntPiece;
 
         $.ajax({
             url: fUrl,

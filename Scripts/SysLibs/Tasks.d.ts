@@ -2,10 +2,12 @@ declare module Tasks {
     interface IException {
         message: string;
     }
-    class Task<TT> extends Promise<TT> {
+    class Task<TT> {
         private func;
+        promise: Promise<TT>;
         private resolveFunc;
         constructor(func: (cback?: (val?: TT) => void) => void);
+        then: (onFulfilled: (value?: TT) => TT | PromiseLike<TT>) => Promise<TT>;
         start: () => void;
     }
     interface IDebouncedTask<TT> extends Task<TT> {
@@ -16,7 +18,7 @@ declare module Tasks {
         private callback;
         private timeout;
         private maxLockTime;
-        _isRunning: boolean;
+        private _isRunning;
         private locker;
         private timedCall;
         constructor(callback: () => void, timeout: number, maxLockTime?: number);

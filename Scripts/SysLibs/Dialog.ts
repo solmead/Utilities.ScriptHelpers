@@ -6,7 +6,7 @@ interface FlowPlayer {
 declare var $f: FlowPlayer;
 
 interface Window {
-    closeBasePopupDialog: (data: any) => void;
+    closeBasePopupDialog: (data?: any) => void;
     showHtmlInDialog(html: string | JQuery, settings: Dialog.IDialogSettings, parent?: Window):JQuery;
 }
 //interface JQueryStatic {
@@ -16,7 +16,7 @@ interface Window {
 
 
 
-function closeBasePopupDialog(data:any) {
+function closeBasePopupDialog(data?:any) {
     if (self != top) {
         top.closeBasePopupDialog(data);
         return;
@@ -35,6 +35,7 @@ function closeBasePopupDialog(data:any) {
 
     }
 }
+
 
 function showHtmlInDialog(html: string | JQuery, settings: Dialog.IDialogSettings, parent?: Window): JQuery {
     return Dialog.showHtmlInDialog(html, settings, parent);
@@ -145,7 +146,7 @@ module Dialog {
     export function showHtmlInDialog(html: string | JQuery, options?: IDialogSettings, parent?: Window): JQuery {
         var myParent = parent;
         if (self != top) {
-            return top.showHtmlInDialog(html, settings, self);
+            return top.showHtmlInDialog(html, options, self);
         }
         if (!myParent) {
             myParent = top;
@@ -197,7 +198,7 @@ module Dialog {
 
 
 
-    export function showInDialog(url: string, options?: IDialogSettings) {
+    export function showInDialog(url: string, title: string, options?: IDialogSettings) {
         if (url == "") {
             return;
         }
@@ -207,13 +208,13 @@ module Dialog {
             url = url + "?Format=CleanHTML";
         }
 
-        showHtmlInDialog($("<iframe style='border:0px; width:100%; height: 99%; overflow: auto;'  seamless='seamless' class='dialog' />").attr("src", url), options);
+        showHtmlInDialog($("<iframe style='border:0px; width:100%; height: 99%; overflow: auto;'  seamless='seamless' class='dialog' title='" + title  + "' />").attr("src", url), options);
 
     };
 
 
     export function confirmDialog(msg: string, dialogType?: DialogTypeEnum, callback?: (success: boolean) => void) {
-        var mg = '<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>' + msg + '</p>';
+        var mg = '<p style="padding: 20px;"><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>' + msg + '</p>';
 
         var diaSettings: IDialogSettings = null;
         if (dialogType == DialogTypeEnum.FancyBox) {
@@ -246,7 +247,7 @@ module Dialog {
     function showHtmlInFancyDialog(html: string | JQuery, settings?: IFbDialogSettings, myParent?: Window): JQuery {
         var dialogNum = lastDialogNumber;
 
-        var item = $(html);
+        //var item = $(html);
 
 
         var Settings:FancyboxOptions = {
@@ -255,6 +256,7 @@ module Dialog {
             height: 500,
             width: 700,
             afterClose: function () {
+                $("#globalPopUpDialog_" + dialogNum).remove();
                 if (settings.callOnClose && settings.callOnClose != "") {
                     var fn = myParent[settings.callOnClose];
                     if (typeof fn === 'function') {
@@ -280,8 +282,23 @@ module Dialog {
                 Settings.height = settings.height;
             }
         }
-        $.fancybox(item, Settings);
-        return item;
+
+        var maxWidth = $(top).width();
+        if (Settings.width > maxWidth) {
+            Settings.width = maxWidth;
+        }
+
+
+        $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
+
+        var pUp = $("#globalPopUpDialog_" + dialogNum);
+
+        pUp.append($(html));
+        
+        Settings.href = "#globalPopUpDialog_" + dialogNum;
+
+        $.fancybox(Settings);
+        return pUp;
     }
 
     function showHtmlInJQDialog(html: string | JQuery, settings?: IJQuiDialogSettings, myParent?: Window): JQuery {
@@ -319,12 +336,22 @@ module Dialog {
 
         DialogSettings = $.extend(true, {}, settings.settings, DialogSettings);
 
+
+
+        var maxWidth = $(top).width();
+        if (DialogSettings.width > maxWidth) {
+            DialogSettings.width = maxWidth;
+        }
+
         $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
 
         var pUp = $("#globalPopUpDialog_" + dialogNum);
-
-        pUp.append($(html));
+        var ht = $(html);
+        var url = ht.attr('src');
+        ht.attr('src', 'about:blank');
+        pUp.append(ht);
         pUp.dialog(DialogSettings);
+        pUp.find('iframe').attr('src', url);
         return pUp;
 
 

@@ -1,4 +1,6 @@
-﻿namespace Test {
+﻿
+
+namespace Test {
     class Greeter {
         element: HTMLElement;
         span: HTMLElement;

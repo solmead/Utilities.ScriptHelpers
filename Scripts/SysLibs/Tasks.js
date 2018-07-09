@@ -1,47 +1,41 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var Tasks;
 (function (Tasks) {
-    var Task = (function (_super) {
-        __extends(Task, _super);
+    var Task = /** @class */ (function () {
         function Task(func) {
-            var _this = _super.call(this, function (resolve) {
-                _this.resolveFunc = resolve;
-            }) || this;
-            _this.func = func;
-            _this.resolveFunc = function (value) {
+            //super((resolve, reject) => {
+            //        resolveFunc = resolve;
+            //});
+            var _this = this;
+            this.func = func;
+            this.promise = null;
+            this.then = function (onFulfilled) {
+                return _this.promise.then(onFulfilled);
             };
-            _this.start = function () {
+            this.start = function () {
                 _this.func(function (val) {
                     _this.resolveFunc(val);
                 });
             };
-            if (!_this.func) {
-                _this.func = function (rFunc) {
+            this.promise = new Promise(function (resolve) {
+                _this.resolveFunc = resolve;
+            });
+            if (!this.func) {
+                this.func = function (rFunc) {
                     return rFunc();
                 };
             }
-            else if (func.length == 0) {
-                var bfunc = _this.func;
-                _this.func = function (rFunc) {
+            else if (func.length === 0) {
+                var bfunc = this.func;
+                this.func = function (rFunc) {
                     bfunc();
                     rFunc();
                 };
             }
-            return _this;
         }
         return Task;
-    }(Promise));
+    }());
     Tasks.Task = Task;
-    var RecurringTask = (function () {
+    var RecurringTask = /** @class */ (function () {
         function RecurringTask(callback, timeout, maxLockTime) {
             var _this = this;
             this.callback = callback;

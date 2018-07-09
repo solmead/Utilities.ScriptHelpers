@@ -2,6 +2,12 @@ interface Array<T> {
     asQueryable(): Queryable<T>;
     remove(item: T): void;
 }
+interface IEnumerable<T> extends Array<T> {
+}
+interface IList<T> extends Array<T> {
+}
+interface List<T> extends Array<T> {
+}
 declare class Queryable<T> {
     private array;
     constructor(array?: Array<any>);

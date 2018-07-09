@@ -20,8 +20,7 @@ module DateTime {
         public serverDateTime:Date = null;
         public offset:number = 0;
         public serverTimeLoaded:boolean = false;
-
-
+        
         constructor(private timeApiUrl: string) {
             this.init();
         }
@@ -35,13 +34,14 @@ module DateTime {
             Debug.debugWrite("Time Loaded from Server");
         }
 
+
         public now = () => {
             return new Date();
         }
 
 
         public refreshServerTime = async () => {
-            var URL = SiteInfo.applicationUrl() + this.timeApiUrl;
+            var URL = this.timeApiUrl;
 
             var data = await ApiLibrary.getCallAsync<ITimeReturn>(URL);
 
@@ -63,7 +63,7 @@ module DateTime {
 
     }
 
-    export var serverTime: ServerTime = new ServerTime("/api/Time");
+    export var serverTime: ServerTime = new ServerTime("/api/v1/Time");
     
 
 

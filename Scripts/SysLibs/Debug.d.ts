@@ -7,13 +7,16 @@ declare module Debug {
         message: string;
     }
     class Messages {
-        private location;
-        messages: Array<Message>;
         private displayLocation;
-        constructor(location: JQuery | string);
+        private isReady;
+        messages: Array<Message>;
+        constructor(displayLocation: JQuery | string);
+        private init;
+        private refreshMessages;
         showMessages: () => void;
         addMessage: (msg: string | Message) => void;
     }
     var messages: Messages;
     function debugWrite(msg: string): void;
+    function addMessage(when: Date, msg: string): void;
 }
