@@ -261,8 +261,12 @@ var Dialog;
         }
         $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
         var pUp = $("#globalPopUpDialog_" + dialogNum);
-        pUp.append($(html));
+        var ht = $(html);
+        var url = ht.attr('src');
+        ht.attr('src', 'about:blank');
+        pUp.append(ht);
         pUp.dialog(DialogSettings);
+        pUp.find('iframe').attr('src', url);
         return pUp;
     }
 })(Dialog || (Dialog = {}));
