@@ -335,7 +335,7 @@ namespace SysLibs {
         WebForm_DoPostBackWithOptions = function () {
             var __this = this;
             posting = true;
-            if (Page_ClientValidate()) {
+            if (Page_ClientValidate && Page_ClientValidate()) {
                 Dialog.showBlockUI();
             }
             //setTimeout(function () {

@@ -24,7 +24,10 @@ var ApiLibrary;
     }
     ApiLibrary.addFormatToUrl = addFormatToUrl;
     function addAntiForgeryToken(data) {
-        data.__RequestVerificationToken = $('input[name="__RequestVerificationToken"]').val();
+        //var token = $('input[name="__RequestVerificationToken"]').val();
+        //if (token != null && token != "") {
+        //    data.__RequestVerificationToken = token;
+        //}
         return data;
     }
     ApiLibrary.addAntiForgeryToken = addAntiForgeryToken;

@@ -11,10 +11,12 @@ namespace Utilities.ScriptLibraries
         public static Bundle GetBundle()
         {
             var lst = GetIncludeList();
+
             return new ScriptBundle("~/bundles/syslibs").Include(lst.ToArray());
         }
         public static List<string> GetIncludeList()
         {
+
             return new List<string>(new string[] {
                 "~/Scripts/SysLibs/es6-promise.auto.js",
                   "~/Scripts/SysLibs/JqueryEx.js",

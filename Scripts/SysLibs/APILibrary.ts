@@ -27,7 +27,11 @@ module ApiLibrary {
     }
 
     export function addAntiForgeryToken(data: any) {
-        data.__RequestVerificationToken = $('input[name="__RequestVerificationToken"]').val();
+        //var token = $('input[name="__RequestVerificationToken"]').val();
+        //if (token != null && token != "") {
+        //    data.__RequestVerificationToken = token;
+        //}
+
         return data;
     }
 
