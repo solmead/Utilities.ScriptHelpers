@@ -15,6 +15,9 @@ interface IList<T> extends Array<T> {
 interface List<T> extends Array<T> {
 
 }
+interface Dictionary<T1, T2> extends Object {
+
+}
 
 //module Linq {
     class Queryable<T> {

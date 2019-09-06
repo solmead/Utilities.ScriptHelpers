@@ -29,7 +29,7 @@ var JqueryEx;
         replaceTag: function (currentElem, newTagObj, keepProps) {
             var $currentElem = $(currentElem);
             var i, $newTag = $(newTagObj).clone();
-            if (keepProps) {
+            if (keepProps) { //{{{
                 //var newTag = $newTag[0];
                 //newTag.className = currentElem.className;
                 //$.extend(newTag.classList, currentElem.classList);
@@ -69,7 +69,7 @@ var JqueryEx;
         var settings = checkOptions(options);
         var form = this;
         var clickedItem = this;
-        if (settings.beforeCall(clickedItem)) {
+        if (settings.beforeCall(null, this)) {
             return;
         }
         var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("action"));
@@ -81,18 +81,24 @@ var JqueryEx;
     jQuery.fn.onSubmitUseAjax = function (options) {
         var settings = checkOptions(options);
         var form = this;
+        $(form).find("[type='submit']").click(function () {
+            $("[type='submit']", $(this).parents("form")).removeAttr("clicked");
+            $(this).attr("clicked", "true");
+        });
         $(form).submit(function (evt) {
             evt.preventDefault();
-            var clickedItem = this;
-            if (settings.beforeCall(clickedItem)) {
+            var clickedItem = $(this).find("[type=submit][clicked=true]");
+            //var clickedItem = this;
+            if (settings.beforeCall(clickedItem, this)) {
                 return;
             }
-            $(form).find("input[type='submit'],button[type='submit']").button('disable');
-            var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("action"));
+            $(form).find("input[type='submit'],button[type='submit']").disable(true);
+            var clickUrl = ApiLibrary.addFormatToUrl($(form).attr("action"));
+            $(this).append("<input type='hidden' name='" + clickedItem.attr('name') + "' value='" + clickedItem.val() + "'/>");
             var formData = $(this).serialize();
             ApiLibrary.postCall(clickUrl, null, formData, function (data) {
                 settings.afterResponse(clickedItem, data);
-                $(form).find("input[type='submit'],button[type='submit']").button('enable');
+                $(form).find("input[type='submit'],button[type='submit']").disable(false);
             });
         });
     };
@@ -103,7 +109,7 @@ var JqueryEx;
             if (!evt.isDefaultPrevented()) {
                 evt.preventDefault();
                 var clickedItem = this;
-                if (settings.beforeCall(clickedItem)) {
+                if (settings.beforeCall(clickedItem, null)) {
                     return;
                 }
                 var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("href"));
@@ -121,7 +127,7 @@ var JqueryEx;
             if (!evt.isDefaultPrevented()) {
                 evt.preventDefault();
                 var clickedItem = this;
-                if (settings.beforeCall(clickedItem)) {
+                if (settings.beforeCall(clickedItem, this)) {
                     return;
                 }
                 var clickUrl = ApiLibrary.addFormatToUrl($(clickedItem).attr("href"));
@@ -138,7 +144,7 @@ var JqueryEx;
             if (!evt.isDefaultPrevented()) {
                 evt.preventDefault();
                 var clickedItem = this;
-                if (settings.beforeCall(clickedItem)) {
+                if (settings.beforeCall(clickedItem, this)) {
                     return;
                 }
                 var clickUrl = $(clickedItem).attr("href");

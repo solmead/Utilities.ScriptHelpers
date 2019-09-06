@@ -196,6 +196,7 @@ var Dialog;
             },
             afterLoad: settings.onComplete
         };
+        Settings.autoDimensions = false;
         Settings.type = 'inline';
         if (settings.noScroll) {
             Settings.scrolling = 'no';
@@ -216,7 +217,7 @@ var Dialog;
         if (Settings.width > maxWidth) {
             Settings.width = maxWidth;
         }
-        $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "'></div>");
+        $(document.body).append("<div id='globalPopUpDialog_" + dialogNum + "' style='height: 100%; padding:0; margin:0;'></div>");
         var pUp = $("#globalPopUpDialog_" + dialogNum);
         pUp.append($(html));
         Settings.href = "#globalPopUpDialog_" + dialogNum;

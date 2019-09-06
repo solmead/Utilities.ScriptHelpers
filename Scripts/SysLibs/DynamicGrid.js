@@ -13,8 +13,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -51,9 +51,9 @@ var Grid;
     Grid.AddButtonSettings = AddButtonSettings;
     var DynamicGrid = /** @class */ (function () {
         function DynamicGrid(tableRef, name, prePendButtons, addButtonSettings) {
+            var _this = this;
             if (prePendButtons === void 0) { prePendButtons = true; }
             if (addButtonSettings === void 0) { addButtonSettings = new AddButtonSettings(); }
-            var _this = this;
             this.tableRef = tableRef;
             this.name = name;
             this.prePendButtons = prePendButtons;

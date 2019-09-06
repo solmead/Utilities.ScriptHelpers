@@ -17,7 +17,7 @@ declare module Tasks {
     class RecurringTask {
         private callback;
         private timeout;
-        private maxLockTime;
+        private maxLockTime?;
         private _isRunning;
         private locker;
         private timedCall;

@@ -15,8 +15,8 @@ interface JQuery {
 }
 declare module JqueryEx {
     interface IAjaxCallOptions {
-        beforeCall: (item: JQuery) => boolean;
+        beforeCall: (item: JQuery, form: JQuery) => boolean;
         afterResponse?: (item: JQuery, data: any) => any;
     }
-    function createAjaxOptions(beforeCall: (item: JQuery) => boolean, afterResponse?: (item: JQuery, data: any) => any): IAjaxCallOptions;
+    function createAjaxOptions(beforeCall: (item: JQuery, form: JQuery) => boolean, afterResponse?: (form: JQuery, data: any) => any): IAjaxCallOptions;
 }

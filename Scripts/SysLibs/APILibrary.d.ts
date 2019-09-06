@@ -2,7 +2,7 @@ declare module ApiLibrary {
     enum callTypes {
         GET = 0,
         PUT = 1,
-        POST = 2,
+        POST = 2
     }
     function addDataToUrl(url: string, name: string, value: string): string;
     function addFormatToUrl(url: string): string;

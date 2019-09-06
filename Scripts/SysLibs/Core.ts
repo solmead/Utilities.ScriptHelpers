@@ -3,10 +3,25 @@ var WebForm_DoPostBackWithOptions = WebForm_DoPostBackWithOptions;
 var Page_ClientValidate = Page_ClientValidate;
 
 var posting = false;
+var cssDir = cssDir || "/content";
+var scriptsDir = scriptsDir || "/scripts";
+var editorDir = editorDir || "/Editor";
+
+var editorJSConfig = editorJSConfig || "/config.js";
+var editorJSBannerConfig = editorJSBannerConfig || "/config_banner.js";
+var editorCSSConfig = editorCSSConfig || "/fckcontent.less";
+var editorCSSBannerConfig = editorCSSBannerConfig || "/fck_banner.less";
+
+
+
+var CKEDITOR_BASEPATH = SiteInfo.getVirtualURL(editorDir + "/ckeditor_4.3.1/");
+
 
 namespace SysLibs {
-    
+
     export var onInit = new Tasks.EventHandler();
+
+    export var keepAlive: Tasks.RecurringTask = null;
 
     export function Init(area: JQuery) {
 
@@ -46,10 +61,9 @@ namespace SysLibs {
         $(area).find(".actionLink").click(() => {
             Dialog.showBlockUI();
         });
-        $(area).find(".downloadLink").click(() => {
-            setTimeout(() => {
-                Dialog.hideBlockUI();
-            }, 10000);
+        $(area).find(".downloadLink").click(async () => {
+            await Tasks.delay(10000);
+            Dialog.hideBlockUI();
         });
 
 
@@ -72,7 +86,7 @@ namespace SysLibs {
                 var id = $(item).attr("id");
 
                 var videoPath = $(item).attr("href");
-                $f(id, "/WMP/flash/flowplayer-3.2.12.swf", {
+                $f(id, SiteInfo.getVirtualURL(cssDir + "/flash/flowplayer-3.2.12.swf"), {
                     clip: {
                         url: videoPath,
                         autoPlay: true,
@@ -87,7 +101,7 @@ namespace SysLibs {
             var id = $(item).attr("id");
         });
 
-
+        //
         if ((typeof CKEDITOR !== "undefined")) {
             //EditorAreaCSS="/LessHandler.axd?Name=fck"
             //UseBROnCarriageReturn="true"
@@ -96,8 +110,8 @@ namespace SysLibs {
                 CKEDITOR.replace(it.attr("id"), {
                     //skin: 'office2003',
                     toolbar: 'SysLibsDefault',
-                    customConfig: '/JsHandler.axd?Name=config',
-                    contentsCss: '/LessHandler.axd?Name=fckcontent',
+                    customConfig: SiteInfo.getVirtualURL(scriptsDir + editorJSConfig),
+                    contentsCss: SiteInfo.getVirtualURL(cssDir + editorCSSConfig),
                     height: it.innerHeight(),
                     width: it.innerWidth()
                 });
@@ -108,8 +122,8 @@ namespace SysLibs {
                 CKEDITOR.replace(it.attr("id"), {
                     //skin: 'office2003',
                     toolbar: 'SysLibsDefault',
-                    customConfig: '/JsHandler.axd?Name=config_banner',
-                    contentsCss: '/LessHandler.axd?Name=fck_banner',
+                    customConfig: SiteInfo.getVirtualURL(scriptsDir + editorJSBannerConfig),
+                    contentsCss: SiteInfo.getVirtualURL(cssDir + editorCSSBannerConfig),
                     height: it.innerHeight(),
                     width: it.innerWidth()
                 });
@@ -119,8 +133,8 @@ namespace SysLibs {
                 CKEDITOR.replace(it.attr("id"), {
                     //skin: 'office2003',
                     toolbar: 'Basic',
-                    customConfig: '/JsHandler.axd?Name=config',
-                    contentsCss: '/LessHandler.axd?Name=fckcontent',
+                    customConfig: SiteInfo.getVirtualURL(scriptsDir + editorJSConfig),
+                    contentsCss: SiteInfo.getVirtualURL(cssDir + editorCSSConfig),
                     height: it.innerHeight(),
                     width: it.innerWidth()
                 });
@@ -205,7 +219,7 @@ namespace SysLibs {
                 var id = $(item).attr("id");
 
                 var videoPath = $(item).attr("href");
-                $f(id, SiteInfo.siteInfo.applicationUrl + "flash/flowplayer-3.2.12.swf", {
+                $f(id, SiteInfo.getVirtualURL(cssDir + "/flash/flowplayer-3.2.12.swf"), {
                     clip: {
                         url: videoPath,
                         autoPlay: true,
@@ -346,18 +360,20 @@ namespace SysLibs {
 
 
         if ((typeof CKEDITOR !== "undefined")) {
+            var eConfig = CKEDITOR.editorConfig;
+
             CKEDITOR.editorConfig = (config: CKEDITOR.config) => {
                 // Define changes to default configuration here. For example:
                 // config.language = 'fr';
                 // config.uiColor = '#AADC6E';
                 //config.skin = 'office2003';
                 (<any>config).autoParagraph = false;
-                config.filebrowserBrowseUrl = '/WMP/Editor/ckfinder_2.3.1/ckfinder.html';
-                config.filebrowserImageBrowseUrl = '/WMP/Editor/ckfinder_2.3.1/ckfinder.html?type=Images';
-                config.filebrowserFlashBrowseUrl = '/WMP/Editor/ckfinder_2.3.1/ckfinder.html?type=Flash';
-                config.filebrowserUploadUrl = '/WMP/Editor/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files';
-                config.filebrowserImageUploadUrl = '/WMP/Editor/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images';
-                config.filebrowserFlashUploadUrl = '/WMP/Editor/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash';
+                config.filebrowserBrowseUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/ckfinder.html');
+                config.filebrowserImageBrowseUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/ckfinder.html?type=Images');
+                config.filebrowserFlashBrowseUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/ckfinder.html?type=Flash');
+                config.filebrowserUploadUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files');
+                config.filebrowserImageUploadUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images');
+                config.filebrowserFlashUploadUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash');
                 //(<any>config).toolbar_ISOCDefault =
                 //    [
                 //        { name: 'clipboard', items: ['Undo', 'Redo', '-', 'Bold', 'Italic', 'Underline', 'RemoveFormat', 'Styles', 'Format', '-', 'SpellChecker', 'Preview', 'RemoveFormat', 'Maximize'] },
@@ -384,12 +400,26 @@ namespace SysLibs {
                     ];
 
                 config.stylesSet = 'my_custom_styles';
+
+                if (eConfig) {
+                    eConfig(config);
+                }
+
             };
+
+
+
+
+
         };
 
-
-
         SysLibs.Init($("body"));
+
+        keepAlive = new Tasks.RecurringTask(() => {
+            ApiLibrary.getCall(DateTime.serverTime.timeApiUrl);
+        }, 50000);
+
+        keepAlive.start();
     }
 
 

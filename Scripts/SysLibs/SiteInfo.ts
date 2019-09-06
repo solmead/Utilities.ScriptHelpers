@@ -32,7 +32,7 @@ module SiteInfo {
 
 
 
-            this.isCleanHtml = (t.indexOf("Format=CleanHtml") > -1);
+            this.isCleanHtml = (t.indexOf("Format=CleanHTML") > -1);
 
         }
 

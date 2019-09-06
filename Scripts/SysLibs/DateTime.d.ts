@@ -3,7 +3,7 @@ interface Date {
 }
 declare module DateTime {
     class ServerTime {
-        private timeApiUrl;
+        timeApiUrl: string;
         serverStartTime: Date;
         startTime: Date;
         serverDateTime: Date;

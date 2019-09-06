@@ -27,7 +27,7 @@ var SiteInfo;
             this.virtualUrl = this.sitepath.replace(base, "");
             this.applicationUrl = base;
             var t = window.location.pathname + window.location.search;
-            this.isCleanHtml = (t.indexOf("Format=CleanHtml") > -1);
+            this.isCleanHtml = (t.indexOf("Format=CleanHTML") > -1);
         }
         return SiteInfo;
     }());

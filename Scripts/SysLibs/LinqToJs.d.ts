@@ -8,10 +8,12 @@ interface IList<T> extends Array<T> {
 }
 interface List<T> extends Array<T> {
 }
+interface Dictionary<T1, T2> extends Object {
+}
 declare class Queryable<T> {
-    private array;
+    private array?;
     constructor(array?: Array<any>);
-    private equals(x, y);
+    private equals;
     add: (item: T) => void;
     remove: (item: T) => void;
     push: (item: T) => void;

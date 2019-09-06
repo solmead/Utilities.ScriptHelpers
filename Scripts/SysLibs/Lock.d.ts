@@ -1,6 +1,6 @@
 declare module Lock {
     class Locker {
-        maxLockTime: number;
+        maxLockTime?: number;
         private locked;
         private lastCalled;
         constructor(maxLockTime?: number);

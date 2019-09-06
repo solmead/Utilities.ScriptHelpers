@@ -21,7 +21,7 @@ module DateTime {
         public offset:number = 0;
         public serverTimeLoaded:boolean = false;
         
-        constructor(private timeApiUrl: string) {
+        constructor(public timeApiUrl: string) {
             this.init();
         }
 

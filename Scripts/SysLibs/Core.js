@@ -13,8 +13,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -37,10 +37,20 @@ var __doPostBack = __doPostBack;
 var WebForm_DoPostBackWithOptions = WebForm_DoPostBackWithOptions;
 var Page_ClientValidate = Page_ClientValidate;
 var posting = false;
+var cssDir = cssDir || "/content";
+var scriptsDir = scriptsDir || "/scripts";
+var editorDir = editorDir || "/Editor";
+var editorJSConfig = editorJSConfig || "/config.js";
+var editorJSBannerConfig = editorJSBannerConfig || "/config_banner.js";
+var editorCSSConfig = editorCSSConfig || "/fckcontent.less";
+var editorCSSBannerConfig = editorCSSBannerConfig || "/fck_banner.less";
+var CKEDITOR_BASEPATH = SiteInfo.getVirtualURL(editorDir + "/ckeditor_4.3.1/");
 var SysLibs;
 (function (SysLibs) {
     SysLibs.onInit = new Tasks.EventHandler();
+    SysLibs.keepAlive = null;
     function Init(area) {
+        var _this = this;
         $(area).find(".disabled").each(function () {
             $(this).disable(true);
         });
@@ -70,11 +80,17 @@ var SysLibs;
         $(area).find(".actionLink").click(function () {
             Dialog.showBlockUI();
         });
-        $(area).find(".downloadLink").click(function () {
-            setTimeout(function () {
-                Dialog.hideBlockUI();
-            }, 10000);
-        });
+        $(area).find(".downloadLink").click(function () { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, Tasks.delay(10000)];
+                    case 1:
+                        _a.sent();
+                        Dialog.hideBlockUI();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
         if ($().fancybox) {
             $(area).find(".UseFancyBox .gallery-listing-imagelink").fancybox({});
         }
@@ -89,7 +105,7 @@ var SysLibs;
                 $(item).attr('id', 'player-' + index);
                 var id = $(item).attr("id");
                 var videoPath = $(item).attr("href");
-                $f(id, "/WMP/flash/flowplayer-3.2.12.swf", {
+                $f(id, SiteInfo.getVirtualURL(cssDir + "/flash/flowplayer-3.2.12.swf"), {
                     clip: {
                         url: videoPath,
                         autoPlay: true,
@@ -103,6 +119,7 @@ var SysLibs;
             $(item).attr('id', 'player-' + index);
             var id = $(item).attr("id");
         });
+        //
         if ((typeof CKEDITOR !== "undefined")) {
             //EditorAreaCSS="/LessHandler.axd?Name=fck"
             //UseBROnCarriageReturn="true"
@@ -111,8 +128,8 @@ var SysLibs;
                 CKEDITOR.replace(it.attr("id"), {
                     //skin: 'office2003',
                     toolbar: 'SysLibsDefault',
-                    customConfig: '/JsHandler.axd?Name=config',
-                    contentsCss: '/LessHandler.axd?Name=fckcontent',
+                    customConfig: SiteInfo.getVirtualURL(scriptsDir + editorJSConfig),
+                    contentsCss: SiteInfo.getVirtualURL(cssDir + editorCSSConfig),
                     height: it.innerHeight(),
                     width: it.innerWidth()
                 });
@@ -123,8 +140,8 @@ var SysLibs;
                 CKEDITOR.replace(it.attr("id"), {
                     //skin: 'office2003',
                     toolbar: 'SysLibsDefault',
-                    customConfig: '/JsHandler.axd?Name=config_banner',
-                    contentsCss: '/LessHandler.axd?Name=fck_banner',
+                    customConfig: SiteInfo.getVirtualURL(scriptsDir + editorJSBannerConfig),
+                    contentsCss: SiteInfo.getVirtualURL(cssDir + editorCSSBannerConfig),
                     height: it.innerHeight(),
                     width: it.innerWidth()
                 });
@@ -134,8 +151,8 @@ var SysLibs;
                 CKEDITOR.replace(it.attr("id"), {
                     //skin: 'office2003',
                     toolbar: 'Basic',
-                    customConfig: '/JsHandler.axd?Name=config',
-                    contentsCss: '/LessHandler.axd?Name=fckcontent',
+                    customConfig: SiteInfo.getVirtualURL(scriptsDir + editorJSConfig),
+                    contentsCss: SiteInfo.getVirtualURL(cssDir + editorCSSConfig),
                     height: it.innerHeight(),
                     width: it.innerWidth()
                 });
@@ -201,7 +218,7 @@ var SysLibs;
                 $(item).attr('id', 'player-' + index);
                 var id = $(item).attr("id");
                 var videoPath = $(item).attr("href");
-                $f(id, SiteInfo.siteInfo.applicationUrl + "flash/flowplayer-3.2.12.swf", {
+                $f(id, SiteInfo.getVirtualURL(cssDir + "/flash/flowplayer-3.2.12.swf"), {
                     clip: {
                         url: videoPath,
                         autoPlay: true,
@@ -286,7 +303,7 @@ var SysLibs;
     SysLibs.Init = Init;
     function UIInit() {
         return __awaiter(this, void 0, void 0, function () {
-            var oldPostBack, oldWebForm_DoPostBackWithOptions;
+            var oldPostBack, oldWebForm_DoPostBackWithOptions, eConfig;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, Tasks.whenReady()];
@@ -320,18 +337,19 @@ var SysLibs;
                             posting = false;
                         };
                         if ((typeof CKEDITOR !== "undefined")) {
+                            eConfig = CKEDITOR.editorConfig;
                             CKEDITOR.editorConfig = function (config) {
                                 // Define changes to default configuration here. For example:
                                 // config.language = 'fr';
                                 // config.uiColor = '#AADC6E';
                                 //config.skin = 'office2003';
                                 config.autoParagraph = false;
-                                config.filebrowserBrowseUrl = '/WMP/Editor/ckfinder_2.3.1/ckfinder.html';
-                                config.filebrowserImageBrowseUrl = '/WMP/Editor/ckfinder_2.3.1/ckfinder.html?type=Images';
-                                config.filebrowserFlashBrowseUrl = '/WMP/Editor/ckfinder_2.3.1/ckfinder.html?type=Flash';
-                                config.filebrowserUploadUrl = '/WMP/Editor/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files';
-                                config.filebrowserImageUploadUrl = '/WMP/Editor/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images';
-                                config.filebrowserFlashUploadUrl = '/WMP/Editor/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash';
+                                config.filebrowserBrowseUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/ckfinder.html');
+                                config.filebrowserImageBrowseUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/ckfinder.html?type=Images');
+                                config.filebrowserFlashBrowseUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/ckfinder.html?type=Flash');
+                                config.filebrowserUploadUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files');
+                                config.filebrowserImageUploadUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Images');
+                                config.filebrowserFlashUploadUrl = SiteInfo.getVirtualURL(editorDir + '/ckfinder_2.3.1/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash');
                                 //(<any>config).toolbar_ISOCDefault =
                                 //    [
                                 //        { name: 'clipboard', items: ['Undo', 'Redo', '-', 'Bold', 'Italic', 'Underline', 'RemoveFormat', 'Styles', 'Format', '-', 'SpellChecker', 'Preview', 'RemoveFormat', 'Maximize'] },
@@ -355,10 +373,17 @@ var SysLibs;
                                         { name: 'rest', items: ['Preview', 'Source', 'Maximize'] }
                                     ];
                                 config.stylesSet = 'my_custom_styles';
+                                if (eConfig) {
+                                    eConfig(config);
+                                }
                             };
                         }
                         ;
                         SysLibs.Init($("body"));
+                        SysLibs.keepAlive = new Tasks.RecurringTask(function () {
+                            ApiLibrary.getCall(DateTime.serverTime.timeApiUrl);
+                        }, 50000);
+                        SysLibs.keepAlive.start();
                         return [2 /*return*/];
                 }
             });

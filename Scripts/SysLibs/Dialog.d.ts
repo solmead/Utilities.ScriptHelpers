@@ -16,7 +16,7 @@ declare module Dialog {
     function closeDialog(): void;
     enum DialogTypeEnum {
         JQueryDialog = 0,
-        FancyBox = 1,
+        FancyBox = 1
     }
     interface IDialogSettings {
         dialogType: DialogTypeEnum;

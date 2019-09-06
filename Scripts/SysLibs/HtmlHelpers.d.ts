@@ -16,7 +16,7 @@ declare module Html {
     }
     class HtmlElement extends TemplateInfo {
         private elem;
-        private attributes;
+        private attributes?;
         constructor(elem: string | JQuery, attributes?: any);
     }
     class HtmlFieldPrefixScope extends TemplateInfo {
