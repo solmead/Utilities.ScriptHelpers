@@ -1,5 +1,0 @@
-F:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.dll.config
-F:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.dll
-F:\Libraries\ScriptHelperLibraries\bin\ScriptHelperLibraries.pdb
-F:\Libraries\ScriptHelperLibraries\obj\Release\ScriptHelperLibraries.dll
-F:\Libraries\ScriptHelperLibraries\obj\Release\ScriptHelperLibraries.pdb
