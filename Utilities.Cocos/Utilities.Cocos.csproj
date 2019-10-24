@@ -1,0 +1,151 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>f5de8704-e977-459e-a5d3-a46db175ba1a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="scripts\ActionManager.ts" />
+    <None Remove="scripts\App\libs\AnimatedSprite.ts" />
+    <None Remove="scripts\App\libs\Box.ts" />
+    <None Remove="scripts\App\libs\GreenItem.ts" />
+    <None Remove="scripts\App\libs\Scene1.ts" />
+    <None Remove="scripts\App\Main.ts" />
+    <None Remove="scripts\Cocos2d\actions\Action.ts" />
+    <None Remove="scripts\Cocos2d\actions\ActionEase.ts" />
+    <None Remove="scripts\Cocos2d\actions\ActionInstant.ts" />
+    <None Remove="scripts\Cocos2d\actions\ActionInterval.ts" />
+    <None Remove="scripts\Cocos2d\Animation.ts" />
+    <None Remove="scripts\Cocos2d\AnimationCache.ts" />
+    <None Remove="scripts\Cocos2d\Config.ts" />
+    <None Remove="scripts\Cocos2d\Director.ts" />
+    <None Remove="scripts\Cocos2d\EventDispatcher.ts" />
+    <None Remove="scripts\Cocos2d\jah\remote_resources.ts" />
+    <None Remove="scripts\Cocos2d\libs\bobject.ts" />
+    <None Remove="scripts\Cocos2d\libs\events.ts" />
+    <None Remove="scripts\Cocos2d\libs\geometry.ts" />
+    <None Remove="scripts\Cocos2d\libs\Primitives.ts" />
+    <None Remove="scripts\Cocos2d\libs\TextureQuad.ts" />
+    <None Remove="scripts\Cocos2d\libs\util.ts" />
+    <None Remove="scripts\Cocos2d\Node.ts" />
+    <None Remove="scripts\Cocos2d\nodes\Label.ts" />
+    <None Remove="scripts\Cocos2d\nodes\Layer.ts" />
+    <None Remove="scripts\Cocos2d\nodes\PreloadScene.ts" />
+    <None Remove="scripts\Cocos2d\nodes\ProgressBar.ts" />
+    <None Remove="scripts\Cocos2d\nodes\Scene.ts" />
+    <None Remove="scripts\Cocos2d\nodes\Sprite.ts" />
+    <None Remove="scripts\Cocos2d\Preloader.ts" />
+    <None Remove="scripts\Cocos2d\Scheduler.ts" />
+    <None Remove="scripts\Cocos2d\SpriteFrame.ts" />
+    <None Remove="scripts\Cocos2d\SpriteFrameCache.ts" />
+    <None Remove="scripts\Cocos2d\Texture2D.ts" />
+    <None Remove="scripts\Cocos2d\TextureAtlas.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\scripts\app.js" />
+    <None Include="wwwroot\scripts\App\bundle.js" />
+    <None Include="wwwroot\scripts\App\Main.js" />
+    <None Include="wwwroot\scripts\Cocos2d\ActionManager.js" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\Action.js" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\ActionEase.js" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\ActionInstant.js" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\ActionInterval.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Animation.js" />
+    <None Include="wwwroot\scripts\Cocos2d\AnimationCache.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Config.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Director.js" />
+    <None Include="wwwroot\scripts\Cocos2d\EventDispatcher.js" />
+    <None Include="wwwroot\scripts\Cocos2d\jah\Preloader.js" />
+    <None Include="wwwroot\scripts\Cocos2d\jah\remote_resources.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\bobject.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\events.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\geometry.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\Primitives.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\TextureQuad.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\util.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Label.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Layer.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Node.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\PreloadScene.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\ProgressBar.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Scene.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Sprite.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Scheduler.js" />
+    <None Include="wwwroot\scripts\Cocos2d\SpriteFrame.js" />
+    <None Include="wwwroot\scripts\Cocos2d\SpriteFrameCache.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Texture2D.js" />
+    <None Include="wwwroot\scripts\Cocos2d\TextureAtlas.js" />
+    <None Include="wwwroot\scripts\SysLibs\APILibrary.js" />
+    <None Include="wwwroot\scripts\SysLibs\Core.js" />
+    <None Include="wwwroot\scripts\SysLibs\DateTime.js" />
+    <None Include="wwwroot\scripts\SysLibs\Debug.js" />
+    <None Include="wwwroot\scripts\SysLibs\Dialog.js" />
+    <None Include="wwwroot\scripts\SysLibs\DynamicGrid.js" />
+    <None Include="wwwroot\scripts\SysLibs\EventHandler.js" />
+    <None Include="wwwroot\scripts\SysLibs\Extensions.js" />
+    <None Include="wwwroot\scripts\SysLibs\HtmlHelpers.js" />
+    <None Include="wwwroot\scripts\SysLibs\JqueryEx.js" />
+    <None Include="wwwroot\scripts\SysLibs\LinqToJs.js" />
+    <None Include="wwwroot\scripts\SysLibs\Lock.js" />
+    <None Include="wwwroot\scripts\SysLibs\Notifications.js" />
+    <None Include="wwwroot\scripts\SysLibs\SiteInfo.js" />
+    <None Include="wwwroot\scripts\SysLibs\Tasks.js" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <None Remove="scripts\app.ts" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="scripts\app.ts" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES2019</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="npm run wbp" />
+  </Target>
+
+  <!--<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES2019</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>ES6</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>-->
+
+</Project>
