@@ -5,6 +5,7 @@ import { Director } from "../../Cocos2d/Director";
 import { Label } from "../../Cocos2d/nodes/Label";
 import { Layer } from "../../Cocos2d/nodes/Layer";
 import { GreenItem } from "./GreenItem";
+import { LegoMan } from "./LegoMan";
 import { box } from "./Box";
 
 
@@ -37,6 +38,12 @@ export class Scene1 extends Scene {
         mainLayer.addChild(this.item1);
 
 
+
+        this.item3 = new LegoMan();
+        this.item3.position = ccp(150, 200);
+        mainLayer.addChild(this.item3);
+
+
         this.item3 = new GreenItem();
         this.item3.position = ccp(150, 200);
         mainLayer.addChild(this.item3);
@@ -59,6 +66,7 @@ export class Scene1 extends Scene {
         //        //this.item1.position = this.item1.position.add(ccp(100, 50).multiply(dt).scale(this.dir));
         var bb = this.item1.contentSize;
         this.item1.position = ccp(this.item1.position.x + 100 * dt * this.dir.x, this.item1.position.y + 50 * dt * this.dir.y);
+
         if ((this.item1.position.x > s.width - bb.width / 2) || (this.item1.position.x < bb.width / 2)) {
             this.dir.x = -this.dir.x;
         }

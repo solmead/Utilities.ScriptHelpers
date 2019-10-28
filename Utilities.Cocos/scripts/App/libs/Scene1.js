@@ -4,6 +4,7 @@ import { Director } from "../../Cocos2d/Director";
 import { Label } from "../../Cocos2d/nodes/Label";
 import { Layer } from "../../Cocos2d/nodes/Layer";
 import { GreenItem } from "./GreenItem";
+import { LegoMan } from "./LegoMan";
 import { box } from "./Box";
 var ccp = geometry.ccp;
 export class Scene1 extends Scene {
@@ -24,6 +25,9 @@ export class Scene1 extends Scene {
         this.item1.position = ccp(s.width / 2, 8);
         this.item1.tag = "label";
         mainLayer.addChild(this.item1);
+        this.item3 = new LegoMan();
+        this.item3.position = ccp(150, 200);
+        mainLayer.addChild(this.item3);
         this.item3 = new GreenItem();
         this.item3.position = ccp(150, 200);
         mainLayer.addChild(this.item3);

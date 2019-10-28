@@ -6,6 +6,7 @@ import { Texture2D } from "../Texture2D";
 import { TextureAtlas } from "../TextureAtlas";
 import { util } from "../libs/util";
 import { events } from "../libs/events";
+import { remoteresources } from "../jah/remote_resources";
 
 var ccp = geometry.ccp;
 
@@ -89,12 +90,17 @@ export class Sprite extends Node {
     public useSpriteSheet: boolean;
 
 
-    static CreateFromFile(file: string, rect: geometry.Rect = null): Sprite {
-        var textureAtlas = TextureAtlas.CreateFromFile(file);
+    static CreateFromResource(resource: remoteresources.Resource, rect: geometry.Rect = null): Sprite {
+        var textureAtlas = TextureAtlas.CreateFromResource(resource);
         var sprite = new Sprite(textureAtlas, rect);
         return sprite;
-
     }
+    //static CreateFromFile(file: string, rect: geometry.Rect = null): Sprite {
+    //    var textureAtlas = TextureAtlas.CreateFromFile(file);
+    //    var sprite = new Sprite(textureAtlas, rect);
+    //    return sprite;
+
+    //}
     static CreateFromTexture(texture: Texture2D):Sprite {
         var textureAtlas = new TextureAtlas(texture);
         var sprite = new Sprite(textureAtlas);
@@ -271,10 +277,9 @@ export class Sprite extends Node {
         }
 
         // TextureAtlas has hard reference to this quad so we can just update it directly
-        this.quad.drawRect.origin = {
-            x: this.position.x - this.anchorPointInPixels.x * this.scaleX,
-            y: this.position.y - this.anchorPointInPixels.y * this.scaleY
-        };
+        this.quad.drawRect.origin = new geometry.Point(
+            this.position.x - this.anchorPointInPixels.x * this.scaleX,
+            this.position.y - this.anchorPointInPixels.y * this.scaleY);
         this.quad.drawRect.size = new geometry.Size(
             this.rect.size.width * this.scaleX,
             this.rect.size.height * this.scaleY

@@ -104,11 +104,16 @@ export class Sprite extends Node {
     set untrimmedSize(value) {
         this.setValue("_untrimmedSize", null, value, true);
     }
-    static CreateFromFile(file, rect = null) {
-        var textureAtlas = TextureAtlas.CreateFromFile(file);
+    static CreateFromResource(resource, rect = null) {
+        var textureAtlas = TextureAtlas.CreateFromResource(resource);
         var sprite = new Sprite(textureAtlas, rect);
         return sprite;
     }
+    //static CreateFromFile(file: string, rect: geometry.Rect = null): Sprite {
+    //    var textureAtlas = TextureAtlas.CreateFromFile(file);
+    //    var sprite = new Sprite(textureAtlas, rect);
+    //    return sprite;
+    //}
     static CreateFromTexture(texture) {
         var textureAtlas = new TextureAtlas(texture);
         var sprite = new Sprite(textureAtlas);
@@ -222,10 +227,7 @@ export class Sprite extends Node {
             return;
         }
         // TextureAtlas has hard reference to this quad so we can just update it directly
-        this.quad.drawRect.origin = {
-            x: this.position.x - this.anchorPointInPixels.x * this.scaleX,
-            y: this.position.y - this.anchorPointInPixels.y * this.scaleY
-        };
+        this.quad.drawRect.origin = new geometry.Point(this.position.x - this.anchorPointInPixels.x * this.scaleX, this.position.y - this.anchorPointInPixels.y * this.scaleY);
         this.quad.drawRect.size = new geometry.Size(this.rect.size.width * this.scaleX, this.rect.size.height * this.scaleY);
         this.dirty = false;
         this.recursiveDirty = false;

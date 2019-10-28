@@ -1,4 +1,5 @@
 ﻿import { util } from "./util";
+import { b2Vec2 } from "../../Box2D/Box2D";
 
 
 
@@ -12,11 +13,33 @@ export module geometry {
 
 
     export class Point {
+        private ls: number = null;
+        private l: number = null;
 
         constructor(public x: number, public y: number) {
 
         }
 
+
+        public lengthSquared(): number {
+            if (!this.ls) {
+                this.ls = this.x * this.x + this.y * this.y;
+            }
+            return this.ls;
+        }
+        public length(): number {
+            if (!this.l) {
+                this.l = Math.sqrt(this.lengthSquared());
+            }
+            return this.l;
+        }
+        public normal(): Point {
+            var l = this.length();
+            return ccp(this.x / l, this.y / l);
+        }
+        public asB2Vec2(): b2Vec2 {
+            return new b2Vec2(this.x, this.y);
+        }
     }
 
     export class Size {
@@ -61,6 +84,9 @@ export module geometry {
         }
     }
 
+    export function ccpB2Vec2(v: b2Vec2): Point {
+        return geometry.pointMake(v.x, v.y);
+    }
     /**
      * Creates a geometry.Point instance
      *
@@ -69,7 +95,7 @@ export module geometry {
      * @returns {geometry.Point}
      */
     export function ccp(x: number, y: number): Point {
-        return module.exports.pointMake(x, y);
+        return geometry.pointMake(x, y);
     }
     /**
      * Add the values of two points together
@@ -100,6 +126,16 @@ export module geometry {
      */
     export function ccpMult(p1: Point, p2: Point): Point {
         return geometry.ccp(p1.x * p2.x, p1.y * p2.y);
+    }
+    /**
+     * Muliply the values of one point with a scaler together
+     *
+     * @param {geometry.Point} p1 First point
+     * @param {number} s scaler
+     * @returns {geometry.Point} New point
+     */
+    export function ccpMultScaler(p1: Point, s: number): Point {
+        return geometry.ccp(p1.x * s, p1.y * s);
     }
     /**
      * Invert the values of a geometry.Point
@@ -221,7 +257,7 @@ export module geometry {
         return (size1.width == size2.width && size1.height == size2.height);
     }
     export function rectEqualToRect(rect1:Rect, rect2:Rect):boolean {
-        return (module.exports.sizeEqualToSize(rect1.size, rect2.size) && module.exports.pointEqualToPoint(rect1.origin, rect2.origin));
+        return (geometry.sizeEqualToSize(rect1.size, rect2.size) && geometry.pointEqualToPoint(rect1.origin, rect2.origin));
     }
     export function rectGetMinX(rect:Rect):number {
         return rect.origin.x;

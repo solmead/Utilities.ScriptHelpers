@@ -1,4 +1,5 @@
 import { util } from "./util";
+import { b2Vec2 } from "../../Box2D/Box2D";
 var RE_PAIR = /\{\s*([\d.\-]+)\s*,\s*([\d.\-]+)\s*\}/, RE_DOUBLE_PAIR = /\{\s*(\{[\s\d,.\-]+\})\s*,\s*(\{[\s\d,.\-]+\})\s*\}/;
 Math.PI_2 = 1.57079632679489661923132169163975144; /* pi/2 */
 export var geometry;
@@ -7,6 +8,27 @@ export var geometry;
         constructor(x, y) {
             this.x = x;
             this.y = y;
+            this.ls = null;
+            this.l = null;
+        }
+        lengthSquared() {
+            if (!this.ls) {
+                this.ls = this.x * this.x + this.y * this.y;
+            }
+            return this.ls;
+        }
+        length() {
+            if (!this.l) {
+                this.l = Math.sqrt(this.lengthSquared());
+            }
+            return this.l;
+        }
+        normal() {
+            var l = this.length();
+            return ccp(this.x / l, this.y / l);
+        }
+        asB2Vec2() {
+            return new b2Vec2(this.x, this.y);
         }
     }
     geometry.Point = Point;
@@ -52,6 +74,10 @@ export var geometry;
         }
     }
     geometry.BezierConfig = BezierConfig;
+    function ccpB2Vec2(v) {
+        return geometry.pointMake(v.x, v.y);
+    }
+    geometry.ccpB2Vec2 = ccpB2Vec2;
     /**
      * Creates a geometry.Point instance
      *
@@ -60,7 +86,7 @@ export var geometry;
      * @returns {geometry.Point}
      */
     function ccp(x, y) {
-        return module.exports.pointMake(x, y);
+        return geometry.pointMake(x, y);
     }
     geometry.ccp = ccp;
     /**
@@ -96,6 +122,17 @@ export var geometry;
         return geometry.ccp(p1.x * p2.x, p1.y * p2.y);
     }
     geometry.ccpMult = ccpMult;
+    /**
+     * Muliply the values of one point with a scaler together
+     *
+     * @param {geometry.Point} p1 First point
+     * @param {number} s scaler
+     * @returns {geometry.Point} New point
+     */
+    function ccpMultScaler(p1, s) {
+        return geometry.ccp(p1.x * s, p1.y * s);
+    }
+    geometry.ccpMultScaler = ccpMultScaler;
     /**
      * Invert the values of a geometry.Point
      *
@@ -213,7 +250,7 @@ export var geometry;
     }
     geometry.sizeEqualToSize = sizeEqualToSize;
     function rectEqualToRect(rect1, rect2) {
-        return (module.exports.sizeEqualToSize(rect1.size, rect2.size) && module.exports.pointEqualToPoint(rect1.origin, rect2.origin));
+        return (geometry.sizeEqualToSize(rect1.size, rect2.size) && geometry.pointEqualToPoint(rect1.origin, rect2.origin));
     }
     geometry.rectEqualToRect = rectEqualToRect;
     function rectGetMinX(rect) {

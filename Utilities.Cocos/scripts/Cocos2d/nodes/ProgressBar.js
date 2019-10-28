@@ -16,13 +16,13 @@ export class ProgressBar extends Node {
         this.contentSize = size;
         var s;
         if (emptyImage) {
-            s = Sprite.CreateFromFile(emptyImage, new geometry.Rect(0, 0, size.width, size.height));
+            s = Sprite.CreateFromResource(emptyImage, new geometry.Rect(0, 0, size.width, size.height));
             s.anchorPoint = new geometry.Point(0, 0);
             this.emptySprite = s;
             this.addChild(s);
         }
         if (fullImage) {
-            s = Sprite.CreateFromFile(fullImage, new geometry.Rect(0, 0, 0, size.height));
+            s = Sprite.CreateFromResource(fullImage, new geometry.Rect(0, 0, 0, size.height));
             s.anchorPoint = new geometry.Point(0, 0);
             this.fullSprite = s;
             this.addChild(s);

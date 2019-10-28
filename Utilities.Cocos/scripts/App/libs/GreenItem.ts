@@ -7,13 +7,13 @@ import { TextureAtlas } from "../../Cocos2d/TextureAtlas";
 
 var ccp = geometry.ccp;
 
-remoteresources.addResource("assets/ClearGreenButton.png", "image/png", true);
+var greenButton = remoteresources.addResource("/assets/ClearGreenButton.png", "image/png", true);
 
 export class GreenItem extends Sprite {
 
 
     constructor() {
-        super(TextureAtlas.CreateFromFile("assets/ClearGreenButton.png"));
+        super(TextureAtlas.CreateFromResource(greenButton));
     }
 
 

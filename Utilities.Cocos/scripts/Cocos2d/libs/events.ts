@@ -1,4 +1,5 @@
-﻿
+﻿import { BObject } from "./bobject";
+
 
 /**
  * @private
@@ -12,7 +13,7 @@
 
 
 export module events {
-    function getListeners(obj: any, eventName: string): any {
+    function getListeners(obj: any, eventName: string): Array<EventListener> {
         if (!obj.js_listeners_) {
             obj.js_listeners_ = {};
         }
@@ -57,10 +58,13 @@ export module events {
         if (eventName instanceof Array) {
             var listeners = [];
             for (var i = 0, len = eventName.length; i < len; i++) {
+
                 listeners.push(new events.EventListener(source, eventName[i], handler));
+                listeners.push(new events.EventListener(source, "_" + eventName[i], handler));
             }
             return listeners;
         } else {
+            new EventListener(source, "_" + eventName, handler);
             return new EventListener(source, eventName, handler);
         }
     }
@@ -75,13 +79,13 @@ export module events {
         var listeners = getListeners(source, eventName),
             //args = Array.prototype.slice.call(arguments, 2),
             eventID,
-            l;
+            l: EventListener;
 
         for (eventID in listeners) {
             if (listeners.hasOwnProperty(eventID)) {
-                l = listeners[eventID];
+                l = <EventListener>(listeners[eventID]);
                 if (l) {
-                    l.handler.apply(undefined, ...args);
+                    l.handler.apply(undefined, args);
                 }
             }
         }

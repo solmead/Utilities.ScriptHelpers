@@ -5,6 +5,7 @@ import { geometry } from "../libs/geometry";
 import { ProgressBar } from "./ProgressBar";
 import { events } from "../libs/events";
 import { Preloader } from "../jah/Preloader";
+import { remoteresources } from "../jah/remote_resources";
 
 
 
@@ -40,18 +41,18 @@ export class PreloadScene extends Scene {
     set isReady(value: boolean) {
         this.setValue("_isReady", null, value, true);
     }
-    protected _emptyImage: string = "/libs/cocos2d/resources/progress-bar-empty.png";
-    get emptyImage(): string {
+    protected _emptyImage: remoteresources.Resource = null;
+    get emptyImage(): remoteresources.Resource {
         return this.getValue("_emptyImage");
     }
-    set emptyImage(value: string) {
+    set emptyImage(value: remoteresources.Resource) {
         this.setValue("_emptyImage", null, value, true);
     }
-    protected _fullImage: string = "/libs/cocos2d/resources/progress-bar-full.png";
-    get fullImage(): string {
+    protected _fullImage: remoteresources.Resource = null;;
+    get fullImage(): remoteresources.Resource {
         return this.getValue("_fullImage");
     }
-    set fullImage(value: string) {
+    set fullImage(value: remoteresources.Resource) {
         this.setValue("_fullImage", null, value, true);
     }
 
@@ -62,6 +63,10 @@ export class PreloadScene extends Scene {
 
     constructor() {
         super();
+
+        this.emptyImage = remoteresources.addResource("/assets/resources/progress-bar-empty.png", "image/png", true);
+        this.fullImage = remoteresources.addResource("/assets/resources/progress-bar-full.png", "image/png", true);
+
 
         var size = Director.sharedDirector().winSize;
         // Setup 'please wait' label
@@ -90,7 +95,7 @@ export class PreloadScene extends Scene {
 
 
         // Preloader for the loading screen resources
-        var loadingPreloader = new Preloader([this.emptyImage, this.fullImage])
+        var loadingPreloader = new Preloader([this.emptyImage.url, this.fullImage.url])
 
         // When loading screen resources have loaded then draw them
         events.addListener(loadingPreloader, 'complete', (preloader:Preloader)=> {
@@ -109,8 +114,8 @@ export class PreloadScene extends Scene {
             size = Director.sharedDirector().winSize;
 
         var progressBar = new ProgressBar(
-            "/libs/cocos2d/resources/progress-bar-empty.png",
-            "/libs/cocos2d/resources/progress-bar-full.png"
+            this.emptyImage,
+            this.fullImage
         );
 
         progressBar.position = new geometry.Point(size.width / 2, size.height / 2);

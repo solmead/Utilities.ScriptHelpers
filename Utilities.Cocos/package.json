@@ -3,6 +3,7 @@
   "name": "test-cocos-ts",
   "private": true,
   "devDependencies": {
+    "@types/box2d": "0.0.33",
     "@types/jquery": "^2.0.46",
     "@types/jquery.blockui": "0.0.28",
     "@types/jqueryui": "^1.12.7",

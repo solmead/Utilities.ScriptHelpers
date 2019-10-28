@@ -5,6 +5,7 @@ import { geometry } from "../libs/geometry";
 import { ProgressBar } from "./ProgressBar";
 import { events } from "../libs/events";
 import { Preloader } from "../jah/Preloader";
+import { remoteresources } from "../jah/remote_resources";
 export class PreloadScene extends Scene {
     constructor() {
         super();
@@ -12,8 +13,10 @@ export class PreloadScene extends Scene {
         this._label = null;
         this._preloader = null;
         this._isReady = false;
-        this._emptyImage = "/libs/cocos2d/resources/progress-bar-empty.png";
-        this._fullImage = "/libs/cocos2d/resources/progress-bar-full.png";
+        this._emptyImage = null;
+        this._fullImage = null;
+        this.emptyImage = remoteresources.addResource("/assets/resources/progress-bar-empty.png", "image/png", true);
+        this.fullImage = remoteresources.addResource("/assets/resources/progress-bar-full.png", "image/png", true);
         var size = Director.sharedDirector().winSize;
         // Setup 'please wait' label
         var label = new Label('Please wait...', 'Helvetica', '#ffffff', 14);
@@ -33,7 +36,7 @@ export class PreloadScene extends Scene {
             events.trigger(this, 'complete', preloader);
         });
         // Preloader for the loading screen resources
-        var loadingPreloader = new Preloader([this.emptyImage, this.fullImage]);
+        var loadingPreloader = new Preloader([this.emptyImage.url, this.fullImage.url]);
         // When loading screen resources have loaded then draw them
         events.addListener(loadingPreloader, 'complete', (preloader) => {
             this.createProgressBar();
@@ -74,6 +77,7 @@ export class PreloadScene extends Scene {
     set emptyImage(value) {
         this.setValue("_emptyImage", null, value, true);
     }
+    ;
     get fullImage() {
         return this.getValue("_fullImage");
     }
@@ -82,7 +86,7 @@ export class PreloadScene extends Scene {
     }
     createProgressBar() {
         var preloader = this.preloader, size = Director.sharedDirector().winSize;
-        var progressBar = new ProgressBar("/libs/cocos2d/resources/progress-bar-empty.png", "/libs/cocos2d/resources/progress-bar-full.png");
+        var progressBar = new ProgressBar(this.emptyImage, this.fullImage);
         progressBar.position = new geometry.Point(size.width / 2, size.height / 2);
         this.progressBar = progressBar;
         this.addChild(progressBar);

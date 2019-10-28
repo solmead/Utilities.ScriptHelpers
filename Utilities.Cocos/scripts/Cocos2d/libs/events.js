@@ -51,10 +51,12 @@ export var events;
             var listeners = [];
             for (var i = 0, len = eventName.length; i < len; i++) {
                 listeners.push(new events.EventListener(source, eventName[i], handler));
+                listeners.push(new events.EventListener(source, "_" + eventName[i], handler));
             }
             return listeners;
         }
         else {
+            new EventListener(source, "_" + eventName, handler);
             return new EventListener(source, eventName, handler);
         }
     }
@@ -71,9 +73,9 @@ export var events;
         eventID, l;
         for (eventID in listeners) {
             if (listeners.hasOwnProperty(eventID)) {
-                l = listeners[eventID];
+                l = (listeners[eventID]);
                 if (l) {
-                    l.handler.apply(undefined, ...args);
+                    l.handler.apply(undefined, args);
                 }
             }
         }

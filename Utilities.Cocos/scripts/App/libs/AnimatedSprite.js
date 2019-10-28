@@ -1,33 +1,39 @@
 import { Node } from "../../Cocos2d/nodes/Node";
 import { geometry } from "../../Cocos2d/libs/geometry";
 import { Sprite } from "../../Cocos2d/nodes/Sprite";
+import { RepeatForever } from "../../Cocos2d/actions/Action";
+import { Animate } from "../../Cocos2d/actions/ActionInterval";
 import { SpriteFrame } from "../../Cocos2d/SpriteFrame";
 import { Animation } from "../../Cocos2d/Animation";
 var ccp = geometry.ccp;
 export class AnimatedSprite extends Node {
-    constructor(_textureAtlas, _frameWidth = 1, _frameHeight = 1, _framesPerRow = 1, _totalFrames = 0) {
+    constructor(_textureAtlas, _frameWidth = 1, _frameHeight = 1, _framesPerRow = 1, _totalFrames = 0, _animationSeconds = 1, _basePoint = null) {
         super();
         this._textureAtlas = _textureAtlas;
         this._frameWidth = _frameWidth;
         this._frameHeight = _frameHeight;
         this._framesPerRow = _framesPerRow;
         this._totalFrames = _totalFrames;
+        this._animationSeconds = _animationSeconds;
+        this._basePoint = _basePoint;
         this._isAnimating = false;
         this._animation = null;
         this._sprite = null;
         this._walkAction = null;
         this._texture = null;
+        this._basePoint = this._basePoint || new geometry.Point(0, 0);
         this.texture = this.textureAtlas.texture;
         var frames = new Array();
         for (var i = 0; i < this.totalFrames; i++) {
-            var x = (i % this.framesPerRow) * this.frameWidth;
-            var y = (i / this.framesPerRow) * this.frameHeight;
+            var x = this._basePoint.x + Math.floor((i % this.framesPerRow)) * this.frameWidth;
+            var y = this._basePoint.y + Math.floor((i / this.framesPerRow)) * this.frameHeight;
             var rect = geometry.rectMake(x, y, this.frameWidth, this.frameHeight);
             frames.push(new SpriteFrame(this.texture, rect));
         }
-        this.animation = new Animation(frames, 0.05);
-        //var walkCycle = new Animate(this.animation, 0.05 * this.totalFrames);
-        //this.walkAction = new RepeatForever(walkCycle);
+        var frameTime = this._animationSeconds / (frames.length + 1);
+        this.animation = new Animation(frames, frameTime); // 0.05);
+        var walkCycle = new Animate(this.animation, true);
+        this.walkAction = new RepeatForever(walkCycle);
         this.sprite = Sprite.CreateFromFrame(this.animation.frames[0]);
         this.addChild(this.sprite);
         this.contentSize = geometry.sizeMake(this.frameWidth, this.frameHeight);

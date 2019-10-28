@@ -152,7 +152,7 @@ import { events } from "../libs/events";
         set opacity(value: number) {
             this.setValue("_opacity", null, value, true);
         }
-        protected _isRunning: boolean = false;
+        protected _isRunning: boolean = true;
         get isRunning(): boolean {
             return this.getValue("_isRunning");
         }
@@ -265,6 +265,9 @@ import { events } from "../libs/events";
             if (this.isRunning) {
                 child.onEnter();
             }
+
+
+
 
             return this;
         }

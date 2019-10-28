@@ -8,12 +8,37 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\assets\resources\progress-bar-empty.png" />
+    <Content Remove="wwwroot\assets\resources\progress-bar-full.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="scripts\ActionManager.ts" />
+    <None Remove="scripts\App\Game\GameScene.ts" />
+    <None Remove="scripts\App\Game\objects\Wall.ts" />
+    <None Remove="scripts\App\Gravatas\GravatasLayer.ts" />
+    <None Remove="scripts\App\Gravatas\objects\Planet.ts" />
+    <None Remove="scripts\App\Gravatas\objects\Sun.ts" />
+    <None Remove="scripts\App\Gravatas\objects\Wall.ts" />
     <None Remove="scripts\App\libs\AnimatedSprite.ts" />
     <None Remove="scripts\App\libs\Box.ts" />
     <None Remove="scripts\App\libs\GreenItem.ts" />
+    <None Remove="scripts\App\libs\LegoMan.ts" />
     <None Remove="scripts\App\libs\Scene1.ts" />
     <None Remove="scripts\App\Main.ts" />
+    <None Remove="scripts\App\Game\objects\Ball.ts" />
+    <None Remove="scripts\App\Game\objects\Ball2.ts" />
+    <None Remove="scripts\App\Game\objects\Crate.ts" />
+    <None Remove="scripts\App\Game\objects\Ground.ts" />
+    <None Remove="scripts\App\Game\objects\LegoMan.ts" />
+    <None Remove="scripts\App\Game\objects\Special.ts" />
+    <None Remove="scripts\App\physical\InvSquareField.ts" />
+    <None Remove="scripts\App\physical\PhysicalLayer.ts" />
+    <None Remove="scripts\App\physical\PhysicalNode.ts" />
+    <None Remove="scripts\App\physical\PhysicalShape.ts" />
+    <None Remove="scripts\App\physical\PhysicalShapeBox.ts" />
+    <None Remove="scripts\App\physical\PhysicalShapeCircle.ts" />
+    <None Remove="scripts\App\physical\PhysicalShapePolygon.ts" />
     <None Remove="scripts\Cocos2d\actions\Action.ts" />
     <None Remove="scripts\Cocos2d\actions\ActionEase.ts" />
     <None Remove="scripts\Cocos2d\actions\ActionInstant.ts" />
@@ -46,54 +71,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\scripts\app.js" />
-    <None Include="wwwroot\scripts\App\bundle.js" />
-    <None Include="wwwroot\scripts\App\Main.js" />
-    <None Include="wwwroot\scripts\Cocos2d\ActionManager.js" />
-    <None Include="wwwroot\scripts\Cocos2d\actions\Action.js" />
-    <None Include="wwwroot\scripts\Cocos2d\actions\ActionEase.js" />
-    <None Include="wwwroot\scripts\Cocos2d\actions\ActionInstant.js" />
-    <None Include="wwwroot\scripts\Cocos2d\actions\ActionInterval.js" />
-    <None Include="wwwroot\scripts\Cocos2d\Animation.js" />
-    <None Include="wwwroot\scripts\Cocos2d\AnimationCache.js" />
-    <None Include="wwwroot\scripts\Cocos2d\Config.js" />
-    <None Include="wwwroot\scripts\Cocos2d\Director.js" />
-    <None Include="wwwroot\scripts\Cocos2d\EventDispatcher.js" />
-    <None Include="wwwroot\scripts\Cocos2d\jah\Preloader.js" />
-    <None Include="wwwroot\scripts\Cocos2d\jah\remote_resources.js" />
-    <None Include="wwwroot\scripts\Cocos2d\libs\bobject.js" />
-    <None Include="wwwroot\scripts\Cocos2d\libs\events.js" />
-    <None Include="wwwroot\scripts\Cocos2d\libs\geometry.js" />
-    <None Include="wwwroot\scripts\Cocos2d\libs\Primitives.js" />
-    <None Include="wwwroot\scripts\Cocos2d\libs\TextureQuad.js" />
-    <None Include="wwwroot\scripts\Cocos2d\libs\util.js" />
-    <None Include="wwwroot\scripts\Cocos2d\nodes\Label.js" />
-    <None Include="wwwroot\scripts\Cocos2d\nodes\Layer.js" />
-    <None Include="wwwroot\scripts\Cocos2d\nodes\Node.js" />
-    <None Include="wwwroot\scripts\Cocos2d\nodes\PreloadScene.js" />
-    <None Include="wwwroot\scripts\Cocos2d\nodes\ProgressBar.js" />
-    <None Include="wwwroot\scripts\Cocos2d\nodes\Scene.js" />
-    <None Include="wwwroot\scripts\Cocos2d\nodes\Sprite.js" />
-    <None Include="wwwroot\scripts\Cocos2d\Scheduler.js" />
-    <None Include="wwwroot\scripts\Cocos2d\SpriteFrame.js" />
-    <None Include="wwwroot\scripts\Cocos2d\SpriteFrameCache.js" />
-    <None Include="wwwroot\scripts\Cocos2d\Texture2D.js" />
-    <None Include="wwwroot\scripts\Cocos2d\TextureAtlas.js" />
-    <None Include="wwwroot\scripts\SysLibs\APILibrary.js" />
-    <None Include="wwwroot\scripts\SysLibs\Core.js" />
-    <None Include="wwwroot\scripts\SysLibs\DateTime.js" />
-    <None Include="wwwroot\scripts\SysLibs\Debug.js" />
-    <None Include="wwwroot\scripts\SysLibs\Dialog.js" />
-    <None Include="wwwroot\scripts\SysLibs\DynamicGrid.js" />
-    <None Include="wwwroot\scripts\SysLibs\EventHandler.js" />
-    <None Include="wwwroot\scripts\SysLibs\Extensions.js" />
-    <None Include="wwwroot\scripts\SysLibs\HtmlHelpers.js" />
-    <None Include="wwwroot\scripts\SysLibs\JqueryEx.js" />
-    <None Include="wwwroot\scripts\SysLibs\LinqToJs.js" />
-    <None Include="wwwroot\scripts\SysLibs\Lock.js" />
-    <None Include="wwwroot\scripts\SysLibs\Notifications.js" />
-    <None Include="wwwroot\scripts\SysLibs\SiteInfo.js" />
-    <None Include="wwwroot\scripts\SysLibs\Tasks.js" />
+    <None Include="wwwroot\assets\resources\progress-bar-empty.png" />
+    <None Include="wwwroot\assets\resources\progress-bar-full.png" />
   </ItemGroup>
 
   <!--<ItemGroup>
@@ -110,6 +89,10 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="scripts\app.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="scripts\Box2D\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

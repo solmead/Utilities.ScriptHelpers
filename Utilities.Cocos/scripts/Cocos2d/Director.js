@@ -283,6 +283,13 @@ export var Director;
                 this.nextDeltaTimeZero = false;
             }
             this.dt = Math.max(0, now - this.lastUpdate);
+            //if (this.maxFrameRate > 0) {
+            //    var dtMin = 1 / this.maxFrameRate;
+            //    if (this.dt < dtMin) {
+            //        this.dt = 0;
+            //        return;
+            //    }
+            //}
             this.lastUpdate = now;
         }
         /**
@@ -291,6 +298,9 @@ export var Director;
          */
         drawScene() {
             this.calculateDeltaTime();
+            //if (this.dt < 0.00001) {
+            //    return;
+            //}
             if (!this.isPaused) {
                 Scheduler.sharedScheduler().tick(this.dt);
             }

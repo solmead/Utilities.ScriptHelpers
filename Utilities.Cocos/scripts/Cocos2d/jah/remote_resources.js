@@ -14,7 +14,9 @@ export var remoteresources;
     remoteresources.Resource = Resource;
     remoteresources.resources = new Array();
     function addResource(url, mimetype, remote = false) {
-        remoteresources.resources[url] = new Resource(url, mimetype, remote);
+        var res = new Resource(url, mimetype, remote);
+        remoteresources.resources[url] = res;
+        return res;
     }
     remoteresources.addResource = addResource;
     function getResource(resourcePath) {

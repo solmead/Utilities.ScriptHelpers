@@ -4,6 +4,7 @@ import { Texture2D } from "./Texture2D";
 import { Config } from "./Config";
 import { geometry } from "./libs/geometry";
 import { util } from "./libs/util";
+import { remoteresources } from "./jah/remote_resources";
 
 
 
@@ -34,12 +35,16 @@ export class TextureAtlas extends BObject {
         this.setValue("_texture", null, value, true);
     }
 
-
-    static CreateFromFile(file: string): TextureAtlas {
-        var tex = Texture2D.CreateFromFile(file);
+    static CreateFromResource(resource: remoteresources.Resource): TextureAtlas {
+        var tex = Texture2D.CreateFromResource(resource);
         return new TextureAtlas(tex);
-
     }
+
+    //static CreateFromFile(file: string): TextureAtlas {
+    //    var tex = Texture2D.CreateFromFile(file);
+    //    return new TextureAtlas(tex);
+
+    //}
     static CreateFromTexture(texture: Texture2D): TextureAtlas {
         var tex = Texture2D.CreateFromTexture(texture);
         return new TextureAtlas(tex);

@@ -3,6 +3,7 @@ import { geometry } from "../../Cocos2d/libs/geometry";
 import { TextureAtlas } from "../../Cocos2d/TextureAtlas";
 import { Sprite } from "../../Cocos2d/nodes/Sprite";
 import { Action, RepeatForever } from "../../Cocos2d/actions/Action";
+import { Animate } from "../../Cocos2d/actions/ActionInterval";
 import { Texture2D } from "../../Cocos2d/Texture2D";
 import { SpriteFrame } from "../../Cocos2d/SpriteFrame";
 import { Animation } from "../../Cocos2d/Animation";
@@ -87,23 +88,27 @@ export class AnimatedSprite extends Node {
         protected _frameWidth: number=1,
         protected _frameHeight: number=1,
         protected _framesPerRow: number=1,
-        protected _totalFrames: number=0) {
+        protected _totalFrames: number = 0,
+        protected _animationSeconds: number = 1,
+        protected _basePoint: geometry.Point = null) {
         super();
 
+        this._basePoint = this._basePoint || new geometry.Point(0, 0);
         this.texture = this.textureAtlas.texture;
 
         var frames = new Array<SpriteFrame>();
         for (var i = 0; i < this.totalFrames; i++) {
-            var x = (i % this.framesPerRow) * this.frameWidth;
-            var y = (i / this.framesPerRow) * this.frameHeight;
+            var x = this._basePoint.x + Math.floor((i % this.framesPerRow)) * this.frameWidth;
+            var y = this._basePoint.y + Math.floor((i / this.framesPerRow)) * this.frameHeight;
             var rect = geometry.rectMake(x, y, this.frameWidth, this.frameHeight);
             frames.push(new SpriteFrame(this.texture, rect));
         }
-        this.animation = new Animation(frames, 0.05);
+        var frameTime = this._animationSeconds / (frames.length + 1);
+        this.animation = new Animation(frames, frameTime);// 0.05);
 
-        //var walkCycle = new Animate(this.animation, 0.05 * this.totalFrames);
+        var walkCycle = new Animate(this.animation, true);
 
-        //this.walkAction = new RepeatForever(walkCycle);
+        this.walkAction = new RepeatForever(walkCycle);
 
         this.sprite = Sprite.CreateFromFrame(this.animation.frames[0]);
 

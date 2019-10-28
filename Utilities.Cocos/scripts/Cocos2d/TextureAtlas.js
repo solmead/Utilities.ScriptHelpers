@@ -29,10 +29,14 @@ export class TextureAtlas extends BObject {
     set texture(value) {
         this.setValue("_texture", null, value, true);
     }
-    static CreateFromFile(file) {
-        var tex = Texture2D.CreateFromFile(file);
+    static CreateFromResource(resource) {
+        var tex = Texture2D.CreateFromResource(resource);
         return new TextureAtlas(tex);
     }
+    //static CreateFromFile(file: string): TextureAtlas {
+    //    var tex = Texture2D.CreateFromFile(file);
+    //    return new TextureAtlas(tex);
+    //}
     static CreateFromTexture(texture) {
         var tex = Texture2D.CreateFromTexture(texture);
         return new TextureAtlas(tex);

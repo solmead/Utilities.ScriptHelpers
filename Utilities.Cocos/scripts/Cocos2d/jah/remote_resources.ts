@@ -15,8 +15,10 @@ export module remoteresources {
 
     export var resources: Array<Resource> = new Array<Resource>();
 
-    export function addResource(url: string, mimetype: string, remote: boolean = false) {
-        resources[url] = new Resource(url, mimetype, remote);
+    export function addResource(url: string, mimetype: string, remote: boolean = false): Resource {
+        var res = new Resource(url, mimetype, remote);
+        resources[url] = res;
+        return res;
     }
 
 

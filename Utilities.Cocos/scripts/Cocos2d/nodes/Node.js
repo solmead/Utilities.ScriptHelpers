@@ -70,7 +70,7 @@ export class Node extends BObject {
      * @type Float
      */
         this._opacity = 255;
-        this._isRunning = false;
+        this._isRunning = true;
         this._isRelativeAnchorPoint = true;
         this._isTransformDirty = true;
         this._isInverseDirty = true;

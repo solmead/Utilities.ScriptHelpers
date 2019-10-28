@@ -44,9 +44,13 @@ export class Texture2D extends BObject {
     set isLoaded(value) {
         this.setValue("_isLoaded", null, value, true);
     }
-    static CreateFromFile(file, rect = null) {
-        var name = file;
-        var data = remoteresources.resource(file);
+    static CreateFromResource(resource, rect = null) {
+        var name = resource.url;
+        var res = remoteresources.getResource(resource.url);
+        if (!res) {
+            remoteresources.addResource(resource.url, "image/png", true);
+        }
+        var data = remoteresources.resource(resource.url);
         var tex = null;
         if (data instanceof remoteresources.RemoteResource) {
             tex = new Texture2D(name, data.load());
@@ -56,6 +60,21 @@ export class Texture2D extends BObject {
         }
         return tex;
     }
+    //static CreateFromFile(file: string, rect: geometry.Rect = null): Texture2D {
+    //    var name = file;
+    //    var res = remoteresources.getResource(file);
+    //    if (!res) {
+    //        remoteresources.addResource(file, "image/png", true);
+    //    }
+    //    var data = remoteresources.resource(file);
+    //    var tex: Texture2D = null;
+    //    if (data instanceof remoteresources.RemoteResource) {
+    //        tex = new Texture2D(name, data.load());
+    //    } else {
+    //        tex = new Texture2D(name, data);
+    //    }
+    //    return tex;
+    //}
     static CreateFromTexture(texture) {
         var data = texture.imgElement;
         var tex = new Texture2D(texture.name, data);

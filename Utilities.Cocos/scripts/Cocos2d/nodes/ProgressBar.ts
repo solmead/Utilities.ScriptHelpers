@@ -3,6 +3,7 @@ import { geometry } from "../libs/geometry";
 import { Sprite } from "./Sprite";
 import { events } from "../libs/events";
 import { util } from "../libs/util";
+import { remoteresources } from "../jah/remote_resources";
 
 
 
@@ -39,19 +40,19 @@ export class ProgressBar extends Node {
 
 
 
-    constructor(private emptyImage: string = null, private fullImage: string = null) {
+    constructor(private emptyImage: remoteresources.Resource = null, private fullImage: remoteresources.Resource = null) {
         super();
         var size = new geometry.Size(272, 32);
         this.contentSize = size;
         var s;
         if (emptyImage) {
-            s = Sprite.CreateFromFile(emptyImage, new geometry.Rect(0, 0, size.width, size.height));
+            s = Sprite.CreateFromResource(emptyImage, new geometry.Rect(0, 0, size.width, size.height));
             s.anchorPoint = new geometry.Point(0, 0);
             this.emptySprite = s;
             this.addChild(s);
         }
         if (fullImage) {
-            s = Sprite.CreateFromFile(fullImage, new geometry.Rect(0, 0, 0, size.height));
+            s = Sprite.CreateFromResource(fullImage, new geometry.Rect(0, 0, 0, size.height));
             s.anchorPoint = new geometry.Point(0, 0);
             this.fullSprite = s;
             this.addChild(s);
