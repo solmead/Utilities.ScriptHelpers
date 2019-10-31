@@ -10,69 +10,439 @@
   <ItemGroup>
     <Content Remove="wwwroot\assets\resources\progress-bar-empty.png" />
     <Content Remove="wwwroot\assets\resources\progress-bar-full.png" />
+    <Content Remove="wwwroot\scripts\App\Game\GameScene.js" />
+    <Content Remove="wwwroot\scripts\App\Game\GameScene.js.map" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Ball.js" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Ball.js.map" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Ball2.js" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Ball2.js.map" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Crate.js" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Crate.js.map" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Ground.js" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Ground.js.map" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\LegoMan.js" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\LegoMan.js.map" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Special.js" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Special.js.map" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Wall.js" />
+    <Content Remove="wwwroot\scripts\App\Game\objects\Wall.js.map" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\GravatasLayer.js" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\GravatasLayer.js.map" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Bar.js" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Bar.js.map" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Planet.js" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Planet.js.map" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Plus.js" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Plus.js.map" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Sun.js" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Sun.js.map" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Wall.js" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\objects\Wall.js.map" />
+    <Content Remove="wwwroot\scripts\App\Gravatas\ReferenceLayer.ts" />
+    <Content Remove="wwwroot\scripts\App\libs\AnimatedSprite.js" />
+    <Content Remove="wwwroot\scripts\App\libs\AnimatedSprite.js.map" />
+    <Content Remove="wwwroot\scripts\App\libs\Box.js" />
+    <Content Remove="wwwroot\scripts\App\libs\Box.js.map" />
+    <Content Remove="wwwroot\scripts\App\libs\GreenItem.js" />
+    <Content Remove="wwwroot\scripts\App\libs\GreenItem.js.map" />
+    <Content Remove="wwwroot\scripts\App\libs\LegoMan.js" />
+    <Content Remove="wwwroot\scripts\App\libs\LegoMan.js.map" />
+    <Content Remove="wwwroot\scripts\App\libs\Scene1.js" />
+    <Content Remove="wwwroot\scripts\App\libs\Scene1.js.map" />
+    <Content Remove="wwwroot\scripts\App\Main.js" />
+    <Content Remove="wwwroot\scripts\App\Main.js.map" />
+    <Content Remove="wwwroot\scripts\App\physical\InvSquareField.js" />
+    <Content Remove="wwwroot\scripts\App\physical\InvSquareField.js.map" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalLayer.js" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalLayer.js.map" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalNode.js" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalNode.js.map" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalShape.js" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalShape.js.map" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalShapeBox.js" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalShapeBox.js.map" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalShapeCircle.js" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalShapeCircle.js.map" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalShapePolygon.js" />
+    <Content Remove="wwwroot\scripts\App\physical\PhysicalShapePolygon.js.map" />
+    <Content Remove="wwwroot\scripts\SysLibs\Lock.d.ts" />
+    <Content Remove="wwwroot\scripts\SysLibs\Lock.js" />
+    <Content Remove="wwwroot\scripts\SysLibs\Lock.js.map" />
+    <Content Remove="wwwroot\scripts\SysLibs\Lock.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="scripts\ActionManager.ts" />
-    <None Remove="scripts\App\Game\GameScene.ts" />
-    <None Remove="scripts\App\Game\objects\Wall.ts" />
-    <None Remove="scripts\App\Gravatas\GravatasLayer.ts" />
-    <None Remove="scripts\App\Gravatas\objects\Planet.ts" />
-    <None Remove="scripts\App\Gravatas\objects\Sun.ts" />
-    <None Remove="scripts\App\Gravatas\objects\Wall.ts" />
-    <None Remove="scripts\App\libs\AnimatedSprite.ts" />
-    <None Remove="scripts\App\libs\Box.ts" />
-    <None Remove="scripts\App\libs\GreenItem.ts" />
-    <None Remove="scripts\App\libs\LegoMan.ts" />
-    <None Remove="scripts\App\libs\Scene1.ts" />
-    <None Remove="scripts\App\Main.ts" />
-    <None Remove="scripts\App\Game\objects\Ball.ts" />
-    <None Remove="scripts\App\Game\objects\Ball2.ts" />
-    <None Remove="scripts\App\Game\objects\Crate.ts" />
-    <None Remove="scripts\App\Game\objects\Ground.ts" />
-    <None Remove="scripts\App\Game\objects\LegoMan.ts" />
-    <None Remove="scripts\App\Game\objects\Special.ts" />
-    <None Remove="scripts\App\physical\InvSquareField.ts" />
-    <None Remove="scripts\App\physical\PhysicalLayer.ts" />
-    <None Remove="scripts\App\physical\PhysicalNode.ts" />
-    <None Remove="scripts\App\physical\PhysicalShape.ts" />
-    <None Remove="scripts\App\physical\PhysicalShapeBox.ts" />
-    <None Remove="scripts\App\physical\PhysicalShapeCircle.ts" />
-    <None Remove="scripts\App\physical\PhysicalShapePolygon.ts" />
-    <None Remove="scripts\Cocos2d\actions\Action.ts" />
-    <None Remove="scripts\Cocos2d\actions\ActionEase.ts" />
-    <None Remove="scripts\Cocos2d\actions\ActionInstant.ts" />
-    <None Remove="scripts\Cocos2d\actions\ActionInterval.ts" />
-    <None Remove="scripts\Cocos2d\Animation.ts" />
-    <None Remove="scripts\Cocos2d\AnimationCache.ts" />
-    <None Remove="scripts\Cocos2d\Config.ts" />
-    <None Remove="scripts\Cocos2d\Director.ts" />
-    <None Remove="scripts\Cocos2d\EventDispatcher.ts" />
-    <None Remove="scripts\Cocos2d\jah\remote_resources.ts" />
-    <None Remove="scripts\Cocos2d\libs\bobject.ts" />
-    <None Remove="scripts\Cocos2d\libs\events.ts" />
-    <None Remove="scripts\Cocos2d\libs\geometry.ts" />
-    <None Remove="scripts\Cocos2d\libs\Primitives.ts" />
-    <None Remove="scripts\Cocos2d\libs\TextureQuad.ts" />
-    <None Remove="scripts\Cocos2d\libs\util.ts" />
-    <None Remove="scripts\Cocos2d\Node.ts" />
-    <None Remove="scripts\Cocos2d\nodes\Label.ts" />
-    <None Remove="scripts\Cocos2d\nodes\Layer.ts" />
-    <None Remove="scripts\Cocos2d\nodes\PreloadScene.ts" />
-    <None Remove="scripts\Cocos2d\nodes\ProgressBar.ts" />
-    <None Remove="scripts\Cocos2d\nodes\Scene.ts" />
-    <None Remove="scripts\Cocos2d\nodes\Sprite.ts" />
-    <None Remove="scripts\Cocos2d\Preloader.ts" />
-    <None Remove="scripts\Cocos2d\Scheduler.ts" />
-    <None Remove="scripts\Cocos2d\SpriteFrame.ts" />
-    <None Remove="scripts\Cocos2d\SpriteFrameCache.ts" />
-    <None Remove="scripts\Cocos2d\Texture2D.ts" />
-    <None Remove="scripts\Cocos2d\TextureAtlas.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\actions\Action.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\actions\ActionEase.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\actions\ActionInstant.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\actions\ActionInterval.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\Animation.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\AnimationCache.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\Config.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\Director.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\EventDispatcher.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\jah\remote_resources.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\libs\bobject.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\libs\events.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\libs\geometry.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\libs\Primitives.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\libs\TextureQuad.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\libs\util.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\Node.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\nodes\Label.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\nodes\Layer.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\nodes\PreloadScene.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\nodes\ProgressBar.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\nodes\Scene.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\nodes\Sprite.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\Preloader.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\Scheduler.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\SpriteFrame.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\SpriteFrameCache.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\Texture2D.ts" />
+    <None Remove="wwwroot\scripts\Cocos2d\TextureAtlas.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Remove="wwwroot\scripts\SysLibs\Lock.d.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\assets\resources\progress-bar-empty.png" />
     <None Include="wwwroot\assets\resources\progress-bar-full.png" />
+    <None Include="wwwroot\scripts\app.js" />
+    <None Include="wwwroot\scripts\app.js.map" />
+    <None Include="wwwroot\scripts\app.ts" />
+    <None Include="wwwroot\scripts\App\Game\GameScene.js" />
+    <None Include="wwwroot\scripts\App\Game\GameScene.js.map" />
+    <None Include="wwwroot\scripts\App\Game\objects\Ball.js" />
+    <None Include="wwwroot\scripts\App\Game\objects\Ball.js.map" />
+    <None Include="wwwroot\scripts\App\Game\objects\Ball2.js" />
+    <None Include="wwwroot\scripts\App\Game\objects\Ball2.js.map" />
+    <None Include="wwwroot\scripts\App\Game\objects\Crate.js" />
+    <None Include="wwwroot\scripts\App\Game\objects\Crate.js.map" />
+    <None Include="wwwroot\scripts\App\Game\objects\Ground.js" />
+    <None Include="wwwroot\scripts\App\Game\objects\Ground.js.map" />
+    <None Include="wwwroot\scripts\App\Game\objects\LegoMan.js" />
+    <None Include="wwwroot\scripts\App\Game\objects\LegoMan.js.map" />
+    <None Include="wwwroot\scripts\App\Game\objects\Special.js" />
+    <None Include="wwwroot\scripts\App\Game\objects\Special.js.map" />
+    <None Include="wwwroot\scripts\App\Game\objects\Wall.js" />
+    <None Include="wwwroot\scripts\App\Game\objects\Wall.js.map" />
+    <None Include="wwwroot\scripts\App\Gravatas\GravatasLayer.js" />
+    <None Include="wwwroot\scripts\App\Gravatas\GravatasLayer.js.map" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Bar.js" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Bar.js.map" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Planet.js" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Planet.js.map" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Plus.js" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Plus.js.map" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Sun.js" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Sun.js.map" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Wall.js" />
+    <None Include="wwwroot\scripts\App\Gravatas\objects\Wall.js.map" />
+    <None Include="wwwroot\scripts\App\libs\AnimatedSprite.js" />
+    <None Include="wwwroot\scripts\App\libs\AnimatedSprite.js.map" />
+    <None Include="wwwroot\scripts\App\libs\Box.js" />
+    <None Include="wwwroot\scripts\App\libs\Box.js.map" />
+    <None Include="wwwroot\scripts\App\libs\GreenItem.js" />
+    <None Include="wwwroot\scripts\App\libs\GreenItem.js.map" />
+    <None Include="wwwroot\scripts\App\libs\LegoMan.js" />
+    <None Include="wwwroot\scripts\App\libs\LegoMan.js.map" />
+    <None Include="wwwroot\scripts\App\libs\Scene1.js" />
+    <None Include="wwwroot\scripts\App\libs\Scene1.js.map" />
+    <None Include="wwwroot\scripts\App\physical\InvSquareField.js" />
+    <None Include="wwwroot\scripts\App\physical\InvSquareField.js.map" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalLayer.js" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalLayer.js.map" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalNode.js" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalNode.js.map" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalShape.js" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalShape.js.map" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalShapeBox.js" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalShapeBox.js.map" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalShapeCircle.js" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalShapeCircle.js.map" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalShapePolygon.js" />
+    <None Include="wwwroot\scripts\App\physical\PhysicalShapePolygon.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Box2D.js" />
+    <None Include="wwwroot\scripts\Box2D\Box2D.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Box2D.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2BroadPhase.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2BroadPhase.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2BroadPhase.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2CollideCircle.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2CollideCircle.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2CollideCircle.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2CollideEdge.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2CollideEdge.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2CollideEdge.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2CollidePolygon.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2CollidePolygon.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2CollidePolygon.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2Collision.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2Collision.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2Collision.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2Distance.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2Distance.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2Distance.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2DynamicTree.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2DynamicTree.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2DynamicTree.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2TimeOfImpact.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2TimeOfImpact.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\b2TimeOfImpact.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2ChainShape.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2ChainShape.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2ChainShape.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2CircleShape.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2CircleShape.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2CircleShape.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2EdgeShape.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2EdgeShape.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2EdgeShape.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2PolygonShape.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2PolygonShape.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2PolygonShape.ts" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2Shape.js" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2Shape.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Collision\Shapes\b2Shape.ts" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2BlockAllocator.js" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2BlockAllocator.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2BlockAllocator.ts" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Draw.js" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Draw.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Draw.ts" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2GrowableStack.js" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2GrowableStack.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2GrowableStack.ts" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Math.js" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Math.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Math.ts" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Settings.js" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Settings.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Settings.ts" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2StackAllocator.js" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2StackAllocator.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2StackAllocator.ts" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Timer.js" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Timer.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Common\b2Timer.ts" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2BuoyancyController.js" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2BuoyancyController.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2BuoyancyController.ts" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2ConstantAccelController.js" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2ConstantAccelController.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2ConstantAccelController.ts" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2ConstantForceController.js" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2ConstantForceController.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2ConstantForceController.ts" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2Controller.js" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2Controller.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2Controller.ts" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2GravityController.js" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2GravityController.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2GravityController.ts" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2TensorDampingController.js" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2TensorDampingController.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Controllers\b2TensorDampingController.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2Body.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2Body.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2Body.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2ContactManager.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2ContactManager.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2ContactManager.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2Fixture.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2Fixture.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2Fixture.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2Island.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2Island.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2Island.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2TimeStep.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2TimeStep.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2TimeStep.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2World.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2World.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2World.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2WorldCallbacks.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2WorldCallbacks.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\b2WorldCallbacks.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2CircleContact.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2CircleContact.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2CircleContact.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2Contact.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2Contact.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2Contact.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ContactFactory.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ContactFactory.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ContactFactory.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ContactSolver.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ContactSolver.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2ContactSolver.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2PolygonContact.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2PolygonContact.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Contacts\b2PolygonContact.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2AreaJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2AreaJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2AreaJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2DistanceJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2DistanceJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2DistanceJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2FrictionJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2FrictionJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2FrictionJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2GearJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2GearJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2GearJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2Joint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2Joint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2Joint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2MotorJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2MotorJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2MotorJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2MouseJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2MouseJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2MouseJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2PrismaticJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2PrismaticJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2PrismaticJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2PulleyJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2PulleyJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2PulleyJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2RevoluteJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2RevoluteJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2RevoluteJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2RopeJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2RopeJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2RopeJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2WeldJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2WeldJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2WeldJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2WheelJoint.js" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2WheelJoint.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Dynamics\Joints\b2WheelJoint.ts" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2Particle.js" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2Particle.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2Particle.ts" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2ParticleGroup.js" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2ParticleGroup.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2ParticleGroup.ts" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2ParticleSystem.js" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2ParticleSystem.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2ParticleSystem.ts" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2StackQueue.js" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2StackQueue.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2StackQueue.ts" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2VoronoiDiagram.js" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2VoronoiDiagram.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Particle\b2VoronoiDiagram.ts" />
+    <None Include="wwwroot\scripts\Box2D\Rope\b2Rope.js" />
+    <None Include="wwwroot\scripts\Box2D\Rope\b2Rope.js.map" />
+    <None Include="wwwroot\scripts\Box2D\Rope\b2Rope.ts" />
+    <None Include="wwwroot\scripts\Cocos2d\ActionManager.js" />
+    <None Include="wwwroot\scripts\Cocos2d\ActionManager.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\ActionManager.ts" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\Action.js" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\Action.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\ActionEase.js" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\ActionEase.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\ActionInstant.js" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\ActionInstant.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\ActionInterval.js" />
+    <None Include="wwwroot\scripts\Cocos2d\actions\ActionInterval.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\Animation.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Animation.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\AnimationCache.js" />
+    <None Include="wwwroot\scripts\Cocos2d\AnimationCache.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\Config.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Config.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\Director.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Director.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\EventDispatcher.js" />
+    <None Include="wwwroot\scripts\Cocos2d\EventDispatcher.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\jah\Preloader.js" />
+    <None Include="wwwroot\scripts\Cocos2d\jah\Preloader.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\jah\Preloader.ts" />
+    <None Include="wwwroot\scripts\Cocos2d\jah\remote_resources.js" />
+    <None Include="wwwroot\scripts\Cocos2d\jah\remote_resources.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\bobject.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\bobject.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\events.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\events.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\geometry.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\geometry.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\Primitives.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\Primitives.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\TextureQuad.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\TextureQuad.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\util.js" />
+    <None Include="wwwroot\scripts\Cocos2d\libs\util.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Label.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Label.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Layer.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Layer.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Node.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Node.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Node.ts" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\PreloadScene.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\PreloadScene.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\ProgressBar.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\ProgressBar.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Scene.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Scene.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Sprite.js" />
+    <None Include="wwwroot\scripts\Cocos2d\nodes\Sprite.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\resources\progress-bar-empty.png" />
+    <None Include="wwwroot\scripts\Cocos2d\resources\progress-bar-full.png" />
+    <None Include="wwwroot\scripts\Cocos2d\Scheduler.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Scheduler.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\SpriteFrame.js" />
+    <None Include="wwwroot\scripts\Cocos2d\SpriteFrame.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\SpriteFrameCache.js" />
+    <None Include="wwwroot\scripts\Cocos2d\SpriteFrameCache.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\Texture2D.js" />
+    <None Include="wwwroot\scripts\Cocos2d\Texture2D.js.map" />
+    <None Include="wwwroot\scripts\Cocos2d\TextureAtlas.js" />
+    <None Include="wwwroot\scripts\Cocos2d\TextureAtlas.js.map" />
+    <None Include="wwwroot\scripts\SysLibs\APILibrary.js" />
+    <None Include="wwwroot\scripts\SysLibs\APILibrary.js.map" />
+    <None Include="wwwroot\scripts\SysLibs\APILibrary.ts" />
+    <None Include="wwwroot\scripts\SysLibs\Extensions.js" />
+    <None Include="wwwroot\scripts\SysLibs\Extensions.js.map" />
+    <None Include="wwwroot\scripts\SysLibs\Extensions.ts" />
+    <None Include="wwwroot\scripts\SysLibs\LinqToJs.js" />
+    <None Include="wwwroot\scripts\SysLibs\LinqToJs.js.map" />
+    <None Include="wwwroot\scripts\SysLibs\LinqToJs.ts" />
+    <None Include="wwwroot\scripts\SysLibs\Lock.d.ts">
+      <DependentUpon>Lock.ts</DependentUpon>
+    </None>
+    <None Include="wwwroot\scripts\SysLibs\Lock.js">
+      <DependentUpon>Lock.ts</DependentUpon>
+    </None>
+    <None Include="wwwroot\scripts\SysLibs\Lock.js.map">
+      <DependentUpon>Lock.ts</DependentUpon>
+    </None>
+    <None Include="wwwroot\scripts\SysLibs\SiteInfo.js" />
+    <None Include="wwwroot\scripts\SysLibs\SiteInfo.js.map" />
+    <None Include="wwwroot\scripts\SysLibs\SiteInfo.ts" />
+    <None Include="wwwroot\scripts\SysLibs\Tasks.js" />
+    <None Include="wwwroot\scripts\SysLibs\Tasks.js.map" />
+    <None Include="wwwroot\scripts\SysLibs\Tasks.ts" />
   </ItemGroup>
 
   <!--<ItemGroup>
@@ -88,11 +458,91 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="scripts\app.ts" />
+    <Folder Include="wwwroot\scripts\Box2D\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="scripts\Box2D\" />
+    <TypeScriptCompile Update="wwwroot\scripts\App\Game\GameScene.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Game\objects\Ball.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Game\objects\Ball2.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Game\objects\Crate.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Game\objects\Ground.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Game\objects\LegoMan.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Game\objects\Special.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Game\objects\Wall.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Gravatas\GravatasLayer.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Gravatas\objects\Bar.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Gravatas\objects\Planet.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Gravatas\objects\Plus.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Gravatas\objects\Sun.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\Gravatas\objects\Wall.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\libs\AnimatedSprite.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\libs\Box.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\libs\GreenItem.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\libs\LegoMan.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\libs\Scene1.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\MainScene.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\physical\InvSquareField.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\physical\PhysicalLayer.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\physical\PhysicalNode.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\physical\PhysicalShape.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\physical\PhysicalShapeBox.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\physical\PhysicalShapeCircle.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\scripts\App\physical\PhysicalShapePolygon.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

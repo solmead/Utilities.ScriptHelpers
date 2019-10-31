@@ -1,6 +1,8 @@
 {
   "version": "1.0.0",
   "name": "test-cocos-ts",
+  "main": "./wwwroot/scripts/bundle/index",
+  "types": "./wwwroot/scripts/bundle/index",
   "private": true,
   "devDependencies": {
     "@types/box2d": "0.0.33",
@@ -13,7 +15,10 @@
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
-    "wbp": "webpack"
+    "clean": "rimraf dist",
+    "build": "tsc --build ./tsconfig.json",
+    "wbp": "webpack",
+    "start": "webpack-dev-server --mode development"
   },
   "dependencies": {}
 }
