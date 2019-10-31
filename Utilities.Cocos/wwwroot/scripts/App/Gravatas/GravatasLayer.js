@@ -2,10 +2,10 @@ import { Director } from "../../Cocos2d/Director";
 import { PhysicalLayer } from "../physical/PhysicalLayer";
 import { geometry } from "../../Cocos2d/libs/geometry";
 import { b2MouseJointDef, b2Vec2 } from "../../Box2D/Box2D";
-import { gravityField } from "../physical/InvSquareField";
 import { Wall } from "./objects/Wall";
 import { Planet } from "./objects/Planet";
 import { Sun } from "./objects/Sun";
+import { Primitives } from "../../Cocos2d/libs/Primitives";
 function rand_pos(radius, Offset) {
     var an = Math.random() * 6.28;
     var os = Math.random() * Offset + radius; //+ frand()*20-10;
@@ -27,9 +27,9 @@ export class GravatasLayer extends PhysicalLayer {
         var s = Director.sharedDirector().winSize;
         //var pos = geometry.ccp(s.width / 2, s.height / 2);
         //this.anchorPoint = geometry.ccp(0.5, 0.5);
-        this.scaleY = -1;
+        //this.scaleY = -1;
         //this.pLayer.anchorPoint = geometry.ccp(0.5,0.5);
-        this.gField = new gravityField(this);
+        //this.gField = new gravityField(this);
         //var size = geometry.sizeMake(s.width * 10, s.height);
         //this.contentSize = size;
         //this.pLayer.contentSize = size;
@@ -56,7 +56,8 @@ export class GravatasLayer extends PhysicalLayer {
         //this.pLayer.addChild(planet);
         //planet = new Planet(geometry.ccp(0, 50));
         //this.pLayer.addChild(planet);
-        var mu = this.gField.islMagnitude * sun.mass;
+        //var mu = this.gField.islMagnitude * sun.mass;
+        var mu = 6 * sun.mass;
         for (var i = 1; i <= 2; i++) {
             var planet = new Planet(geometry.ccp(0, 0));
             var V = rand_pos(200, i * 6.25 + 50.0);
@@ -100,6 +101,9 @@ export class GravatasLayer extends PhysicalLayer {
             this.addChild(planet);
         }
     }
+    draw(ctx) {
+        Primitives.drawRect(ctx, new geometry.Rect(0, 0, this.contentSize.width, this.contentSize.height), "green", 4);
+    }
     mouseDown(evt) {
         var point = evt.locationInCanvas, world = this.world, mouseJoint = this.mouseJoint;
         var pnt = geometry.pointApplyAffineTransform(point, this.nodeToParentTransform());
@@ -128,6 +132,7 @@ export class GravatasLayer extends PhysicalLayer {
         var point = evt.locationInCanvas, world = this.world, mouseJoint = this.mouseJoint;
         var pnt = geometry.pointApplyAffineTransform(point, this.nodeToParentTransform());
         //point.x = point.x - this.position.x;
+        console.log("GravatasLayer mouseDragged pnt = " + pnt.toString());
         if (mouseJoint) {
             mouseJoint.SetTarget(new b2Vec2(pnt.x, pnt.y));
         }

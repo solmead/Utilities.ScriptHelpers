@@ -8,6 +8,7 @@ import { Plus } from "./Gravatas/objects/Plus";
 import { geometry } from "../Cocos2d/libs/geometry";
 import { Layer } from "../Cocos2d/nodes/Layer";
 import { ReferenceLayer } from "./Gravatas/ReferenceLayer";
+import { Primitives } from "../Cocos2d/libs/Primitives";
 
 var Resource = remoteresources.Resource;
 
@@ -21,16 +22,26 @@ export class MainScene extends Scene {
 
         //this.anchorPoint = geometry.ccp(0.5, 0.5);
         //this.contentSize = s;
-        this.position = geometry.ccp(s.width/2, -s.height/2);
+        //this.position = geometry.ccp(s.width/2, -s.height/2);
+
+        var s = Director.sharedDirector().winSize;
+
+        var pos = geometry.ccp(s.width / 2, s.height / 2);
 
         var layer2 = new ReferenceLayer();
+        layer2.position = pos;
         this.addChild(layer2);
 
         var layer = new GravatasLayer();
+        layer.position = pos;
         this.addChild(layer);
 
 
 
+    }
+
+    public draw(ctx: CanvasRenderingContext2D):void {
+        Primitives.drawRect(ctx, new geometry.Rect(0, 0, this.contentSize.width, this.contentSize.height), "red", 12);
     }
 }
 

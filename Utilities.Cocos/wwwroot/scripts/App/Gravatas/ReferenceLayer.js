@@ -3,6 +3,7 @@ import { Director } from "../../Cocos2d/Director";
 import { Plus } from "./objects/Plus";
 import { geometry } from "../../Cocos2d/libs/geometry";
 import { Label } from "../../Cocos2d/nodes/Label";
+import { Primitives } from "../../Cocos2d/libs/Primitives";
 export class ReferenceLayer extends Layer {
     constructor() {
         super();
@@ -11,7 +12,7 @@ export class ReferenceLayer extends Layer {
         //var pos = geometry.ccp(s.width / 2, s.height / 2);
         //this.position = pos;
         //this.anchorPoint = geometry.ccp(0.5, 0.5);
-        this.scaleY = -1;
+        //this.scaleY = -1;
         //this.contentSize = s;
     }
     onEnter() {
@@ -26,37 +27,40 @@ export class ReferenceLayer extends Layer {
                         var tx = new Label(ad.position.toString());
                         tx.fontSize = 8;
                         tx.position = ad.position.add(geometry.ccp(0, 10));
-                        tx.anchorPoint = geometry.ccp(0.5, 0.5);
-                        tx.scaleY = -1;
+                        //tx.anchorPoint = geometry.ccp(0.5, 0.5);
+                        //tx.scaleY = -1;
                         this.addChild(tx);
                         ad = new Plus(geometry.ccp(-x, y));
                         this.addChild(ad);
                         tx = new Label(ad.position.toString());
                         tx.fontSize = 8;
                         tx.position = ad.position.add(geometry.ccp(0, 10));
-                        tx.anchorPoint = geometry.ccp(0.5, 0.5);
-                        tx.scaleY = -1;
+                        //tx.anchorPoint = geometry.ccp(0.5, 0.5);
+                        //tx.scaleY = -1;
                         this.addChild(tx);
                         ad = new Plus(geometry.ccp(x, -y));
                         this.addChild(ad);
                         tx = new Label(ad.position.toString());
                         tx.fontSize = 8;
                         tx.position = ad.position.add(geometry.ccp(0, 10));
-                        tx.anchorPoint = geometry.ccp(0.5, 0.5);
-                        tx.scaleY = -1;
+                        //tx.anchorPoint = geometry.ccp(0.5, 0.5);
+                        //tx.scaleY = -1;
                         this.addChild(tx);
                         ad = new Plus(geometry.ccp(-x, -y));
                         this.addChild(ad);
                         tx = new Label(ad.position.toString());
                         tx.fontSize = 8;
                         tx.position = ad.position.add(geometry.ccp(0, 10));
-                        tx.anchorPoint = geometry.ccp(0.5, 0.5);
-                        tx.scaleY = -1;
+                        //tx.anchorPoint = geometry.ccp(0.5, 0.5);
+                        //tx.scaleY = -1;
                         this.addChild(tx);
                     }
                 }
             }
         }
+    }
+    draw(ctx) {
+        Primitives.drawRect(ctx, new geometry.Rect(0, 0, this.contentSize.width, this.contentSize.height), "yellow", 8);
     }
 }
 //# sourceMappingURL=ReferenceLayer.js.map
